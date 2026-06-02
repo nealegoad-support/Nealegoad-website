@@ -148,9 +148,36 @@ function Header(){
   const [open,        setOpen]        = React.useState(false);
   const [megaOpen,    setMegaOpen]    = React.useState(false);
   const [svcExpanded, setSvcExpanded] = React.useState(false);
+  const [scrolled,    setScrolled]    = React.useState(false);
   const megaTimer = React.useRef(null);
 
+  /* Transparent-header scroll detection.
+     Listen on both .site-scroll and window to cover both scroll containers. */
+  React.useEffect(()=>{
+    const check = ()=>{
+      const el  = document.querySelector('.site-scroll');
+      const pos = (el && el.scrollTop) || window.scrollY || window.pageYOffset || 0;
+      setScrolled(pos > 40);
+    };
+    window.addEventListener('scroll', check, {passive:true});
+    const el = document.querySelector('.site-scroll');
+    if(el) el.addEventListener('scroll', check, {passive:true});
+    check();
+    return ()=>{
+      window.removeEventListener('scroll', check);
+      if(el) el.removeEventListener('scroll', check);
+    };
+  },[]);
+
+  /* Reset to transparent when navigating back to homepage */
+  React.useEffect(()=>{
+    if(route==="/") setScrolled(false);
+  },[route]);
+
   React.useEffect(()=>{ setOpen(false); setMegaOpen(false); setSvcExpanded(false); },[route]);
+
+  /* Header is transparent only on the homepage when at the very top */
+  const isHeroTop = !scrolled && route === "/";
 
   /* Hover-intent helpers — 220ms delay eliminates flicker when cursor
      travels from trigger button across the header-bottom gap to the
@@ -178,14 +205,16 @@ function Header(){
 
   return (
     <>
-    {/* Header has no backdrop-filter side-effect on child positioning
-        because ServicesMega is now a sibling, not a child. */}
-    <header className="hdr">
+    <header className={"hdr" + (isHeroTop?" hdr--top":"")}>
       <div className="wrap hdr-in">
         <div className="hdr-logo" onClick={()=>go("/")} role="link" tabIndex={0}
              aria-label="Neale Goad Automotive home"
              onKeyDown={(e)=>{ if(e.key==="Enter") go("/"); }}>
-          <NGLogo style={{height:"36px"}} />
+          {/* Logo wordmark switches to white when header is transparent over dark hero */}
+          <NGLogo
+            style={{height:"36px"}}
+            wordColor={isHeroTop ? "#f3f5f7" : "#15181d"}
+          />
         </div>
         <nav className="hdr-nav" aria-label="Main navigation">
           <button

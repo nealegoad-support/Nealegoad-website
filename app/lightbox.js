@@ -41,7 +41,7 @@
       '.lb-caption{margin-top:13px;color:rgba(255,255,255,.58);font-family:-apple-system,system-ui,sans-serif;font-size:13.5px;text-align:center;max-width:min(540px,90vw);line-height:1.55;display:none;}',
       '.lb-caption.visible{display:block;}',
       /* ---- Counter ---- */
-      '.lb-counter{position:fixed;top:18px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.38);font-family:-apple-system,system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;white-space:nowrap;display:none;}',
+      '.lb-counter{position:fixed;top:18px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.38);font-family:-apple-system,system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;white-space:nowrap;display:none;z-index:3;}',
       '.lb-counter.visible{display:block;}',
       /* ---- Buttons ---- */
       '.lb-btn{border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:50%;color:#fff;transition:background .2s,border-color .2s,transform .15s;-webkit-tap-highlight-color:transparent;}',
@@ -50,10 +50,11 @@
       '.lb-btn:focus-visible{outline:2.5px solid #FFCD00;outline-offset:3px;}',
       '.lb-btn:disabled{opacity:.18;cursor:default;pointer-events:none;}',
       /* ---- Close ---- */
-      '.lb-close{position:fixed;top:14px;right:14px;width:44px;height:44px;}',
+      /* z-index:3 ensures buttons render above .lb-stage (z-index:1) and overlay */
+      '.lb-close{position:fixed;top:14px;right:14px;width:44px;height:44px;z-index:3;}',
       '.lb-close svg{width:20px;height:20px;}',
       /* ---- Prev / Next ---- */
-      '.lb-prev,.lb-next{position:fixed;top:50%;width:52px;height:52px;transform:translateY(-50%);}',
+      '.lb-prev,.lb-next{position:fixed;top:50%;width:52px;height:52px;transform:translateY(-50%);z-index:3;}',
       '.lb-prev{left:14px;} .lb-next{right:14px;}',
       '.lb-prev:hover{transform:translateY(-50%) translateX(-2px);}',
       '.lb-next:hover{transform:translateY(-50%) translateX(2px);}',
@@ -117,6 +118,11 @@
 
     /* Overlay click → close */
     document.getElementById('lb-ov').addEventListener('click', closeLB);
+    /* Direct listener on close button (belt-and-suspenders alongside delegation) */
+    document.getElementById('lb-close').addEventListener('click', function (e) {
+      e.stopPropagation();
+      closeLB();
+    });
     /* Stop image click from closing */
     lbImg.addEventListener('click', function (e) { e.stopPropagation(); });
   }

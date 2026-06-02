@@ -34,8 +34,10 @@ body::before{
 ::-webkit-scrollbar-thumb{ background:rgba(20,24,30,.18); border-color:var(--bg); }
 ::-webkit-scrollbar-thumb:hover{ background:rgba(20,24,30,.3); }
 
-/* ---- header (white glass) ---- */
-.hdr{ background:rgba(255,255,255,.82); border-bottom-color:var(--line); box-shadow:0 1px 0 rgba(20,24,30,.04); }
+/* ---- header (white glass — only when NOT at hero top) ---- */
+.hdr{ background:rgba(255,255,255,.84); border-bottom-color:var(--line); box-shadow:0 1px 0 rgba(20,24,30,.04); }
+/* Fully transparent when at hero top — text must be white (hero overlay is dark) */
+.hdr--top{ background:transparent; border-bottom-color:transparent; box-shadow:none; }
 
 /* ---- surfaces that were hardcoded dark ---- */
 .card{ background:#fff; }
@@ -126,6 +128,56 @@ body::before{
 /* monospace / category pills → solid yellow chip with ink text */
 .std-pill, .spec-row .val, .drive-tag, .bp-cat{
   background:var(--yellow); color:var(--ink); border-color:transparent; }
+
+/* ═══════════════════════════════════════════════════════════════
+   MEGA MENU — light glassmorphism (Apple/Tesla style)
+   ═══════════════════════════════════════════════════════════════ */
+.mega{
+  background:rgba(255,255,255,.86) !important;
+  backdrop-filter:blur(28px) saturate(1.6) !important;
+  -webkit-backdrop-filter:blur(28px) saturate(1.6) !important;
+  border-bottom:1px solid rgba(20,24,30,.07) !important;
+  box-shadow:0 16px 50px -12px rgba(20,24,30,.14), 0 1px 0 rgba(20,24,30,.05) !important;
+}
+.mega-col{ border-left-color:rgba(20,24,30,.07) !important; }
+.mega-col-head{ color:rgba(20,24,30,.38) !important; border-bottom-color:rgba(20,24,30,.07) !important; }
+.mega-link{ color:rgba(20,24,30,.65) !important; }
+.mega-link:hover{ background:rgba(255,205,0,.10) !important; color:rgba(20,24,30,.9) !important; }
+.mega-link-ico{ background:rgba(20,24,30,.05) !important; color:rgba(20,24,30,.35) !important; }
+.mega-link:hover .mega-link-ico{ background:rgba(255,205,0,.14) !important; color:#7a6000 !important; }
+.mega-link-title{ color:#15181d !important; }
+.mega-link-sub{ color:rgba(20,24,30,.40) !important; }
+.mega-link-arr{ color:#7a6000 !important; }
+.mega-foot{ background:rgba(243,244,241,.8) !important; border-top-color:rgba(20,24,30,.07) !important; }
+.mega-foot-text{ color:rgba(20,24,30,.48) !important; }
+.mega-foot-text strong{ color:rgba(20,24,30,.7) !important; }
+
+/* ═══════════════════════════════════════════════════════════════
+   FULLSCREEN HERO — force readable text on dark overlay
+   ═══════════════════════════════════════════════════════════════ */
+/* .hero--fullscreen overrides have specificity (0,2,0) or (0,3,0) — beat light-theme rules */
+.hero--fullscreen .h1{ color:#f3f5f7; }
+.hero--fullscreen .h1 .hi{ color:var(--yellow); background:none; padding:0; }
+.hero--fullscreen .eyebrow{ color:var(--yellow); }
+.hero--fullscreen .eyebrow::before{ background:var(--yellow); }
+.hero--fullscreen .lead{ color:rgba(243,245,247,.80); }
+.hero--fullscreen .biz-line{ color:rgba(243,245,247,.48); border-left-color:var(--yellow); }
+.hero--fullscreen .biz-line strong{ color:rgba(243,245,247,.85); }
+.hero--fullscreen .chip{ background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.22); color:rgba(255,255,255,.78); }
+.hero--fullscreen .chip svg{ color:var(--yellow); }
+.hero--fullscreen .btn-ghost{ background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.28); color:#f3f5f7; }
+.hero--fullscreen .btn-ghost:hover{ background:rgba(255,255,255,.18); border-color:var(--yellow); color:#fff; }
+
+/* Legacy .hero--img alias (other pages) — keep working */
+.hero--img .h1{ color:#f3f5f7; }
+.hero--img .h1 .hi{ color:var(--yellow); background:none; padding:0; }
+.hero--img .eyebrow{ color:var(--yellow); }
+.hero--img .eyebrow::before{ background:var(--yellow); }
+.hero--img .lead{ color:rgba(243,245,247,.80); }
+.hero--img .chip{ background:rgba(243,245,247,.10); border-color:rgba(243,245,247,.22); color:rgba(243,245,247,.78); }
+.hero--img .chip svg{ color:var(--yellow); }
+.hero--img .btn-ghost{ background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.30); color:#f3f5f7; }
+.hero--img .btn-ghost:hover{ background:rgba(255,255,255,.18); border-color:var(--yellow); color:#fff; }
 
 /* footer link underline already yellow; links charcoal */
 .ft-p a{ color:var(--txt); }

@@ -1,5 +1,42 @@
 /* Views A — Homepage hub + RWC landing */
-const { useState: useS } = React;
+const { useState: useS, useEffect: useE, useState: useSlide } = React;
+
+/* ---- Slideshow images (Ken Burns cinematic hero) ---- */
+const HERO_SLIDES = [
+  { src:"assets/photos/Classic muscle car at automotive shop.png", pos:"center 30%", kb:"kb-zoom-in"   },
+  { src:"assets/photos/aston.jpg",     pos:"center center",         kb:"kb-pan-left"  },
+  { src:"assets/photos/heritage.jpg",  pos:"center 38%",            kb:"kb-zoom-out"  },
+  { src:"assets/photos/workshop.jpg",  pos:"center 42%",            kb:"kb-pan-right" },
+];
+
+function HeroSlideshow(){
+  const [cur, setCur] = React.useState(0);
+
+  useE(()=>{
+    const t = setInterval(()=> setCur(c=>(c+1)%HERO_SLIDES.length), 4200);
+    return ()=>clearInterval(t);
+  },[]);
+
+  return (
+    <div className="hero-slides" aria-hidden="true">
+      {HERO_SLIDES.map((sl,i)=>(
+        <div key={i} className={"hero-slide" + (i===cur?" hero-slide--active":"")}>
+          <img
+            src={sl.src}
+            alt=""
+            loading={i===0?"eager":"lazy"}
+            style={{
+              objectPosition: sl.pos,
+              /* Setting animationName to 'none' resets + pauses;
+                 setting it to the keyframe name starts it fresh. */
+              animationName: i===cur ? sl.kb : 'none',
+            }}
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
 
 const SERVICES = [
   { t:"Roadworthy Certificates", d:"Licensed Vehicle Tester. Cars, bikes, trucks & heavy vehicles.", icon:"fileCheck", href:"roadworthy-certificates.html" },
@@ -33,28 +70,36 @@ function HomeView(){
   const { go } = useNav();
   return (
     <div className="view-body">
-      <section className="hero"><div className="wrap">
-        <div className="hero-grid">
-          <div data-reveal>
-            <Eyebrow>Repco Authorised Service · Wendouree</Eyebrow>
-            <h1 className="h1" style={{marginTop:"18px"}}>One workshop for <span className="hi">every job</span> your vehicle needs</h1>
-            <p className="lead" style={{marginTop:"20px"}}>From roadworthy certificates to logbook servicing, diesel, fleet and classic vehicles — 30+ years of trusted, warranty-safe work in Ballarat.</p>
-            <p className="biz-line"><strong>Neale Goad Automotive</strong> · Repco Authorised Service · Roadworthy Certificates</p>
-            <div className="hero-actions">
+
+      {/* ─── Full-viewport cinematic hero ─────────────────────── */}
+      <section className="hero hero--fullscreen" aria-label="Homepage hero">
+        <HeroSlideshow/>
+        <div className="hero-overlay" aria-hidden="true"/>
+
+        <div className="wrap">
+          <div className="hero-content" data-reveal>
+            <Eyebrow>Repco Authorised Service · Wendouree, Ballarat</Eyebrow>
+            <h1 className="h1" style={{marginTop:"16px",lineHeight:1.02}}>
+              One workshop<br/>for <span className="hi">every job</span><br/>your vehicle needs
+            </h1>
+            <p className="lead" style={{marginTop:"22px",maxWidth:"50ch"}}>
+              Roadworthy certificates, logbook servicing, diesel, fleet and classic vehicles — 30+ years of trusted, warranty-safe work in Ballarat.
+            </p>
+            <p className="biz-line" style={{marginTop:"20px"}}>
+              <strong>Neale Goad Automotive</strong> · Repco Authorised Service · Licensed Vehicle Tester
+            </p>
+            <div className="hero-actions" style={{marginTop:"32px"}}>
               <CallBtn lg/>
               <BookBtn lg/>
             </div>
-            <div className="hero-chips">
+            <div className="hero-chips" style={{marginTop:"22px"}}>
               <span className="chip"><Icons.star/> 4.9★ Google · 300+ reviews</span>
+              <span className="chip"><Icons.shield/> Repco Nationwide Warranty</span>
               <span className="chip"><Icons.check/> Same-week availability</span>
             </div>
           </div>
-          <div className="hero-right" data-reveal style={{"--i":1}}>
-            <Media style={{aspectRatio:"16 / 10"}} src="site/img/storefront.jpg" tag="Repco Authorised" caption="Our Wendouree workshop" capIcon="building" alt="Neale Goad Automotive workshop exterior with Repco signage"/>
-            <QuoteForm/>
-          </div>
         </div>
-      </div></section>
+      </section>
 
       <ActionBar/>
       <TrustBar/>
