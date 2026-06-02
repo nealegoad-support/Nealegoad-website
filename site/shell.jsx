@@ -14,6 +14,29 @@ const NAV_ITEMS = [
   { label:"Blog", route:"/blog" },
 ];
 
+/* Services mega menu groups — link to standalone SEO pages */
+const MEGA_GROUPS = [
+  { label:"General Automotive", items:[
+    { t:"Car Servicing",      sub:"All makes, warranty-safe",         icon:"wrench",    href:"car-servicing-ballarat.html" },
+    { t:"Logbook Servicing",  sub:"Manufacturer schedule stamped",    icon:"clipboard", href:"logbook-servicing-ballarat.html" },
+    { t:"Mechanical Repairs", sub:"All faults, Repco warranty",       icon:"cog",       href:"mechanical-repairs-ballarat.html" },
+    { t:"Air Conditioning",   sub:"Re-gas, repair & full service",    icon:"snowflake", href:"air-conditioning-service-ballarat.html" },
+  ]},
+  { label:"Roadworthy & Inspections", items:[
+    { t:"Roadworthy Certificates", sub:"Licensed Vehicle Tester · 2 inspectors", icon:"fileCheck", href:"roadworthy-certificates.html" },
+    { t:"Classic Car Roadworthy",  sub:"Club Permit (CPS) inspections",          icon:"steering",  href:"classic-car-roadworthy-ballarat.html" },
+  ]},
+  { label:"Commercial & Fleet", items:[
+    { t:"Fleet Servicing",           sub:"VIC SES, Grampians Health & more", icon:"building", href:"fleet-servicing-ballarat.html" },
+    { t:"Diesel & Heavy Vehicle",    sub:"Trucks, plant & equipment",        icon:"truck",    href:"diesel-repairs-ballarat.html" },
+    { t:"Truck Repairs",             sub:"Prime movers, rigids, compliance", icon:"truck",    href:"truck-repairs-ballarat.html" },
+    { t:"Plant & Equipment Repairs", sub:"Excavators, loaders, hydraulics",  icon:"cog",      href:"plant-equipment-repairs-ballarat.html" },
+  ]},
+  { label:"Specialist Services", items:[
+    { t:"LPG Conversions", sub:"Certified install, compliance cert", icon:"droplet", href:"lpg-conversions-ballarat.html" },
+  ]},
+];
+
 /* ---- shared bits ---- */
 function Eyebrow({ children, nb }){ return <p className={"eyebrow " + (nb?"nb":"")}>{children}</p>; }
 
@@ -77,40 +100,152 @@ function CtaBand({ title="Get your vehicle sorted this week", sub="Two accredite
   );
 }
 
+/* ---- mega menu ---- */
+function ServicesMega({ open, onEnter, onLeave, onClose }){
+  return (
+    /* Rendered OUTSIDE <header> so position:fixed isn't hijacked by
+       the header's backdrop-filter containing block. onEnter/onLeave
+       keep the timer-based hover stable across the header→mega gap. */
+    <div
+      className={"mega " + (open?"open":"")}
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
+      role="region"
+      aria-label="Services menu"
+    >
+      <div className="wrap mega-inner">
+        {MEGA_GROUPS.map((g,gi)=>(
+          <div key={gi} className="mega-col">
+            <div className="mega-col-head">{g.label}</div>
+            {g.items.map((it,ii)=>{ const Ico = Icons[it.icon]; return (
+              <a key={ii} className="mega-link" href={it.href} onClick={onClose}>
+                <span className="mega-link-ico"><Ico/></span>
+                <span>
+                  <span className="mega-link-title">{it.t}</span>
+                  <span className="mega-link-sub">{it.sub}</span>
+                </span>
+                <span className="mega-link-arr"><Icons.arrow/></span>
+              </a>
+            );})}
+          </div>
+        ))}
+      </div>
+      <div className="mega-foot">
+        <div className="mega-foot-in">
+          <span className="mega-foot-text">Need help choosing? <strong>Call us</strong></span>
+          <a href={PHONE_TEL} className="btn btn-primary" style={{fontSize:"14px",padding:"10px 18px"}} onClick={onClose}>
+            <Icons.phone/> {PHONE_DISPLAY}
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ---- header ---- */
 function Header(){
   const { route, go } = useNav();
-  const [open, setOpen] = React.useState(false);
-  React.useEffect(()=>{ setOpen(false); },[route]);
+  const [open,        setOpen]        = React.useState(false);
+  const [megaOpen,    setMegaOpen]    = React.useState(false);
+  const [svcExpanded, setSvcExpanded] = React.useState(false);
+  const megaTimer = React.useRef(null);
+
+  React.useEffect(()=>{ setOpen(false); setMegaOpen(false); setSvcExpanded(false); },[route]);
+
+  /* Hover-intent helpers — 220ms delay eliminates flicker when cursor
+     travels from trigger button across the header-bottom gap to the
+     mega panel. openMega / cancelClose keep the menu open; scheduleMegaClose
+     gives the cursor time to reach the mega before deciding to close. */
+  const openMega        = ()=>{ clearTimeout(megaTimer.current); setMegaOpen(true); };
+  const cancelClose     = ()=>{ clearTimeout(megaTimer.current); };
+  const scheduleMegaClose = ()=>{
+    clearTimeout(megaTimer.current);
+    megaTimer.current = setTimeout(()=>setMegaOpen(false), 220);
+  };
+  const closeMegaNow    = ()=>{ clearTimeout(megaTimer.current); setMegaOpen(false); };
+
+  /* Close mega on outside click */
+  React.useEffect(()=>{
+    if(!megaOpen) return;
+    const handler = (e)=>{
+      const mega = document.querySelector('.mega');
+      const btn  = document.querySelector('.hdr-svc-btn');
+      if(mega && !mega.contains(e.target) && btn && !btn.contains(e.target)) closeMegaNow();
+    };
+    document.addEventListener('mousedown', handler);
+    return ()=>document.removeEventListener('mousedown', handler);
+  },[megaOpen]);
+
   return (
     <>
+    {/* Header has no backdrop-filter side-effect on child positioning
+        because ServicesMega is now a sibling, not a child. */}
     <header className="hdr">
       <div className="wrap hdr-in">
-        <div className="hdr-logo" onClick={()=>go("/")} role="link" aria-label="Neale Goad Automotive home">
+        <div className="hdr-logo" onClick={()=>go("/")} role="link" tabIndex={0}
+             aria-label="Neale Goad Automotive home"
+             onKeyDown={(e)=>{ if(e.key==="Enter") go("/"); }}>
           <NGLogo style={{height:"36px"}} />
         </div>
-        <nav className="hdr-nav">
+        <nav className="hdr-nav" aria-label="Main navigation">
+          <button
+            className={"hdr-svc-btn " + (megaOpen?"open":"")}
+            onMouseEnter={openMega}
+            onMouseLeave={scheduleMegaClose}
+            onClick={()=>{ megaOpen ? closeMegaNow() : openMega(); }}
+            aria-haspopup="true"
+            aria-expanded={megaOpen}
+            aria-controls="spa-mega"
+          >
+            Services <Icons.chevron/>
+          </button>
           {NAV_ITEMS.map(n=>(
-            <a key={n.route} className={route===n.route?"on":""} onClick={()=>go(n.route)}>{n.label}</a>
+            <a key={n.route}
+               className={route===n.route?"on":""}
+               onClick={()=>{ closeMegaNow(); go(n.route); }}
+               onMouseEnter={scheduleMegaClose}>
+              {n.label}
+            </a>
           ))}
         </nav>
         <div className="hdr-cta">
           <span className="hdr-hours"><span className="dot"/> Open today · 8–5</span>
           <a href={PHONE_TEL} className="btn btn-primary hdr-call"><span aria-hidden="true">📞</span> {PHONE_DISPLAY}</a>
-          <button className="btn btn-ghost hdr-menu" onClick={()=>setOpen(true)} aria-label="Menu"><Icons.menu/></button>
+          <button className="btn btn-ghost hdr-menu" onClick={()=>setOpen(true)} aria-label="Open menu"><Icons.menu/></button>
         </div>
       </div>
     </header>
+
+    {/* Mega is a sibling of header — no backdrop-filter containment */}
+    <ServicesMega
+      id="spa-mega"
+      open={megaOpen}
+      onEnter={cancelClose}
+      onLeave={scheduleMegaClose}
+      onClose={closeMegaNow}
+    />
 
     <div className={"msheet " + (open?"open":"")}>
       <div className="scrim" onClick={()=>setOpen(false)}/>
       <div className="panel">
         <button className="mclose" onClick={()=>setOpen(false)} aria-label="Close"><Icons.x/></button>
         <a className={route==="/"?"on":""} onClick={()=>go("/")}>Home</a>
+        {/* Services accordion */}
+        <button className={"msheet-svc-btn " + (svcExpanded?"open":"")}
+          onClick={()=>setSvcExpanded(v=>!v)}>
+          Services <Icons.chevron/>
+        </button>
+        <div className={"msheet-svc-items " + (svcExpanded?"open":"")}>
+          {MEGA_GROUPS.map((g,gi)=>(
+            <React.Fragment key={gi}>
+              <div className="msheet-svc-group-label">{g.label}</div>
+              {g.items.map((it,ii)=>(
+                <a key={ii} className="msheet-svc-link" href={it.href} onClick={()=>setOpen(false)}>{it.t}</a>
+              ))}
+            </React.Fragment>
+          ))}
+        </div>
         {NAV_ITEMS.map(n=><a key={n.route} className={route===n.route?"on":""} onClick={()=>go(n.route)}>{n.label}</a>)}
-        <a onClick={()=>go("/roadworthy-wendouree")}>Roadworthy Wendouree</a>
-        <a onClick={()=>go("/mechanic-alfredton")}>Mechanic Alfredton</a>
-        <a onClick={()=>go("/mechanic-delacombe")}>Mechanic Delacombe</a>
         <a href={PHONE_TEL} className="btn btn-primary" style={{marginTop:"14px",justifyContent:"center"}}><span aria-hidden="true">📞</span> {PHONE_DISPLAY}</a>
       </div>
     </div>
@@ -148,7 +283,7 @@ function Footer(){
           <p className="ft-tag"><span itemProp="name">Neale Goad Automotive</span> — Repco Authorised Service · Roadworthy Certificates · Wendouree, Ballarat VIC</p>
           <link itemProp="image" href="#" />
         </div>
-        <div className="ft-cols">
+        <div className="ft-cols" style={{gridTemplateColumns:"repeat(4,1fr)"}}>
           <div itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
             <span className="ft-h">Visit</span>
             <p className="ft-p">
@@ -164,14 +299,25 @@ function Footer(){
             <span className="ft-h">Get in touch</span>
             <p className="ft-p"><a href={PHONE_TEL} itemProp="telephone">{PHONE_DISPLAY}</a><br/><span className="muted" style={{fontSize:"13px"}}>Booking confirmed by phone</span></p>
           </div>
+          <div>
+            <span className="ft-h">Services</span>
+            <p className="ft-p" style={{lineHeight:1.9}}>
+              {MEGA_GROUPS.map(g=>g.items).flat().map((it,i)=>(
+                <React.Fragment key={i}><a href={it.href} style={{display:"block",color:"var(--txt-2)",fontSize:"13.5px",transition:"color .2s"}}
+                  onMouseEnter={e=>e.target.style.color="var(--yellow)"}
+                  onMouseLeave={e=>e.target.style.color="var(--txt-2)"}>{it.t}</a></React.Fragment>
+              ))}
+            </p>
+          </div>
         </div>
       </div>
       <div className="wrap ft-bottom">
         <span>© {new Date().getFullYear()} Neale Goad Automotive · Goad Group</span>
         <span style={{display:"flex",gap:"16px",flexWrap:"wrap"}}>
-          <a onClick={()=>go("/roadworthy-certificate-ballarat")} style={{cursor:"pointer"}}>Roadworthy</a>
-          <a onClick={()=>go("/fleet-servicing-ballarat")} style={{cursor:"pointer"}}>Fleet</a>
-          <a onClick={()=>go("/diesel-mechanic-ballarat")} style={{cursor:"pointer"}}>Diesel & Heavy</a>
+          <a href="roadworthy-certificates.html">Roadworthy</a>
+          <a href="fleet-servicing-ballarat.html">Fleet</a>
+          <a href="diesel-repairs-ballarat.html">Diesel & Heavy</a>
+          <a onClick={()=>go("/")} style={{cursor:"pointer"}}>Home</a>
         </span>
       </div>
     </footer>

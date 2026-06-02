@@ -2,14 +2,18 @@
 const { useState: useS } = React;
 
 const SERVICES = [
-  { t:"Roadworthy Certificates", d:"Licensed Vehicle Tester. Cars, bikes, trucks & heavy vehicles.", icon:"fileCheck", route:"/roadworthy-certificate-ballarat" },
-  { t:"Car Service & Logbook", d:"Factory-trained, warranty-safe logbook servicing, all makes.", icon:"wrench", route:"/car-service-ballarat" },
-  { t:"Fleet Servicing", d:"Trusted by VIC SES, Grampians Health & Federation Uni.", icon:"building", route:"/fleet-servicing-ballarat" },
-  { t:"Diesel & Heavy Vehicle", d:"Trucks, plant & equipment. Dealer-level diagnostics.", icon:"truck", route:"/diesel-mechanic-ballarat" },
-  { t:"Classic & Vintage RWC", d:"Club Permit (CPS) inspections for enthusiast vehicles.", icon:"steering", route:"/classic-car-roadworthy-ballarat" },
-  { t:"Roadworthy Wendouree", d:"Your local LVT — on-site rectification, no second trip.", icon:"pin", route:"/roadworthy-wendouree" },
-  { t:"Mechanic Alfredton", d:"A short drive away, with free pickup & delivery.", icon:"nav", route:"/mechanic-alfredton" },
-  { t:"Mechanic Delacombe", d:"Local servicing, repairs & roadworthy certificates.", icon:"nav", route:"/mechanic-delacombe" },
+  { t:"Roadworthy Certificates", d:"Licensed Vehicle Tester. Cars, bikes, trucks & heavy vehicles.", icon:"fileCheck", href:"roadworthy-certificates.html" },
+  { t:"Car Servicing", d:"Factory-trained, warranty-safe logbook servicing, all makes.", icon:"wrench", href:"car-servicing-ballarat.html" },
+  { t:"Logbook Servicing", d:"Manufacturer schedule stamped. Won't void your warranty.", icon:"clipboard", href:"logbook-servicing-ballarat.html" },
+  { t:"Fleet Servicing", d:"Trusted by VIC SES, Grampians Health & Federation Uni.", icon:"building", href:"fleet-servicing-ballarat.html" },
+  { t:"Diesel & Heavy Vehicle", d:"Trucks, plant & equipment. Dealer-level diagnostics.", icon:"truck", href:"diesel-repairs-ballarat.html" },
+  { t:"Classic & Vintage RWC", d:"Club Permit (CPS) inspections for enthusiast vehicles.", icon:"steering", href:"classic-car-roadworthy-ballarat.html" },
+  { t:"Mechanical Repairs", d:"All faults diagnosed and fixed. Repco nationwide warranty.", icon:"cog", href:"mechanical-repairs-ballarat.html" },
+  { t:"Air Conditioning", d:"Re-gas, leak detection, compressor repair & full service.", icon:"snowflake", href:"air-conditioning-service-ballarat.html" },
+  { t:"Truck Repairs", d:"Prime movers, rigids, tippers & compliance inspections.", icon:"truck", href:"truck-repairs-ballarat.html" },
+  { t:"Plant Equipment Repairs", d:"Excavators, loaders, hydraulic diagnosis & engine rebuilds.", icon:"cog", href:"plant-equipment-repairs-ballarat.html" },
+  { t:"LPG Conversions", d:"Certified LPG installation with compliance certificate.", icon:"droplet", href:"lpg-conversions-ballarat.html" },
+  { t:"Mechanic Alfredton", d:"A short drive away, with free pickup & delivery.", icon:"nav", href:"mechanic-alfredton.html" },
 ];
 
 const PILLARS = [
@@ -55,23 +59,28 @@ function HomeView(){
       <ActionBar/>
       <TrustBar/>
 
-      <section className="section"><div className="wrap">
+      <section className="section" id="services"><div className="wrap">
         <div className="shead" data-reveal>
           <Eyebrow>What we do</Eyebrow>
           <h2 className="h2">Every capability, under one roof</h2>
-          <p className="lead">Tap any service to explore the dedicated page — each is a Licensed Vehicle Tester-backed specialty.</p>
+          <p className="lead">Every service has a dedicated page with full details, pricing, FAQs and direct booking.</p>
         </div>
         <div className="svc-grid">
           {SERVICES.map((s,i)=>{ const Ico = Icons[s.icon]; return (
-            <div key={s.route} className="svc-card" data-reveal style={{"--i":i%4}} onClick={()=>go(s.route)} role="link" tabIndex={0}
-                 onKeyDown={(e)=>{ if(e.key==="Enter") go(s.route); }}>
+            <a key={s.href} className="svc-card" data-reveal style={{"--i":i%4}}
+               href={s.href} aria-label={s.t}>
               <span className="svc-no">{String(i+1).padStart(2,"0")}</span>
               <span className="svc-ico"><Ico/></span>
               <h3 className="svc-t">{s.t}</h3>
               <p className="svc-d">{s.d}</p>
               <span className="svc-go">Explore <Icons.arrow/></span>
-            </div>
+            </a>
           );})}
+        </div>
+        <div style={{display:"flex",justifyContent:"center",marginTop:"36px"}} data-reveal>
+          <a href="roadworthy-certificates.html" className="btn btn-ghost">
+            <Icons.arrow/> View all services
+          </a>
         </div>
       </div></section>
 
