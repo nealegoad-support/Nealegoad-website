@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Roadworthy Certificate · Wendouree &amp; Ballarat — Neale Goad Automotive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&family=Barlow+Semi+Condensed:wght@600;700&display=swap" />
+<link rel="stylesheet" href="app/styles.css" />
+<link rel="stylesheet" href="app/layout.css" />
+<!-- real photography — listed so the standalone bundler can inline them (referenced as strings in JSX) -->
+<meta name="ext-resource-dependency" content="assets/photos/torino.jpg" data-resource-id="torino" />
+<meta name="ext-resource-dependency" content="assets/photos/facade.jpg" data-resource-id="facade" />
+<meta name="ext-resource-dependency" content="assets/photos/workshop.jpg" data-resource-id="workshop" />
+<meta name="ext-resource-dependency" content="assets/photos/heritage.jpg" data-resource-id="heritage" />
+<meta name="ext-resource-dependency" content="assets/photos/fleet-bupa.jpg" data-resource-id="fleet" />
+<meta name="ext-resource-dependency" content="assets/photos/aston.jpg" data-resource-id="aston" />
+<meta name="ext-resource-dependency" content="assets/photos/classic-sedan.jpg" data-resource-id="sedan" />
+<meta name="ext-resource-dependency" content="assets/photos/fx-holden.jpg" data-resource-id="fx" />
+<style>
+  html,body{ margin:0; background:#0c0e11; }
+  body{ min-height:100%; }
+  #root{ min-height:100%; }
+  .stage{ position:relative; }
+  .stage[data-mode="desktop"]{ min-height:100vh; background:var(--bg); }
+  .stage[data-mode="mobile"]{ height:100vh; }
+
+  /* desktop = the document scrolls naturally */
+  .desktop-flow{ background:var(--bg); }
+
+  /* mobile = device bezel on a neutral backdrop */
+  .phone-stage{
+    height:100vh; display:grid; place-items:center;
+    background:
+      radial-gradient(120% 80% at 50% 0%, #15181d 0%, #0a0b0e 70%);
+  }
+  .phone{
+    width:390px; height:844px; flex:none;
+    border-radius:46px;
+    background:#000;
+    padding:11px;
+    box-shadow:0 0 0 2px #2a2e36, 0 50px 90px -40px rgba(0,0,0,.9), 0 0 0 11px #16181d;
+    transform-origin:center center;
+    position:relative;
+  }
+  .phone-notch{
+    position:absolute; top:20px; left:50%; transform:translateX(-50%);
+    width:118px; height:30px; background:#000; border-radius:999px; z-index:60;
+  }
+  .phone-screen{
+    width:100%; height:100%; overflow-y:auto; overflow-x:hidden;
+    border-radius:36px; background:var(--bg);
+    -webkit-overflow-scrolling:touch;
+  }
+  .phone-screen::-webkit-scrollbar{ width:0; height:0; }
+  .phone-screen{ scrollbar-width:none; }
+  .bk-modal::-webkit-scrollbar{ width:8px; }
+  .bk-modal::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.14); border-radius:8px; }
+
+  /* viewport toggle pill */
+  .vp-toggle{
+    position:fixed; left:50%; bottom:20px; transform:translateX(-50%);
+    z-index:100; display:flex; align-items:center; gap:6px;
+    background:rgba(20,23,28,.9); backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,.12); border-radius:999px;
+    padding:6px 6px 6px 16px;
+    box-shadow:0 18px 40px -18px rgba(0,0,0,.8);
+    font-family:'Barlow',system-ui,sans-serif;
+  }
+  .vp-label{ font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#7b828d; margin-right:4px; }
+  .vp-toggle button{
+    display:inline-flex; align-items:center; gap:7px;
+    font-family:inherit; font-weight:600; font-size:14px;
+    color:#aab0ba; background:transparent; border:none; cursor:pointer;
+    padding:9px 15px; border-radius:999px; transition:.15s;
+  }
+  .vp-toggle button:hover{ color:#f3f5f7; }
+  .vp-toggle button.on{ background:var(--accent); color:#161300; }
+  .vp-toggle button.on svg{ stroke:#161300; }
+
+  @media (max-width:640px){
+    .vp-toggle{ bottom:auto; top:10px; padding:5px 5px 5px 12px; }
+    .vp-label{ display:none; }
+  }
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#111419">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#111419"/>
+    <rect x="470" y="250" width="260" height="260" rx="40" fill="none" stroke="#FFCD00" stroke-width="26"/>
+    <path d="M520 380l52 52 110-118" fill="none" stroke="#FFCD00" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</template>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="app/tweaks-panel.jsx"></script>
+<script type="text/babel" src="app/icons.jsx"></script>
+<script type="text/babel" src="app/booking.jsx"></script>
+<script type="text/babel" src="app/sections.jsx"></script>
+<script type="text/babel" src="app/main.jsx"></script>
+</body>
+</html>

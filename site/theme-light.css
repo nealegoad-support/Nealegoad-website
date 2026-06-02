@@ -1,0 +1,128 @@
+/* ============================================================
+   LIGHT THEME — clean white / charcoal with yellow accents.
+   Loaded LAST: redefines tokens and overrides the dark-tuned
+   surfaces, shadows, glass and yellow-on-white text so the
+   palette reverses cleanly. Remove this file to restore dark.
+   ============================================================ */
+:root{
+  --bg:#fbfbf9;            /* warm off-white */
+  --panel:#ffffff;
+  --surface:#ffffff;
+  --surface-2:#f3f4f1;
+  --line:rgba(20,24,30,.12);
+  --line-2:rgba(20,24,30,.20);
+  --txt:#15181d;           /* charcoal ink */
+  --txt-2:#525860;
+  --txt-3:#868c94;
+  --yellow:#FFCC00;        /* brand yellow accent */
+  --yellow-soft:#ffd633;
+  --ink:#1a1600;           /* dark text on yellow */
+  --yellow-glow:rgba(255,204,0,.22);
+  --good:#1f9d57;
+  --glow-yellow:0 16px 40px -12px rgba(255,204,0,.5);
+  --card-shadow:0 16px 40px -26px rgba(20,24,30,.20);
+  --pop:0 40px 90px -34px rgba(20,24,30,.30);
+}
+
+body{ color:var(--txt); background:var(--bg); }
+body::before{
+  background:
+    radial-gradient(70% 44% at 50% -8%, rgba(255,204,0,.12), transparent 60%),
+    radial-gradient(44% 34% at 100% 2%, rgba(20,24,30,.035), transparent 58%),
+    linear-gradient(180deg,#ffffff,#fbfbf9 62%);
+}
+::-webkit-scrollbar-thumb{ background:rgba(20,24,30,.18); border-color:var(--bg); }
+::-webkit-scrollbar-thumb:hover{ background:rgba(20,24,30,.3); }
+
+/* ---- header (white glass) ---- */
+.hdr{ background:rgba(255,255,255,.82); border-bottom-color:var(--line); box-shadow:0 1px 0 rgba(20,24,30,.04); }
+
+/* ---- surfaces that were hardcoded dark ---- */
+.card{ background:#fff; }
+.badge-pill{ background:#fff; }
+.pillar{ background:#fff; }
+.partner{ background:#fff; }
+.tier{ background:#fff; }
+.bp-card, .bp-featured{ background:#fff; }
+.ctaband{ background:#fff; border-color:rgba(255,204,0,.35); }
+.prox{ background:#fff; }
+.prox-stat{ background:var(--surface-2); }
+.trustbar{ background:var(--surface-2); }
+.ft{ background:var(--surface-2); border-top-color:var(--line); }
+.msheet .panel{ background:#fff; }
+.dtable thead th{ background:var(--surface-2); color:var(--txt-3); }
+.dtable tbody tr:nth-child(odd){ background:#faf9f5; }
+.dtable tbody tr:hover{ background:rgba(255,204,0,.12); }
+.spec-head{ background:var(--surface-2); }
+.bp-card-ico{ background:rgba(255,255,255,.92); border-color:var(--line); }
+
+/* ghost / chip / share surfaces */
+.btn-ghost{ background:#fff; border-color:var(--line-2); color:var(--txt); }
+.btn-ghost:hover{ background:var(--surface-2); border-color:var(--yellow); }
+.chip{ background:#fff; border-color:var(--line); }
+.chip svg{ color:var(--ink); }
+.bp-chip{ background:#fff; border-color:var(--line); }
+.bp-chip:hover{ background:var(--surface-2); }
+.share-b{ background:#fff; }
+
+/* image placeholders + media (light) */
+.imgph{ background:
+  repeating-linear-gradient(135deg, rgba(20,24,30,.035) 0 14px, transparent 14px 28px), #f4f5f2; }
+.imgph .tag{ background:#fff; color:var(--txt-2); border-color:var(--line-2); }
+.imgph .flag{ background:#fff; color:var(--txt-3); border-color:var(--line); }
+.media{ background:#e9e8e2; }
+
+/* tactical advantage block */
+.tactical{ background:linear-gradient(180deg, rgba(255,204,0,.16), rgba(255,204,0,.04)), #fff; border-color:rgba(255,204,0,.5); }
+.tactical-kicker{ color:#7a6000; }
+.tactical-text{ color:var(--txt-2); }
+
+/* form inputs */
+.fl input, .fl select, .fl textarea{ background:#fff; }
+
+/* ---- shadows that used literal black ---- */
+.svc-card:hover,
+.bp-card:hover{ box-shadow:0 26px 56px -34px rgba(20,24,30,.32), 0 0 0 1px rgba(255,204,0,.18); }
+.bp-featured:hover{ box-shadow:0 30px 60px -36px rgba(20,24,30,.32), 0 0 0 1px rgba(255,204,0,.18); }
+.tier.feat{ box-shadow:inset 0 0 0 1px rgba(255,204,0,.5), 0 20px 50px -32px rgba(255,204,0,.5); }
+
+/* =========================================================
+   YELLOW-ON-WHITE FIXES — yellow is unreadable as text/icon
+   on white, so: solid-yellow tiles get dark glyphs; text
+   accents go charcoal; the H1 highlight becomes a marker.
+   ========================================================= */
+
+/* icon tiles → solid yellow with ink glyph (high contrast, on-brand) */
+.trustbar .ti,
+.svc-ico,
+.pillar-ico,
+.partner .pmark,
+.badge-pill .bp-ico,
+.elig-item .ei,
+.spec-head .si,
+.form-ok .tick{ background:var(--yellow); color:var(--ink); }
+
+/* eyebrow text → charcoal, keep the yellow rule/marker for brand */
+.eyebrow{ color:var(--txt); }
+
+/* H1 highlight → yellow highlighter marker behind charcoal text */
+.h1 .hi{ color:var(--txt);
+  background:linear-gradient(transparent 60%, rgba(255,204,0,.6) 0); padding:0 .06em; }
+
+/* yellow text used as a "link" → charcoal, arrow keeps the cue */
+.svc-go, .bp-read{ color:var(--txt); }
+.bp-flag{ color:var(--txt-2); }
+.ft-h{ color:var(--txt); }
+
+/* big yellow numbers → charcoal */
+.tier-p{ color:var(--txt); }
+.prox-stat .n{ color:var(--txt); }
+
+/* monospace / category pills → solid yellow chip with ink text */
+.std-pill, .spec-row .val, .drive-tag, .bp-cat{
+  background:var(--yellow); color:var(--ink); border-color:transparent; }
+
+/* footer link underline already yellow; links charcoal */
+.ft-p a{ color:var(--txt); }
+.crumb a:hover{ color:#7a6000; }
+.hdr-nav a.on{ color:var(--txt); }

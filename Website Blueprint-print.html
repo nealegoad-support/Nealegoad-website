@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NGA — Website Frontend &amp; Content Blueprint (Print)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&family=Barlow+Semi+Condensed:wght@600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="blueprint/styles.css" />
+<style>
+  /* ---- screen preview of the print doc: drop the sidebar grid, single column ---- */
+  .doc{ display:block; }
+  .side, .toc-mobile, .scrim{ display:none !important; }
+  .main-inner{ max-width:900px; margin:0 auto; }
+
+  @media print{
+    @page{ size:A4 portrait; margin:12mm 11mm; }
+    html,body{ background:#0e1116 !important; }
+    *{ -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+    body::before{ display:none !important; }          /* fixed gradient doesn't tile across pages */
+    .side, .toc-mobile, .scrim{ display:none !important; }
+    .doc{ display:block !important; }
+    .main-inner{ max-width:none !important; margin:0 !important; padding:0 !important; }
+    .doc-hero{ padding-top:6px !important; }
+
+    /* one page per approved page (+ foundations); hero shares page 1 with foundations break */
+    .page-sec{ break-before:page; }
+    #foundations{ break-before:auto; }                /* keep foundations under the hero */
+
+    /* keep coherent blocks intact */
+    .page-head, .wire-row, .ix-row, .seo-row, .kv-item, .trust-item, .note-card,
+    .partner, .schema-tags{ break-inside:avoid; }
+    .block-h, .comp-name{ break-after:avoid; }
+    .block{ break-inside:auto; }
+
+    /* code: wrap long Tailwind lines instead of clipping/scrolling; allow page breaks */
+    .code{ break-inside:auto; }
+    .code-bar{ break-after:avoid; }
+    .code pre{ white-space:pre-wrap !important; word-break:break-word; overflow:visible !important; }
+
+    /* neutralise interactive transforms */
+    .wire-row, .pillar, .btn, .trust-item, .badge-pill{ transform:none !important; }
+
+    /* tighten doc rhythm for paper */
+    .page-head{ margin-top:0 !important; padding-top:4px !important; border-top:none !important; }
+    .block{ margin-top:20px; }
+    .doc-hero{ border-bottom:1px solid var(--line); }
+  }
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#0e1116"/>
+    <rect x="22" y="26" width="38" height="6" rx="3" fill="#FFCD00"/>
+    <rect x="22" y="40" width="56" height="5" rx="2.5" fill="#aab0ba"/>
+    <rect x="22" y="51" width="48" height="5" rx="2.5" fill="#aab0ba"/>
+    <rect x="22" y="64" width="30" height="9" rx="4" fill="none" stroke="#FFCD00" stroke-width="3"/>
+  </svg>
+</template>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="app/icons.jsx"></script>
+<script src="blueprint/data-global.js"></script>
+<script src="blueprint/data-pages-a.js"></script>
+<script src="blueprint/data-pages-b.js"></script>
+<script type="text/babel" src="blueprint/app.jsx"></script>
+
+<script>
+/* Auto-print once React has rendered the sections + fonts are ready */
+(function(){
+  function waitRoot(){
+    return new Promise(res=>{
+      (function chk(){
+        const root = document.getElementById('root');
+        if(root && root.querySelectorAll('.page-sec').length >= 10) return res();
+        setTimeout(chk, 150);
+      })();
+    });
+  }
+  waitRoot()
+    .then(()=> (document.fonts ? document.fonts.ready : Promise.resolve()))
+    .then(()=> new Promise(r=>setTimeout(r, 600)))
+    .then(()=> window.print());
+})();
+</script>
+</body>
+</html>

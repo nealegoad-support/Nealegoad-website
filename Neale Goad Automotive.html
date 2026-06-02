@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Neale Goad Automotive — Interactive Site Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&family=Barlow+Semi+Condensed:wght@600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="site/app.css" />
+<link rel="stylesheet" href="site/components.css" />
+<link rel="stylesheet" href="site/theme-light.css" />
+<style>
+  html,body{ min-height:100%; }
+  #root{ min-height:100vh; }
+  .site-scroll{ min-height:100vh; }
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#111419"/>
+    <path d="M30 58V30c14 0 26 12 26 26V28" fill="none" stroke="#FFCD00" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M70 58c0-14-12-26-26-26" fill="none" stroke="#FFCD00" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="30" y="68" width="40" height="6" rx="3" fill="#aab0ba"/>
+  </svg>
+</template>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="site/icons.jsx"></script>
+<script type="text/babel" src="site/shell.jsx"></script>
+<script type="text/babel" src="site/views-a.jsx"></script>
+<script type="text/babel" src="site/views-b.jsx"></script>
+<script type="text/babel" src="site/views-c.jsx"></script>
+<script type="text/babel" src="site/views-blog.jsx"></script>
+<script type="text/babel" src="site/extras.jsx"></script>
+<script type="text/babel" src="site/app.jsx"></script>
+</body>
+</html>
