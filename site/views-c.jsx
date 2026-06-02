@@ -30,13 +30,14 @@ const LOC_SERVICES = [
 
 function MapPlaceholder(){
   return (
-    <svg viewBox="0 0 400 340" preserveAspectRatio="xMidYMid slice" style={{width:"100%",height:"100%",display:"block",background:"#eef0ec"}} aria-hidden="true">
+    <svg viewBox="0 0 400 340" preserveAspectRatio="xMidYMid slice" style={{width:"100%",height:"100%",display:"block"}} aria-hidden="true">
       <defs><pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse">
-        <path d="M40 0H0V40" fill="none" stroke="rgba(20,24,30,.06)" strokeWidth="1"/></pattern></defs>
+        <path d="M40 0H0V40" fill="none" stroke="var(--line)" strokeWidth="1"/></pattern></defs>
+      <rect width="400" height="340" fill="var(--surface-2)"/>
       <rect width="400" height="340" fill="url(#g)"/>
       <path d="M0 120 Q140 90 200 150 T400 140" fill="none" stroke="rgba(255,204,0,.55)" strokeWidth="6"/>
-      <path d="M120 0 Q150 140 90 200 T140 340" fill="none" stroke="rgba(20,24,30,.10)" strokeWidth="10"/>
-      <path d="M260 0 Q230 160 300 220 T280 340" fill="none" stroke="rgba(20,24,30,.10)" strokeWidth="8"/>
+      <path d="M120 0 Q150 140 90 200 T140 340" fill="none" stroke="var(--line-2)" strokeWidth="10"/>
+      <path d="M260 0 Q230 160 300 220 T280 340" fill="none" stroke="var(--line-2)" strokeWidth="8"/>
     </svg>
   );
 }

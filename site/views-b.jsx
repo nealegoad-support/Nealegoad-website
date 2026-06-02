@@ -49,10 +49,10 @@ function FleetForm(){
       {fld("email","Work email","email")}
       {fld("phone","Phone","tel")}
       <div className="fl">
-        <select value={size} onChange={(e)=>setSize(e.target.value)} style={{paddingTop:"22px"}}>
+        <select value={size} onChange={(e)=>setSize(e.target.value)}>
           <option>1–5 vehicles</option><option>6–20 vehicles</option><option>21–50 vehicles</option><option>50+ vehicles</option>
         </select>
-        <label style={{top:"8px",fontSize:"11px",letterSpacing:".05em",textTransform:"uppercase",color:"var(--yellow)"}}>Fleet size</label>
+        <label>Fleet size</label>
         <Icons.chevron className="sel-ico"/>
       </div>
       <div className="fl full">
@@ -99,9 +99,9 @@ function FleetView(){
 
       <section className="section" style={{paddingTop:0}}><div className="wrap">
         <div className="shead" data-reveal><Eyebrow>Capability</Eyebrow><h2 className="h2">Built for commercial uptime</h2></div>
-        <div className="svc-grid" style={{gridTemplateColumns:"repeat(4,1fr)"}}>
+        <div className="svc-grid">
           {FLEET_CAPS.map((c,i)=>{ const Ico=Icons[c.icon]; return (
-            <div key={i} className="svc-card" style={{cursor:"default","--i":i%4}} data-reveal>
+            <div key={i} className="svc-card static" style={{"--i":i%4}} data-reveal>
               <span className="svc-ico"><Ico/></span>
               <h3 className="svc-t">{c.t}</h3>
               <p className="svc-d">{c.d}</p>
@@ -231,9 +231,9 @@ function DieselView(){
 
       <section className="section"><div className="wrap">
         <div className="shead" data-reveal><Eyebrow>Capability</Eyebrow><h2 className="h2">What we work on</h2></div>
-        <div className="svc-grid" style={{gridTemplateColumns:"repeat(4,1fr)"}}>
+        <div className="svc-grid">
           {EQUIP.map((e,i)=>{ const Ico=Icons[e.icon]; return (
-            <div key={i} className="svc-card" style={{cursor:"default","--i":i%4}} data-reveal>
+            <div key={i} className="svc-card static" style={{"--i":i%4}} data-reveal>
               <span className="svc-ico"><Ico/></span><h3 className="svc-t" style={{fontSize:"17px"}}>{e.t}</h3>
             </div>
           );})}

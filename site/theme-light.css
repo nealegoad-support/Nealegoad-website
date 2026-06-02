@@ -79,6 +79,11 @@ body::before{
 
 /* form inputs */
 .fl input, .fl select, .fl textarea{ background:#fff; }
+/* floating label active state — yellow is unreadable on white; use dark amber */
+.fl input:focus + label, .fl textarea:focus + label,
+.fl input.filled + label, .fl textarea.filled + label,
+.fl select + label{ color:#7a6000; }
+.quote-kick{ color:#7a6000; }
 
 /* ---- shadows that used literal black ---- */
 .svc-card:hover,

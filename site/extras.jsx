@@ -45,11 +45,11 @@ function QuoteForm(){
         <label>Vehicle make &amp; model (optional)</label>
       </div>
       <div className="fl">
-        <select value={svc} onChange={(e)=>setSvc(e.target.value)} style={{paddingTop:"22px"}}>
+        <select value={svc} onChange={(e)=>setSvc(e.target.value)}>
           <option>Roadworthy certificate</option><option>Car service / logbook</option>
           <option>Diesel / heavy vehicle</option><option>Classic / club permit</option><option>Fleet servicing</option>
         </select>
-        <label style={{top:"8px",fontSize:"11px",letterSpacing:".05em",textTransform:"uppercase",color:"#7a6000"}}>What do you need?</label>
+        <label>What do you need?</label>
         <Icons.chevron className="sel-ico"/>
       </div>
       <button type="submit" className="btn btn-primary btn-block btn-lg">Request a quote <Icons.arrow/></button>
