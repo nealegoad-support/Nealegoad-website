@@ -6,34 +6,34 @@ const PHONE_DISPLAY = "(03) 5339 2056";
 const PHONE_TEL = "tel:+61353392056";
 
 const NAV_ITEMS = [
-  { label:"Roadworthy", route:"/roadworthy-certificate-ballarat" },
-  { label:"Car Service", route:"/car-service-ballarat" },
-  { label:"Fleet", route:"/fleet-servicing-ballarat" },
-  { label:"Diesel & Heavy", route:"/diesel-mechanic-ballarat" },
-  { label:"Classic", route:"/classic-car-roadworthy-ballarat" },
-  { label:"Blog", route:"/blog" },
+  { label:"Roadworthy",     route:"/roadworthy-certificate-ballarat" },
+  { label:"Car Service",    route:"/car-service-ballarat" },
+  { label:"Fleet",          route:"/fleet-servicing-ballarat" },
+  { label:"Diesel & Truck", route:"/diesel-mechanic-ballarat" },
+  { label:"Classic",        route:"/classic-car-roadworthy-ballarat" },
+  { label:"Blog",           route:"/blog" },
 ];
 
 /* Services mega menu groups — link to standalone SEO pages */
 const MEGA_GROUPS = [
   { label:"General Automotive", items:[
-    { t:"Car Servicing",      sub:"All makes, warranty-safe",         icon:"wrench",    href:"car-servicing-ballarat.html" },
-    { t:"Logbook Servicing",  sub:"Manufacturer schedule stamped",    icon:"clipboard", href:"logbook-servicing-ballarat.html" },
-    { t:"Mechanical Repairs", sub:"All faults, Repco warranty",       icon:"cog",       href:"mechanical-repairs-ballarat.html" },
-    { t:"Air Conditioning",   sub:"Re-gas, repair & full service",    icon:"snowflake", href:"air-conditioning-service-ballarat.html" },
+    { t:"Car Servicing",        sub:"All makes, warranty-safe",          icon:"wrench",    href:"car-servicing-ballarat.html" },
+    { t:"Logbook Servicing",    sub:"Manufacturer schedule stamped",     icon:"clipboard", href:"logbook-servicing-ballarat.html" },
+    { t:"Mechanical Repairs",   sub:"All faults, Repco warranty",        icon:"cog",       href:"mechanical-repairs-ballarat.html" },
+    { t:"Air Conditioning",     sub:"Re-gas, repair & full service",     icon:"snowflake", href:"air-conditioning-service-ballarat.html" },
+    { t:"EV Service & Repairs", sub:"Hybrid & full electric vehicles",   icon:"bolt",      href:"ev-service-ballarat.html" },
   ]},
   { label:"Roadworthy & Inspections", items:[
     { t:"Roadworthy Certificates", sub:"Licensed Vehicle Tester · 2 inspectors", icon:"fileCheck", href:"roadworthy-certificates.html" },
-    { t:"Classic Car Roadworthy",  sub:"Club Permit (CPS) inspections",          icon:"steering",  href:"classic-car-roadworthy-ballarat.html" },
+    { t:"Classic & Vintage",       sub:"RWC, Club Permit (CPS) & repairs",       icon:"steering",  href:"classic-car-roadworthy-ballarat.html" },
   ]},
   { label:"Commercial & Fleet", items:[
-    { t:"Fleet Servicing",           sub:"VIC SES, Grampians Health & more", icon:"building", href:"fleet-servicing-ballarat.html" },
-    { t:"Diesel & Heavy Vehicle",    sub:"Trucks, plant & equipment",        icon:"truck",    href:"diesel-repairs-ballarat.html" },
-    { t:"Truck Repairs",             sub:"Prime movers, rigids, compliance", icon:"truck",    href:"truck-repairs-ballarat.html" },
-    { t:"Plant & Equipment Repairs", sub:"Excavators, loaders, hydraulics",  icon:"cog",      href:"plant-equipment-repairs-ballarat.html" },
+    { t:"Fleet Servicing",     sub:"PINARC, Grampians Health & more", icon:"building", href:"fleet-servicing-ballarat.html" },
+    { t:"Diesel, 4WD & Truck", sub:"Diesel vehicles, 4WDs & trucks",  icon:"truck",    href:"diesel-repairs-ballarat.html" },
   ]},
-  { label:"Specialist Services", items:[
-    { t:"LPG Conversions", sub:"Certified install, compliance cert", icon:"droplet", href:"lpg-conversions-ballarat.html" },
+  { label:"Local & All Services", items:[
+    { t:"Mechanic Wendouree",  sub:"Your local Ballarat workshop",    icon:"pin",      href:"mechanic-wendouree-ballarat.html" },
+    { t:"All Services",        sub:"Full service capability list",    icon:"arrow",    href:"services-ballarat.html" },
   ]},
 ];
 
@@ -303,52 +303,87 @@ function TrustBar(){
 
 /* ---- footer (NAP microdata) ---- */
 function Footer(){
-  const { go } = useNav();
   return (
     <footer className="ft" itemScope itemType="https://schema.org/AutoRepair">
-      <div className="wrap ft-in">
-        <div>
-          <NGLogo style={{height:"44px"}} className="ft-logo" />
-          <p className="ft-tag"><span itemProp="name">Neale Goad Automotive – Authorised Repco Service Centre</span> · Roadworthy Certificates · Wendouree, Ballarat VIC</p>
-          <link itemProp="image" href="#" />
+
+      {/* ── Brand row: logo + tagline left · phone + CTA right ── */}
+      <div className="wrap ft-top">
+        <div className="ft-brand">
+          <NGLogo style={{height:"42px"}} className="ft-logo"/>
+          <p className="ft-tag">
+            <span itemProp="name">Neale Goad Automotive – Authorised Repco Service Centre</span><br/>
+            Wendouree, Ballarat VIC 3355
+          </p>
+          <link itemProp="image" href="#"/>
         </div>
-        <div className="ft-cols" style={{gridTemplateColumns:"repeat(4,1fr)"}}>
-          <div itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
-            <span className="ft-h">Visit</span>
-            <p className="ft-p">
-              <span itemProp="streetAddress">[ Street address — ACF ]</span><br/>
-              <span itemProp="addressLocality">Wendouree</span> <span itemProp="addressRegion">VIC</span> <span itemProp="postalCode">3355</span>
-            </p>
-          </div>
-          <div>
-            <span className="ft-h">Hours</span>
-            <p className="ft-p"><time itemProp="openingHours" dateTime="Mo-Fr 08:00-17:00">Mon–Fri · 8am–5pm</time><br/>Sat · By appointment</p>
-          </div>
-          <div>
-            <span className="ft-h">Get in touch</span>
-            <p className="ft-p"><a href={PHONE_TEL} itemProp="telephone">{PHONE_DISPLAY}</a><br/><span className="muted" style={{fontSize:"13px"}}>Booking confirmed by phone</span></p>
-          </div>
-          <div>
-            <span className="ft-h">Services</span>
-            <p className="ft-p" style={{lineHeight:1.9}}>
-              {MEGA_GROUPS.map(g=>g.items).flat().map((it,i)=>(
-                <React.Fragment key={i}><a href={it.href} style={{display:"block",color:"var(--txt-2)",fontSize:"13.5px",transition:"color .2s"}}
-                  onMouseEnter={e=>e.target.style.color="var(--yellow)"}
-                  onMouseLeave={e=>e.target.style.color="var(--txt-2)"}>{it.t}</a></React.Fragment>
-              ))}
-            </p>
-          </div>
+        <div className="ft-contact">
+          <a href={PHONE_TEL} itemProp="telephone" className="ft-phone">{PHONE_DISPLAY}</a>
+          <p className="ft-hours">
+            <time itemProp="openingHours" dateTime="Mo-Fr 08:00-17:00">Mon–Fri · 8am–5pm</time>
+            <br/>Sat · By appointment
+          </p>
+          <a href="roadworthy-certificates.html" className="ft-book-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{width:"15px",height:"15px",flex:"none"}}><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>
+            Book a Service
+          </a>
         </div>
       </div>
+
+      {/* ── Services grid: full width, 5-col ── */}
+      <div className="wrap ft-svc-section">
+        <span className="ft-h">Services</span>
+        <div className="ft-svc-grid">
+          {MEGA_GROUPS.map(g=>g.items).flat().map((it,i)=>(
+            <a key={i} href={it.href} className="ft-svc-link">{it.t}</a>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Info row: visit · hours · ABN ── */}
+      <div className="wrap ft-info">
+        <div itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+          <span className="ft-h">Visit</span>
+          <p className="ft-p">
+            <span itemProp="streetAddress">Wendouree</span><br/>
+            <span itemProp="addressLocality">Ballarat</span>{" "}
+            <span itemProp="addressRegion">VIC</span>{" "}
+            <span itemProp="postalCode">3355</span>
+          </p>
+        </div>
+        <div>
+          <span className="ft-h">Hours</span>
+          <p className="ft-p">
+            <time itemProp="openingHours" dateTime="Mo-Fr 08:00-17:00">Mon–Fri · 8am–5pm</time><br/>
+            Sat · By appointment
+          </p>
+        </div>
+        <div>
+          <span className="ft-h">Contact</span>
+          <p className="ft-p">
+            <a href={PHONE_TEL} style={{color:"var(--txt)"}}>{PHONE_DISPLAY}</a><br/>
+            <a href="mailto:service@nealegoad.com.au" style={{color:"var(--txt-2)",fontSize:"13.5px"}}>service@nealegoad.com.au</a>
+          </p>
+        </div>
+        <div>
+          <span className="ft-h">Legal</span>
+          <p className="ft-p" style={{color:"var(--txt-3)"}}>ABN 36 071 243 402<br/>Goad Group Pty Ltd</p>
+        </div>
+      </div>
+
+      {/* ── Bottom bar ── */}
       <div className="wrap ft-bottom">
-        <span>© {new Date().getFullYear()} Neale Goad Automotive – Authorised Repco Service Centre · ABN 36 071 243 402</span>
+        <span>© {new Date().getFullYear()} Neale Goad Automotive – Authorised Repco Service Centre</span>
         <span style={{display:"flex",gap:"16px",flexWrap:"wrap"}}>
+          <a href="index.html">Home</a>
+          <a href="services-ballarat.html">Services</a>
           <a href="roadworthy-certificates.html">Roadworthy</a>
-          <a href="fleet-servicing-ballarat.html">Fleet</a>
-          <a href="diesel-repairs-ballarat.html">Diesel & Heavy</a>
-          <a onClick={()=>go("/")} style={{cursor:"pointer"}}>Home</a>
+          <a href="car-servicing-ballarat.html">Car Servicing</a>
+          <a href="mechanic-wendouree-ballarat.html">Contact</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-of-service.html">Terms</a>
         </span>
       </div>
+
     </footer>
   );
 }

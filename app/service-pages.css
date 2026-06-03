@@ -235,29 +235,51 @@
   border-top:1px solid rgba(255,255,255,.07);
 }
 
-/* Footer services column */
+/* ── Footer services column (injected by nav-shared.js) ───────────
+   grid-column:1/-1 snaps it to a full-width row below Visit/Hours/Contact
+   without touching any page HTML.                                         */
+.sp-footer-services-col{
+  grid-column:1 / -1;
+  padding-top:28px;
+  margin-top:4px;
+  border-top:1px solid rgba(255,255,255,.07);
+}
 .sp-footer-services-col .sp-footer-svc-links{
-  display:flex; flex-direction:column; gap:4px; margin:10px 0 0;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px 28px;
+  margin:14px 0 0;
 }
 .sp-footer-services-col .sp-footer-svc-links a{
-  position:relative; color:rgba(170,176,186,.75);
-  font-size:14px; text-decoration:none;
-  transition:color .2s;
-  display:inline-block;
+  color:rgba(170,176,186,.72);
+  font-size:13.5px; text-decoration:none;
+  padding:3px 0; transition:color .22s;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
-.sp-footer-services-col .sp-footer-svc-links a::after{
-  content:""; position:absolute; left:0; bottom:-1px;
-  height:1.5px; width:0; background:#FFCD00;
-  transition:width .3s cubic-bezier(.22,.61,.36,1);
+.sp-footer-services-col .sp-footer-svc-links a:hover{ color:var(--txt); }
+.sp-footer-services-col .sp-footer-svc-links a[aria-current="page"]{ color:var(--accent); }
+
+/* Phone number — visual emphasis without JS */
+.sp-footer-p a[href^="tel:"]{
+  font-family:var(--ff-semi); font-weight:700;
+  font-size:20px; letter-spacing:-.01em;
+  color:var(--txt) !important; transition:color .2s;
 }
-.sp-footer-services-col .sp-footer-svc-links a:hover{ color:#f3f5f7; }
-.sp-footer-services-col .sp-footer-svc-links a:hover::after{ width:100%; }
+.sp-footer-p a[href^="tel:"]:hover{ color:var(--accent) !important; }
+.sp-footer-p a[href^="tel:"]::after{ display:none !important; }
+
+/* Book a Service button (injected by nav-shared.js) */
+.sp-ftr-book-btn{
+  display:inline-flex; align-items:center; gap:7px;
+  margin-top:14px; padding:10px 20px;
+  border-radius:10px;
+  background:var(--accent); color:var(--accent-ink);
+  font-family:var(--ff-semi); font-weight:700; font-size:14px;
+  text-decoration:none; transition:opacity .2s;
+}
+.sp-ftr-book-btn:hover{ opacity:.88; }
 
 @media(max-width:940px){ .mega{ display:none; } }
-@media(max-width:820px){
-  .sp-footer-services-col{ grid-column:1 / -1; }
-  .sp-footer-services-col .sp-footer-svc-links{ flex-direction:row; flex-wrap:wrap; gap:8px 18px; }
-}
 
 /* ---- page-level reset ---- */
 .ng{ min-height:100vh; }
@@ -915,10 +937,18 @@ img{ max-width:100%; height:auto; display:block; }
 }
 .sp-footer-bottom a{ color:var(--txt-3); text-decoration:none; transition:color .2s; }
 .sp-footer-bottom a:hover{ color:var(--accent); }
+@media(max-width:940px){
+  .sp-footer-services-col .sp-footer-svc-links{ grid-template-columns:repeat(3,1fr); }
+}
 @media(max-width:820px){
   .sp-footer-in{ grid-template-columns:1fr; gap:26px; padding:0 20px; }
-  .sp-footer-cols{ grid-template-columns:1fr; }
+  .sp-footer-cols{ grid-template-columns:1fr 1fr; gap:20px; }
+  .sp-footer-services-col .sp-footer-svc-links{ grid-template-columns:repeat(2,1fr); gap:8px 18px; }
   .sp-footer-bottom{ padding:20px 20px 0; }
+}
+@media(max-width:480px){
+  .sp-footer-cols{ grid-template-columns:1fr; }
+  .sp-footer-services-col .sp-footer-svc-links{ grid-template-columns:1fr 1fr; }
 }
 
 /* ---- mobile sticky call bar ---- */

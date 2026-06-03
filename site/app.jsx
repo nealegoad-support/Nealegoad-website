@@ -12,7 +12,7 @@ const ROUTES = {
   "/diesel-mechanic-ballarat":       () => <DieselView/>,
   "/classic-car-roadworthy-ballarat":() => <ClassicView/>,
   "/roadworthy-wendouree":           (r) => <LocationView route={r}/>,
-  "/mechanic-alfredton":             (r) => <LocationView route={r}/>,
+  "/mechanic-wendouree":             (r) => <LocationView route={r}/>,
   "/mechanic-delacombe":             (r) => <LocationView route={r}/>,
   "/blog":                           () => <BlogView/>,
   "/blog-post":                      () => <ArticleView/>,

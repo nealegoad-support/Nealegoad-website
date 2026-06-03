@@ -47,8 +47,8 @@ const SERVICES = [
   { t:"Classic & Vintage Repairs, RWC & Inspections", d:"Club Permit (CPS) inspections and specialist care for enthusiast and historic vehicles.", icon:"steering", href:"classic-car-roadworthy-ballarat.html" },
   { t:"Mechanical Repairs", d:"All faults diagnosed and fixed. Repco nationwide warranty.", icon:"cog", href:"mechanical-repairs-ballarat.html" },
   { t:"Air Conditioning", d:"Re-gas, leak detection, compressor repair & full service.", icon:"snowflake", href:"air-conditioning-service-ballarat.html" },
-  { t:"Authorised Electric Vehicle Service & Repairs", d:"EV and hybrid capable — battery checks, charging systems and full electric vehicle servicing.", icon:"bolt", href:"mechanical-repairs-ballarat.html" },
-  { t:"Mechanic Wendouree / Ballarat", d:"Your local workshop — free pickup & delivery within 10 km of Ballarat CBD.", icon:"nav", href:"mechanical-repairs-ballarat.html" },
+  { t:"Authorised Electric Vehicle Service & Repairs", d:"EV and hybrid capable — battery checks, charging systems and full electric vehicle servicing.", icon:"bolt", href:"ev-service-ballarat.html" },
+  { t:"Mechanic Wendouree / Ballarat", d:"Your local workshop — free pickup & delivery within 10 km of Ballarat CBD.", icon:"nav", href:"mechanic-wendouree-ballarat.html" },
 ];
 
 const PILLARS = [
@@ -184,7 +184,7 @@ function HomeView(){
           );})}
         </div>
         <div style={{display:"flex",justifyContent:"center",marginTop:"36px"}} data-reveal>
-          <a href="roadworthy-certificates.html" className="btn btn-ghost">
+          <a href="services-ballarat.html" className="btn btn-ghost">
             <Icons.arrow/> View all services
           </a>
         </div>

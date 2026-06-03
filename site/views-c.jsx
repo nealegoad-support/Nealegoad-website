@@ -1,23 +1,23 @@
-/* Views C — reusable Location template (Wendouree/Alfredton/Delacombe) + Classic editorial */
+/* Views C — reusable Location template (Wendouree/Ballarat/Delacombe) + Classic editorial */
 
 const LOCATIONS = {
   "/roadworthy-wendouree": {
     suburb:"Wendouree", driveMin:"0", focus:"roadworthy",
     h1a:"Roadworthy Certificates in", h1b:"Wendouree",
     intro:"We're right here in Wendouree — a Licensed Vehicle Tester with two accredited inspectors and on-site rectification, so a fail never means a second trip across town.",
-    nearby:[["Ballarat CBD","/mechanic-alfredton"],["Alfredton","/mechanic-alfredton"],["Delacombe","/mechanic-delacombe"],["Lake Wendouree","/roadworthy-wendouree"]],
+    nearby:[["Ballarat CBD","/mechanic-wendouree"],["Alfredton","/mechanic-wendouree"],["Delacombe","/mechanic-delacombe"],["Lake Wendouree","/roadworthy-wendouree"]],
   },
-  "/mechanic-alfredton": {
-    suburb:"Alfredton", driveMin:"7", focus:"mechanic",
-    h1a:"Your trusted mechanic in", h1b:"Alfredton",
-    intro:"Repco Authorised servicing, logbook and roadworthy certificates for Alfredton drivers — a short drive from Wendouree, with free pickup & delivery so you may not need to drive at all.",
-    nearby:[["Wendouree","/roadworthy-wendouree"],["Delacombe","/mechanic-delacombe"],["Ballarat CBD","/mechanic-alfredton"],["Sebastopol","/mechanic-delacombe"]],
+  "/mechanic-wendouree": {
+    suburb:"Wendouree / Ballarat", driveMin:"0", focus:"mechanic",
+    h1a:"Your local mechanic in", h1b:"Wendouree & Ballarat",
+    intro:"Neale Goad Automotive – Authorised Repco Service Centre is based right here in Wendouree. Logbook servicing, roadworthy certificates and all mechanical repairs — with free pickup & delivery within 10 km of the Ballarat CBD.",
+    nearby:[["Ballarat CBD","/mechanic-wendouree"],["Delacombe","/mechanic-delacombe"],["Alfredton","/mechanic-wendouree"],["Sebastopol","/mechanic-delacombe"]],
   },
   "/mechanic-delacombe": {
     suburb:"Delacombe", driveMin:"9", focus:"mechanic",
     h1a:"Your local mechanic in", h1b:"Delacombe",
     intro:"Logbook servicing, repairs and roadworthy certificates for Delacombe drivers. Repco Authorised, with free pickup & delivery within 10 km of the Ballarat CBD.",
-    nearby:[["Wendouree","/roadworthy-wendouree"],["Alfredton","/mechanic-alfredton"],["Sebastopol","/mechanic-delacombe"],["Ballarat CBD","/mechanic-alfredton"]],
+    nearby:[["Wendouree","/roadworthy-wendouree"],["Alfredton","/mechanic-wendouree"],["Sebastopol","/mechanic-delacombe"],["Ballarat CBD","/mechanic-wendouree"]],
   },
 };
 

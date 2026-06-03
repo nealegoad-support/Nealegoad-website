@@ -17,32 +17,32 @@
     {
       label: 'General Automotive',
       items: [
-        { t:'Car Servicing',       sub:'All makes, warranty-safe',        href:'car-servicing-ballarat.html',         icon:'wrench'   },
-        { t:'Logbook Servicing',   sub:'Manufacturer schedule stamped',   href:'logbook-servicing-ballarat.html',     icon:'clip'     },
-        { t:'Mechanical Repairs',  sub:'All faults, Repco warranty',      href:'mechanical-repairs-ballarat.html',    icon:'cog'      },
-        { t:'Air Conditioning',    sub:'Re-gas, repair & full service',   href:'air-conditioning-service-ballarat.html', icon:'snow' },
+        { t:'Car Servicing',           sub:'All makes, warranty-safe',         href:'car-servicing-ballarat.html',          icon:'wrench' },
+        { t:'Logbook Servicing',       sub:'Manufacturer schedule stamped',    href:'logbook-servicing-ballarat.html',      icon:'clip'   },
+        { t:'Mechanical Repairs',      sub:'All faults, Repco warranty',       href:'mechanical-repairs-ballarat.html',     icon:'cog'    },
+        { t:'Air Conditioning',        sub:'Re-gas, repair & full service',    href:'air-conditioning-service-ballarat.html', icon:'snow' },
+        { t:'EV Service & Repairs',    sub:'Hybrid & full electric vehicles',  href:'ev-service-ballarat.html',             icon:'bolt'   },
       ]
     },
     {
       label: 'Roadworthy & Inspections',
       items: [
-        { t:'Roadworthy Certificates', sub:'Licensed Vehicle Tester · 2 inspectors', href:'roadworthy-certificates.html',             icon:'shield' },
-        { t:'Classic Car Roadworthy',  sub:'Club Permit (CPS) inspections',          href:'classic-car-roadworthy-ballarat.html',     icon:'steer'  },
+        { t:'Roadworthy Certificates', sub:'Licensed Vehicle Tester · 2 inspectors', href:'roadworthy-certificates.html',         icon:'shield' },
+        { t:'Classic & Vintage',       sub:'RWC, Club Permit (CPS) & repairs',       href:'classic-car-roadworthy-ballarat.html', icon:'steer'  },
       ]
     },
     {
       label: 'Commercial & Fleet',
       items: [
-        { t:'Fleet Servicing',          sub:'VIC SES, Grampians Health & more', href:'fleet-servicing-ballarat.html',          icon:'bldg'  },
-        { t:'Diesel & Heavy Vehicle',   sub:'Trucks, plant & equipment',        href:'diesel-repairs-ballarat.html',           icon:'truck' },
-        { t:'Truck Repairs',            sub:'Prime movers, rigids, compliance', href:'truck-repairs-ballarat.html',            icon:'truck' },
-        { t:'Plant & Equipment Repairs',sub:'Excavators, loaders, hydraulics',  href:'plant-equipment-repairs-ballarat.html',  icon:'cog'   },
+        { t:'Fleet Servicing',         sub:'PINARC, Grampians Health & more',  href:'fleet-servicing-ballarat.html',        icon:'bldg'  },
+        { t:'Diesel, 4WD & Truck',     sub:'Diesel vehicles, 4WDs & trucks',   href:'diesel-repairs-ballarat.html',         icon:'truck' },
       ]
     },
     {
-      label: 'Specialist Services',
+      label: 'Local & All Services',
       items: [
-        { t:'LPG Conversions', sub:'Certified install, compliance cert', href:'lpg-conversions-ballarat.html', icon:'flame' },
+        { t:'Mechanic Wendouree',      sub:'Your local Ballarat workshop',      href:'mechanic-wendouree-ballarat.html',    icon:'pin'   },
+        { t:'All Services',            sub:'Full service capability list',      href:'services-ballarat.html',              icon:'arrow' },
       ]
     }
   ];
@@ -60,6 +60,8 @@
     bldg:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9 21v-4h6v4M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01"/></svg>',
     truck:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 17h4V5H2v12h3"/><path d="M15 8h4l3 3v6h-3"/><circle cx="7.5" cy="17.5" r="1.6"/><circle cx="17.5" cy="17.5" r="1.6"/></svg>',
     flame:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 0 1-7 7 7 7 0 0 1-7-7c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>',
+    bolt:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>',
+    pin:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>',
     arrow:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>',
     phone:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.21 12 19.79 19.79 0 0 1 1.14 3.35 2 2 0 0 1 3.12 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>',
     chev:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
@@ -210,6 +212,42 @@
   }
 
   /* ------------------------------------------------------------------ */
+  /* FOOTER HELPERS                                                        */
+  /* ------------------------------------------------------------------ */
+
+  /* Inject "Book a Service" CTA button after the telephone link in footer */
+  function injectFooterBookBtn() {
+    if (document.querySelector('.sp-ftr-book-btn')) return; // already injected
+    var telLink = document.querySelector('.sp-footer a[href^="tel:"]');
+    if (!telLink) return;
+    var parentEl = telLink.closest('p') || telLink.parentElement;
+    if (!parentEl) return;
+    var btn = document.createElement('a');
+    btn.href = 'roadworthy-certificates.html';
+    btn.className = 'sp-ftr-book-btn';
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex:none;"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg> Book a Service';
+    parentEl.insertAdjacentElement('afterend', btn);
+  }
+
+  /* Standardise footer bottom quick links across all standalone pages */
+  function updateFooterBottomLinks() {
+    var ftBottom = document.querySelector('.sp-footer-bottom');
+    if (!ftBottom) return;
+    var spans = ftBottom.querySelectorAll(':scope > span');
+    var linkSpan = spans[spans.length - 1];
+    if (!linkSpan) return;
+    linkSpan.style.cssText = 'display:flex;gap:16px;flex-wrap:wrap;';
+    linkSpan.innerHTML =
+      '<a href="index.html">Home</a>' +
+      '<a href="services-ballarat.html">Services</a>' +
+      '<a href="roadworthy-certificates.html">Roadworthy</a>' +
+      '<a href="car-servicing-ballarat.html">Car Servicing</a>' +
+      '<a href="mechanic-wendouree-ballarat.html">Contact</a>' +
+      '<a href="privacy-policy.html">Privacy Policy</a>' +
+      '<a href="terms-of-service.html">Terms</a>';
+  }
+
+  /* ------------------------------------------------------------------ */
   /* INJECT INTO DOM                                                       */
   /* ------------------------------------------------------------------ */
   function inject() {
@@ -234,7 +272,7 @@
     newDrawerEl.innerHTML = buildDrawerHTML();
     document.body.insertBefore(newDrawerEl.firstElementChild, document.body.firstChild);
 
-    /* 4. Add Services column to footer */
+    /* 4. Add Services column to footer (grid-column:1/-1 via CSS → full-width row) */
     var footerCols = document.querySelector('.sp-footer-cols');
     if (footerCols && !footerCols.querySelector('.sp-footer-services-col')) {
       var colEl = document.createElement('div');
@@ -251,6 +289,12 @@
       openBtn.id = 'sp-drawer-open-v2';
       openBtn.addEventListener('click', openDrawer);
     }
+
+    /* 7. Inject "Book a Service" CTA into footer contact column */
+    injectFooterBookBtn();
+
+    /* 8. Standardise footer bottom quick links */
+    updateFooterBottomLinks();
   }
 
   /* ------------------------------------------------------------------ */
