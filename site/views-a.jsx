@@ -4,9 +4,9 @@ const { useState: useS, useEffect: useE, useState: useSlide } = React;
 /* ---- Slideshow images (Ken Burns cinematic hero) ---- */
 const HERO_SLIDES = [
   { src:"assets/photos/Classic muscle car at automotive shop.png", pos:"center 30%", kb:"kb-zoom-in"   },
-  { src:"assets/photos/aston.jpg",     pos:"center center",         kb:"kb-pan-left"  },
-  { src:"assets/photos/heritage.jpg",  pos:"center 38%",            kb:"kb-zoom-out"  },
-  { src:"assets/photos/workshop.jpg",  pos:"center 42%",            kb:"kb-pan-right" },
+  { src:"assets/photos/aston.png",     pos:"center center",         kb:"kb-pan-left"  },
+  { src:"assets/photos/heritage.png",  pos:"center 38%",            kb:"kb-zoom-out"  },
+  { src:"assets/photos/workshop.png",  pos:"center 42%",            kb:"kb-pan-right" },
 ];
 
 function HeroSlideshow(){
@@ -42,29 +42,90 @@ const SERVICES = [
   { t:"Roadworthy Certificates", d:"Licensed Vehicle Tester. Cars, bikes, trucks & heavy vehicles.", icon:"fileCheck", href:"roadworthy-certificates.html" },
   { t:"Car Servicing", d:"Factory-trained, warranty-safe logbook servicing, all makes.", icon:"wrench", href:"car-servicing-ballarat.html" },
   { t:"Logbook Servicing", d:"Manufacturer schedule stamped. Won't void your warranty.", icon:"clipboard", href:"logbook-servicing-ballarat.html" },
-  { t:"Fleet Servicing", d:"Trusted by VIC SES, Grampians Health & Federation Uni.", icon:"building", href:"fleet-servicing-ballarat.html" },
-  { t:"Diesel & Heavy Vehicle", d:"Trucks, plant & equipment. Dealer-level diagnostics.", icon:"truck", href:"diesel-repairs-ballarat.html" },
-  { t:"Classic & Vintage RWC", d:"Club Permit (CPS) inspections for enthusiast vehicles.", icon:"steering", href:"classic-car-roadworthy-ballarat.html" },
+  { t:"Fleet Servicing", d:"Trusted by PINARC, Grampians Health & Federation Uni.", icon:"building", href:"fleet-servicing-ballarat.html" },
+  { t:"Diesel, 4WD & Truck Repairs", d:"Diesel vehicles, 4WDs, camper vans, light and medium trucks — dealer-level diagnostics.", icon:"truck", href:"diesel-repairs-ballarat.html" },
+  { t:"Classic & Vintage Repairs, RWC & Inspections", d:"Club Permit (CPS) inspections and specialist care for enthusiast and historic vehicles.", icon:"steering", href:"classic-car-roadworthy-ballarat.html" },
   { t:"Mechanical Repairs", d:"All faults diagnosed and fixed. Repco nationwide warranty.", icon:"cog", href:"mechanical-repairs-ballarat.html" },
   { t:"Air Conditioning", d:"Re-gas, leak detection, compressor repair & full service.", icon:"snowflake", href:"air-conditioning-service-ballarat.html" },
-  { t:"Truck Repairs", d:"Prime movers, rigids, tippers & compliance inspections.", icon:"truck", href:"truck-repairs-ballarat.html" },
-  { t:"Plant Equipment Repairs", d:"Excavators, loaders, hydraulic diagnosis & engine rebuilds.", icon:"cog", href:"plant-equipment-repairs-ballarat.html" },
-  { t:"LPG Conversions", d:"Certified LPG installation with compliance certificate.", icon:"droplet", href:"lpg-conversions-ballarat.html" },
-  { t:"Mechanic Alfredton", d:"A short drive away, with free pickup & delivery.", icon:"nav", href:"mechanical-repairs-ballarat.html" },
+  { t:"Authorised Electric Vehicle Service & Repairs", d:"EV and hybrid capable — battery checks, charging systems and full electric vehicle servicing.", icon:"bolt", href:"mechanical-repairs-ballarat.html" },
+  { t:"Mechanic Wendouree / Ballarat", d:"Your local workshop — free pickup & delivery within 10 km of Ballarat CBD.", icon:"nav", href:"mechanical-repairs-ballarat.html" },
 ];
 
 const PILLARS = [
   { icon:"pin", tag:"Local since the early '90s", title:"30+ Years Local History", body:"Three decades testing and repairing vehicles for Ballarat families, traders and fleets. A fixture, not a pop-up." },
-  { icon:"award", tag:"Backed nationwide", title:"Repco Authorised Warranty", body:"Work is covered by the Repco Authorised Service nationwide warranty — protection that travels anywhere in Australia." },
+  { icon:"award", tag:"Backed nationwide", title:"Repco Authorised Warranty", body:"Work is covered by the Repco Authorised Service nationwide warranty — protection that travels anywhere in Australia.", logo:"assets/photos/Repco authorised service logo.png" },
   { icon:"steering", tag:"Specialist capability", title:"Vintage & Classic Club Rego", body:"Accredited for Club Permit (CPS) safety inspections — keeping classic vehicles road-legal and certified." },
 ];
 
 const PARTNERS = [
-  { n:"Victoria SES", t:"Emergency services fleet", icon:"shield" },
+  { n:"PINARC Disability Support", t:"Community support fleet", icon:"shield" },
   { n:"Grampians Health", t:"Healthcare fleet", icon:"building" },
   { n:"Federation University", t:"Institutional fleet", icon:"award" },
   { n:"Ballarat Hospice Care", t:"Community fleet", icon:"pin" },
 ];
+
+const ACCREDS = [
+  { src:"assets/photos/Repco authorised service logo.png",           label:"Repco Authorised Service" },
+  { src:"assets/photos/Repco automotive service advertisement.png",  label:"Repco Nationwide Warranty" },
+  { src:"assets/photos/Automotive mechanical engineers logo.png",    label:"IAME Member" },
+  { src:"assets/photos/VACC certified automobile repair logo.png",   label:"VACC Accredited Repairer" },
+  { src:"assets/photos/Vicroads-Licensed-Vehicle-Tester.png",        label:"VicRoads Licensed Vehicle Tester" },
+  { src:"assets/photos/Modern geometric certification logo.png",     label:"Authorised A/C Specialist" },
+];
+
+/* ── Infinite-scroll accreditation carousel ─────────────── */
+function AccredCarousel(){
+  const trackRef = React.useRef(null);
+
+  React.useEffect(()=>{
+    const track = trackRef.current;
+    if(!track) return;
+    let startX = 0;
+
+    const pause  = ()=>{ track.style.animationPlayState = 'paused'; };
+    const resume = ()=>{ track.style.animationPlayState = 'running'; };
+
+    const onTouchStart = e=>{ startX = e.touches[0].clientX; pause(); };
+    const onTouchEnd   = e=>{
+      const delta = Math.abs(e.changedTouches[0].clientX - startX);
+      /* Short swipe = just a tap — resume immediately;
+         longer swipe = user was scanning — brief pause then resume */
+      setTimeout(resume, delta > 40 ? 900 : 0);
+    };
+
+    track.addEventListener('touchstart', onTouchStart, { passive:true });
+    track.addEventListener('touchend',   onTouchEnd,   { passive:true });
+    return ()=>{
+      track.removeEventListener('touchstart', onTouchStart);
+      track.removeEventListener('touchend',   onTouchEnd);
+    };
+  },[]);
+
+  /* 4 copies → total width = 4 × one-set-width.
+     Animation runs to -25% (= one set width), so the
+     loop resets on an identical copy — imperceptible on
+     any viewport up to and including 4 K. */
+  const items = [...ACCREDS, ...ACCREDS, ...ACCREDS, ...ACCREDS];
+
+  return (
+    <div className="ac-outer" role="region" aria-label="Accreditations">
+      <div className="ac-track" ref={trackRef}>
+        {items.map((a,i)=>(
+          <div key={i} className="ac-logo" aria-hidden={i >= ACCREDS.length ? "true" : "false"}>
+            <img
+              src={a.src}
+              alt={i < ACCREDS.length ? a.label : ""}
+              className="ac-img"
+              loading={i < ACCREDS.length * 2 ? "eager" : "lazy"}
+              draggable="false"
+            />
+            <span className="ac-name">{a.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function HomeView(){
   const { go } = useNav();
@@ -112,7 +173,7 @@ function HomeView(){
         </div>
         <div className="svc-grid">
           {SERVICES.map((s,i)=>{ const Ico = Icons[s.icon]; return (
-            <a key={s.href} className="svc-card" data-reveal style={{"--i":i%4}}
+            <a key={s.t} className="svc-card" data-reveal style={{"--i":i%4}}
                href={s.href} aria-label={s.t}>
               <span className="svc-no">{String(i+1).padStart(2,"0")}</span>
               <span className="svc-ico"><Ico/></span>
@@ -141,10 +202,26 @@ function HomeView(){
               <span className="pillar-tag">{p.tag}</span>
               <h3 className="pillar-title">{p.title}</h3>
               <p className="pillar-body">{p.body}</p>
+              {p.logo && (
+                <div className="pillar-logo-badge">
+                  <img src={p.logo} alt="Repco Authorised Service" loading="lazy"/>
+                </div>
+              )}
             </article>
           );})}
         </div>
       </div></section>
+
+      <section className="section ac-section" style={{paddingTop:0}}>
+        <div className="wrap ac-head" data-reveal>
+          <Eyebrow>Certified &amp; Accredited</Eyebrow>
+          <h2 className="h2">Industry recognised certifications</h2>
+          <p className="lead" style={{maxWidth:"58ch"}}>
+            Every accreditation is earned — certified, audited or licensed by the relevant Australian authority or industry body.
+          </p>
+        </div>
+        <AccredCarousel/>
+      </section>
 
       <section className="section" style={{paddingTop:0}}><div className="wrap">
         <div className="shead" data-reveal>

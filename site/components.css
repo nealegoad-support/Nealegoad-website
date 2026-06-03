@@ -55,6 +55,206 @@
 .pillar-body{ color:var(--txt-2); font-size:15px; margin:0; }
 @media (max-width:880px){ .pillars{ grid-template-columns:1fr; } }
 
+/* ── Repco logo badge inside Repco Authorised Warranty pillar card ── */
+.pillar-logo-badge{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:22px;
+  padding:16px 22px;
+  border-radius:14px;
+  overflow:hidden;
+  /* Glass-style inset panel */
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,.1) 0%,
+    rgba(255,255,255,.04) 100%
+  );
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.1),
+    0 10px 30px -10px rgba(0,0,0,.55);
+}
+/* Warm radial spotlight behind the logo */
+.pillar-logo-badge::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(
+    ellipse at 50% 0%,
+    rgba(255,205,0,.13) 0%,
+    transparent 70%
+  );
+  pointer-events:none;
+}
+.pillar-logo-badge img{
+  position:relative;
+  display:block;
+  height:54px;
+  width:auto;
+  max-width:150px;
+  object-fit:contain;
+  z-index:1;
+}
+
+/* ═══════════════════════════════════════════════════════
+   ACCREDITATION CAROUSEL
+   True infinite marquee — 4 copies of the logo set,
+   animating -25% (= one full set width). Seamless on
+   all viewports up to 4 K.
+   ═══════════════════════════════════════════════════════ */
+.ac-section{ overflow:hidden; }
+.ac-head{ margin-bottom:56px; }
+
+/* Outer container — clips the track and fades both edges */
+.ac-outer{
+  position:relative;
+  overflow:hidden;
+  padding:12px 0 16px;
+  -webkit-mask-image:linear-gradient(
+    to right,
+    transparent 0,
+    #000 120px,
+    #000 calc(100% - 120px),
+    transparent 100%
+  );
+  mask-image:linear-gradient(
+    to right,
+    transparent 0,
+    #000 120px,
+    #000 calc(100% - 120px),
+    transparent 100%
+  );
+}
+
+/* ── The scrolling track ──────────────────────────────
+   4 copies of logos → width = 4 × one-set-width.
+   Animation: translateX(0) → translateX(-25%)
+              = 0 → -one-set-width.
+   At -25% the second copy is visible, identical to the
+   first, creating an imperceptible seamless loop. */
+.ac-track{
+  display:flex;
+  align-items:center;
+  gap:0;
+  width:max-content;
+  /* Duration chosen so one full pass takes ~48 s — adjust freely */
+  animation:ac-scroll 48s linear infinite;
+  will-change:transform;
+}
+
+/* Desktop hover = pause */
+@media(hover:hover){
+  .ac-track:hover{ animation-play-state:paused; }
+}
+
+@keyframes ac-scroll{
+  from{ transform:translateX(0); }
+  to  { transform:translateX(-25%); }
+}
+
+/* ── Individual logo cell ──────────────────────────── */
+.ac-logo{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+  /* Generous equal spacing — adjust to taste */
+  padding:12px 56px;
+  flex:none;
+  cursor:default;
+  user-select:none;
+  /* Muted default → pops on hover */
+  opacity:.65;
+  filter:grayscale(20%);
+  transition:
+    opacity .45s var(--ease),
+    filter   .45s var(--ease),
+    transform .45s var(--ease);
+}
+.ac-logo:hover{
+  opacity:1;
+  filter:none;
+  transform:translateY(-8px) scale(1.07);
+}
+
+/* Hairline divider between cells */
+.ac-logo + .ac-logo{
+  border-left:1px solid rgba(255,255,255,.07);
+}
+
+/* ── Logo image ────────────────────────────────────── */
+.ac-img{
+  /* 100 px visible height — "90–120 px" per spec */
+  height:100px;
+  width:auto;
+  max-width:220px;
+  object-fit:contain;
+  display:block;
+  /* Subtle surface so any white-bg logos stay legible on dark theme.
+     Replace with background:none once transparent-bg assets are supplied. */
+  padding:12px 20px;
+  background:rgba(255,255,255,.07);
+  border-radius:14px;
+  transition:
+    background  .45s var(--ease),
+    box-shadow  .45s var(--ease);
+}
+.ac-logo:hover .ac-img{
+  background:rgba(255,255,255,.14);
+  box-shadow:0 10px 40px -10px rgba(0,0,0,.6);
+}
+
+/* ── Logo caption ──────────────────────────────────── */
+.ac-name{
+  font-size:10.5px;
+  font-weight:700;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  color:var(--txt-3);
+  text-align:center;
+  white-space:nowrap;
+  transition:color .45s var(--ease);
+}
+.ac-logo:hover .ac-name{ color:var(--yellow); }
+
+/* ── Tablet (≤ 1024 px) ───────────────────────────── */
+@media(max-width:1024px){
+  .ac-logo{ padding:12px 44px; }
+  .ac-img{ height:88px; }
+  .ac-track{ animation-duration:42s; }
+}
+
+/* ── Mobile (≤ 640 px) ────────────────────────────── */
+@media(max-width:640px){
+  .ac-outer{
+    -webkit-mask-image:linear-gradient(
+      to right, transparent 0, #000 44px, #000 calc(100% - 44px), transparent 100%
+    );
+    mask-image:linear-gradient(
+      to right, transparent 0, #000 44px, #000 calc(100% - 44px), transparent 100%
+    );
+  }
+  .ac-logo{ padding:10px 32px; gap:10px; }
+  .ac-img{ height:72px; padding:10px 14px; border-radius:10px; }
+  .ac-name{ font-size:9.5px; }
+  .ac-track{ animation-duration:32s; }
+}
+
+/* ── Reduced-motion: native horizontal scroll ─────── */
+@media(prefers-reduced-motion:reduce){
+  .ac-track{ animation:none; }
+  .ac-outer{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x mandatory;
+    -webkit-mask-image:none;
+    mask-image:none;
+  }
+  .ac-logo{ scroll-snap-align:start; }
+}
+
 /* ---- PARTNER STRIP ---- */
 .partners{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:30px; }
 .partner{ display:flex; flex-direction:column; gap:10px; align-items:center; justify-content:center; text-align:center;
