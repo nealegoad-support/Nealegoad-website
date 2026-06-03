@@ -165,7 +165,7 @@ function Trust(){
 
 /* ---------- SHOWCASE GALLERY ---------- */
 const SHOW = [
-  { src:PHOTO.aston, cls:"sc-tall", tag:"Prestige", cap:"Prestige & European servicing", ico:<Star/> },
+  { src:PHOTO.aston, cls:"sc-tall", tag:"European", cap:"European & luxury vehicle servicing", ico:<Star/> },
   { src:PHOTO.facade, cls:"sc-wide", tag:"Our workshop", cap:"Wendouree — Repco Authorised", ico:<MapPin/> },
   { src:PHOTO.workshop, cls:"", tag:"Rectification", cap:"Fixed on-site", ico:<Wrench/> },
   { src:PHOTO.fx, cls:"", tag:"Classic", cap:"Club-permit ready", ico:<Steering/> },
@@ -178,7 +178,7 @@ function Showcase(){
         <div className="section-head" data-reveal>
           <p className="eyebrow">From the workshop floor</p>
           <h2 className="h2">Daily drivers to concours classics</h2>
-          <p className="lead">From late-model SUVs to prestige European and vintage club cars — all certified under one roof in Wendouree.</p>
+          <p className="lead">From late-model SUVs to luxury European and vintage club cars — all certified under one roof in Wendouree.</p>
         </div>
         <div className="showcase-grid">
           {SHOW.map((s,i)=>(

@@ -56,12 +56,15 @@ module.exports = {
 };`,
 
   nap: [
-    { k:"Business name", v:"Neale Goad Automotive — Goad Group", mono:false },
-    { k:"Address",       v:"[ ACF: address_street ], Wendouree VIC 3355", mono:true },
-    { k:"Phone",         v:"(03) 5339 2056   ·   tel:+61353392056", mono:true },
-    { k:"Hours",         v:"Mon–Fri 8:00am–5:00pm · Sat by appointment", mono:false },
-    { k:"Service area",  v:"Wendouree, Ballarat CBD, Alfredton, Delacombe, Sebastopol, Lake Wendouree", mono:false },
-    { k:"Pickup radius", v:"Free pickup & delivery within 10 km of Ballarat CBD", mono:false },
+    { k:"Trading name (PUBLIC)",  v:"Neale Goad Automotive – Authorised Repco Service Centre", mono:false },
+    { k:"Legal entity (PRIVATE)", v:"Goad Group Pty Ltd", mono:true },
+    { k:"ABN",                    v:"36 071 243 402", mono:true },
+    { k:"Address",                v:"[ confirm street address with Danny ], Wendouree VIC 3355", mono:true },
+    { k:"Phone",                  v:"(03) 5339 2056   ·   tel:+61353392056", mono:true },
+    { k:"Hours",                  v:"Mon–Fri 8:00am–5:00pm · Sat by appointment", mono:false },
+    { k:"Service area",           v:"Wendouree, Ballarat CBD, Alfredton, Delacombe, Sebastopol, Lake Wendouree", mono:false },
+    { k:"Pickup radius",          v:"Free pickup & delivery within 10 km of Ballarat CBD", mono:false },
+    { k:"Contact email",          v:"service@nealegoad.com.au (confirm canonical address with Danny)", mono:true },
   ],
 
   trust: [

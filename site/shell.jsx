@@ -309,7 +309,7 @@ function Footer(){
       <div className="wrap ft-in">
         <div>
           <NGLogo style={{height:"44px"}} className="ft-logo" />
-          <p className="ft-tag"><span itemProp="name">Neale Goad Automotive</span> — Repco Authorised Service · Roadworthy Certificates · Wendouree, Ballarat VIC</p>
+          <p className="ft-tag"><span itemProp="name">Neale Goad Automotive – Authorised Repco Service Centre</span> · Roadworthy Certificates · Wendouree, Ballarat VIC</p>
           <link itemProp="image" href="#" />
         </div>
         <div className="ft-cols" style={{gridTemplateColumns:"repeat(4,1fr)"}}>
@@ -341,7 +341,7 @@ function Footer(){
         </div>
       </div>
       <div className="wrap ft-bottom">
-        <span>© {new Date().getFullYear()} Neale Goad Automotive · Goad Group</span>
+        <span>© {new Date().getFullYear()} Neale Goad Automotive – Authorised Repco Service Centre · ABN 36 071 243 402</span>
         <span style={{display:"flex",gap:"16px",flexWrap:"wrap"}}>
           <a href="roadworthy-certificates.html">Roadworthy</a>
           <a href="fleet-servicing-ballarat.html">Fleet</a>

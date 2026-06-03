@@ -100,7 +100,7 @@ get_template_part('template-parts/location', null, $location);`
 
 {
   n:8, id:"diesel", route:"/diesel-mechanic-ballarat", nav:"Diesel & Heavy Vehicle",
-  title:"Diesel & Heavy Vehicle Mechanic Ballarat | Trucks, Plant & Equipment | NGA",
+  title:"Diesel & Heavy Vehicle Mechanic Ballarat | Trucks, Plant & Equipment | Neale Goad Automotive",
   desc:"Hydraulic diagnosis, engine rebuilds & compliance inspections for trucks, excavators & loaders. Dealer-level diagnostics. Wendouree's heavy vehicle specialists.",
   schema:[{type:"AutoRepair", prim:true},{type:"Service"}],
   schemaNote:"Service node serviceType 'Diesel & Heavy Vehicle Repair'. List equipment categories as serviceOutput. Emphasise 'dealer-level diagnostics' + compliance — the B2B/operator differentiators.",

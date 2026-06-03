@@ -294,7 +294,7 @@ function App(){
         <main className="main">
           <div className="main-inner">
             <header className="doc-hero">
-              <span className="eyebrow">Goad Group · Neale Goad Automotive</span>
+              <span className="eyebrow">Neale Goad Automotive – Authorised Repco Service Centre</span>
               <h1>Website Frontend &amp;<br/><span className="hl">Content Blueprint</span></h1>
               <p>A component-based build spec for the full site matrix — technical SEO, wireframe architecture, reusable Tailwind skeletons and micro-interactions, ready to parse into custom WordPress templates and ACF flexible-content loops.</p>
               <div className="doc-meta">

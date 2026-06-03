@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Exclude internal/print templates
+Disallow: /roadworthy-certificate-ballarat-print.html
+Disallow: /roadworthy-certificate-ballarat.html
+Disallow: /Website Blueprint.html
+Disallow: /Website Blueprint-print.html
+Disallow: /blueprint/
+
+Sitemap: https://nealegoad.com.au/sitemap.xml

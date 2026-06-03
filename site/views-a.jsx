@@ -50,7 +50,7 @@ const SERVICES = [
   { t:"Truck Repairs", d:"Prime movers, rigids, tippers & compliance inspections.", icon:"truck", href:"truck-repairs-ballarat.html" },
   { t:"Plant Equipment Repairs", d:"Excavators, loaders, hydraulic diagnosis & engine rebuilds.", icon:"cog", href:"plant-equipment-repairs-ballarat.html" },
   { t:"LPG Conversions", d:"Certified LPG installation with compliance certificate.", icon:"droplet", href:"lpg-conversions-ballarat.html" },
-  { t:"Mechanic Alfredton", d:"A short drive away, with free pickup & delivery.", icon:"nav", href:"mechanic-alfredton.html" },
+  { t:"Mechanic Alfredton", d:"A short drive away, with free pickup & delivery.", icon:"nav", href:"mechanical-repairs-ballarat.html" },
 ];
 
 const PILLARS = [
@@ -86,7 +86,7 @@ function HomeView(){
               Roadworthy certificates, logbook servicing, diesel, fleet and classic vehicles — 30+ years of trusted, warranty-safe work in Ballarat.
             </p>
             <p className="biz-line" style={{marginTop:"20px"}}>
-              <strong>Neale Goad Automotive</strong> · Repco Authorised Service · Licensed Vehicle Tester
+              <strong>Neale Goad Automotive – Authorised Repco Service Centre</strong> · Licensed Vehicle Tester
             </p>
             <div className="hero-actions" style={{marginTop:"32px"}}>
               <CallBtn lg/>

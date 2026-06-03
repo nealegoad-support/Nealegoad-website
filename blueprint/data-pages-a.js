@@ -192,7 +192,7 @@ window.NGA_PAGES_A = [
 
 {
   n:4, id:"car-service", route:"/car-service-ballarat", nav:"Car Service & Logbook",
-  title:"Car Service & Logbook Servicing Ballarat | All Makes & Models | NGA Auto",
+  title:"Car Service & Logbook Servicing Ballarat | All Makes & Models | Neale Goad Automotive",
   desc:"Factory-trained technicians at Wendouree's Repco Authorised Service Centre. Warranty-safe logbook servicing. Free pickup & delivery within 10 km.",
   schema:[{type:"AutoRepair", prim:true},{type:"Service"}],
   schemaNote:"Service node: serviceType 'Logbook Servicing', offers with priceRange, areaServed Ballarat. Reinforce 'warranty-safe' in description meta — common objection for log-book intent.",
@@ -250,7 +250,7 @@ window.NGA_PAGES_A = [
 
 {
   n:5, id:"fleet", route:"/fleet-servicing-ballarat", nav:"Fleet Servicing",
-  title:"Fleet Servicing Ballarat | VIC SES & Grampians Health Approved | NGA",
+  title:"Fleet Servicing Ballarat | VIC SES & Grampians Health Approved | Neale Goad Automotive",
   desc:"Trusted fleet partner to VIC SES, Grampians Health & Federation University. Fleet packages, onsite roller brake testing, diesel & heavy vehicle specialists.",
   schema:[{type:"AutoRepair", prim:true},{type:"Service"}],
   schemaNote:"B2B Service node (serviceType 'Fleet Vehicle Servicing', audience BusinessAudience). Surface the institutional partners as Review/Organization mentions — these are the page's strongest trust asset.",

@@ -7,7 +7,7 @@ const POSTS = [
     cat:"Roadworthy",
     title:"5 things to check before you book a roadworthy",
     excerpt:"A few minutes in the driveway can save you a failed inspection — and a second trip. Here's what our inspectors see fail most often.",
-    date:"May 28, 2026", read:"4 min", author:"NGA Workshop",
+    date:"May 28, 2026", read:"4 min", author:"Neale Goad Automotive",
     icon:"fileCheck", featured:true, img:"site/img/underbody.jpg",
     body:[
       ["p","A roadworthy certificate isn't a formality — it's a safety standard set by VicRoads, and small, easily-fixed faults are the most common reason vehicles don't pass first time. The good news: most are visible from your own driveway."],
@@ -32,7 +32,7 @@ const POSTS = [
     cat:"Servicing",
     title:"Logbook servicing won't void your new-car warranty",
     excerpt:"It's one of the most persistent myths in motoring. Under Australian Consumer Law, you can choose where your car is serviced.",
-    date:"May 19, 2026", read:"3 min", author:"NGA Workshop",
+    date:"May 19, 2026", read:"3 min", author:"Neale Goad Automotive",
     icon:"wrench", img:"site/img/service-aircon.jpg",
     body:[
       ["p","Plenty of drivers believe they must return to the dealership for servicing or risk losing their new-car warranty. It isn't true."],
@@ -48,7 +48,7 @@ const POSTS = [
     cat:"Maintenance",
     title:"Getting your car ready for a Ballarat winter",
     excerpt:"Frosty mornings and wet roads are hard on a vehicle. A short pre-winter check keeps you safe through the cold months.",
-    date:"May 6, 2026", read:"5 min", author:"NGA Workshop",
+    date:"May 6, 2026", read:"5 min", author:"Neale Goad Automotive",
     icon:"droplet", img:"site/img/service-renault.jpg",
     body:[
       ["p","Ballarat winters test the parts of your car you rely on most: battery, brakes, tyres and visibility. A quick check now avoids a roadside breakdown later."],
@@ -66,7 +66,7 @@ const POSTS = [
     cat:"Classic",
     title:"The Club Permit Scheme, explained for enthusiasts",
     excerpt:"Keeping a classic road-legal in Victoria is simpler than many owners think. Here's how the CPS works and what you need.",
-    date:"Apr 24, 2026", read:"4 min", author:"NGA Workshop",
+    date:"Apr 24, 2026", read:"4 min", author:"Neale Goad Automotive",
     icon:"steering", img:"site/img/classic-monaro.jpg",
     body:[
       ["p","Victoria's Club Permit Scheme (CPS) lets owners of eligible classic and vintage vehicles drive on reduced-cost permits — but it comes with conditions worth understanding."],
@@ -84,7 +84,7 @@ const POSTS = [
     cat:"Fleet",
     title:"How preventative maintenance protects fleet uptime",
     excerpt:"For organisations like VIC SES and Grampians Health, a vehicle off the road is a service interruption. Planning prevents it.",
-    date:"Apr 11, 2026", read:"4 min", author:"NGA Workshop",
+    date:"Apr 11, 2026", read:"4 min", author:"Neale Goad Automotive",
     icon:"building", img:"site/img/fleet-van.jpg",
     body:[
       ["p","When your vehicles are essential to delivering a service, unplanned breakdowns cost far more than the repair. Preventative maintenance turns surprises into scheduled, manageable work."],
@@ -102,7 +102,7 @@ const POSTS = [
     cat:"Diesel",
     title:"6 diesel warning signs you shouldn't ignore",
     excerpt:"Catching diesel and heavy-vehicle issues early is the difference between a service and a rebuild. Know what to watch for.",
-    date:"Mar 30, 2026", read:"5 min", author:"NGA Workshop",
+    date:"Mar 30, 2026", read:"5 min", author:"Neale Goad Automotive",
     icon:"engine", img:"site/img/diesel-hilux.jpg",
     body:[
       ["p","Diesel engines are built to last — but ignoring early symptoms turns a manageable repair into an expensive rebuild. Here's what our heavy-vehicle technicians tell operators to watch."],
