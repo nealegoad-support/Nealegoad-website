@@ -312,7 +312,7 @@ function Footer(){
           <NGLogo style={{height:"42px"}} className="ft-logo"/>
           <p className="ft-tag">
             <span itemProp="name">Neale Goad Automotive – Authorised Repco Service Centre</span><br/>
-            Wendouree, Ballarat VIC 3355
+            206 Burnbank St, Wendouree VIC 3355
           </p>
           <link itemProp="image" href="#"/>
         </div>
@@ -344,8 +344,8 @@ function Footer(){
         <div itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
           <span className="ft-h">Visit</span>
           <p className="ft-p">
-            <span itemProp="streetAddress">Wendouree</span><br/>
-            <span itemProp="addressLocality">Ballarat</span>{" "}
+            <span itemProp="streetAddress">206 Burnbank St</span><br/>
+            <span itemProp="addressLocality">Wendouree</span>{" "}
             <span itemProp="addressRegion">VIC</span>{" "}
             <span itemProp="postalCode">3355</span>
           </p>

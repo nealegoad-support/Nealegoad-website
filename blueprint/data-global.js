@@ -59,7 +59,7 @@ module.exports = {
     { k:"Trading name (PUBLIC)",  v:"Neale Goad Automotive – Authorised Repco Service Centre", mono:false },
     { k:"Legal entity (PRIVATE)", v:"Goad Group Pty Ltd", mono:true },
     { k:"ABN",                    v:"36 071 243 402", mono:true },
-    { k:"Address",                v:"[ confirm street address with Danny ], Wendouree VIC 3355", mono:true },
+    { k:"Address",                v:"206 Burnbank St, Wendouree VIC 3355", mono:true },
     { k:"Phone",                  v:"(03) 5339 2056   ·   tel:+61353392056", mono:true },
     { k:"Hours",                  v:"Mon–Fri 8:00am–5:00pm · Sat by appointment", mono:false },
     { k:"Service area",           v:"Wendouree, Ballarat CBD, Alfredton, Delacombe, Sebastopol, Lake Wendouree", mono:false },

@@ -291,7 +291,7 @@ function Footer(){
         <div className="ft-cols">
           <div className="ft-col">
             <span className="ft-h">Visit the workshop</span>
-            <p className="ft-p">Wendouree, Ballarat VIC 3355<br/><span style={{color:"var(--txt-3)"}}>Full street address confirmed on booking</span></p>
+            <p className="ft-p">206 Burnbank St<br/>Wendouree VIC 3355</p>
           </div>
           <div className="ft-col">
             <span className="ft-h">Hours</span>
