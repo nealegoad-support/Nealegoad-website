@@ -115,7 +115,7 @@ function Testimonials({ light }){
       </div>
       <div className="treview-strip" data-reveal>
         <Stars/>
-        <span><strong>4.9 / 5</strong> · 300+ Google reviews</span>
+        <span>Trusted by Ballarat motorists</span>
       </div>
     </div></section>
   );

@@ -1000,3 +1000,111 @@ svg.icon{ display:inline-block; vertical-align:middle; width:1em; height:1em; }
 .sp-muted{ color:var(--txt-2); }
 .sp-wrap{ max-width:var(--maxw); margin:0 auto; padding:0 32px; }
 @media(max-width:600px){ .sp-wrap{ padding:0 20px; } }
+
+/* ============================================================
+   VISUAL RHYTHM — Section alternation
+   CSS classes ready for Phase 3 HTML application.
+   Light-theme values are overridden in app/theme-light.css.
+   ============================================================ */
+
+/* Neutral lighter-surface alternate section (dark theme) */
+.sp-section-alt{
+  background:rgba(255,255,255,.025);
+  border-top:1px solid rgba(255,255,255,.055);
+  border-bottom:1px solid rgba(255,255,255,.055);
+}
+
+/* Dark charcoal contrast section — stays dark on both themes.
+   Primary use: testimonials, to break visual monotony. */
+.sp-section-testimonials{
+  background:#12151b;
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.sp-section-testimonials .sp-h2,
+.sp-section-testimonials .sp-h3{ color:#f3f5f7; }
+.sp-section-testimonials .sp-lead{ color:rgba(243,245,247,.6); }
+.sp-section-testimonials .sp-eyebrow,
+.sp-section-testimonials .sp-shead .sp-eyebrow,
+.sp-section-testimonials .sp-shead-center .sp-eyebrow{ color:var(--accent); }
+.sp-section-testimonials .sp-eyebrow::before,
+.sp-section-testimonials .sp-shead .sp-eyebrow::before,
+.sp-section-testimonials .sp-shead-center .sp-eyebrow::before{ background:var(--accent); }
+.sp-section-testimonials .sp-tcard{
+  background:rgba(255,255,255,.055);
+  border-color:rgba(255,255,255,.09);
+  box-shadow:none;
+}
+.sp-section-testimonials .sp-tcard:hover{
+  background:rgba(255,255,255,.08);
+  border-color:rgba(255,205,0,.3);
+  box-shadow:0 12px 36px -18px rgba(0,0,0,.55);
+}
+.sp-section-testimonials .sp-tquote{ color:rgba(243,245,247,.85); }
+.sp-section-testimonials .sp-tname{ color:#f3f5f7; }
+.sp-section-testimonials .sp-tloc{ color:rgba(243,245,247,.45); }
+.sp-section-testimonials .sp-tmark{ background:var(--accent); color:var(--accent-ink); }
+.sp-section-testimonials .sp-stars svg{ fill:var(--accent); }
+
+/* ============================================================
+   TYPOGRAPHY REFINEMENTS
+   ============================================================ */
+
+/* Eyebrow rule: 3px (was 2px) for stronger visual presence */
+.sp-eyebrow::before{ height:3px; }
+.sp-hero-kicker::before{ height:3px; }
+
+/* Feature card — fractionally larger text, cleaner scan */
+.sp-feat-title{ font-size:19.5px; letter-spacing:.01em; }
+.sp-feat-desc{ font-size:15px; }
+
+/* ============================================================
+   PROCESS STEPS — intentional dashed connector
+   ============================================================ */
+.sp-steps::before{
+  background:repeating-linear-gradient(
+    90deg,
+    var(--accent) 0,
+    var(--accent) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  height:2px;
+}
+
+/* ============================================================
+   SERVICE TIERS — sharper featured card elevation
+   ============================================================ */
+.sp-tier.feat{
+  border-top:3px solid var(--accent);
+}
+
+/* ============================================================
+   CTA BAND — accent top border for authority framing
+   ============================================================ */
+.sp-ctaband{
+  border-top:3px solid rgba(255,205,0,.55);
+}
+
+/* ============================================================
+   REPCO AUTHORITY BADGE — standalone page header
+   Supporting brand mark; hidden below 1100px (same as hours).
+   ============================================================ */
+.sp-hdr-repco{
+  display:inline-flex; align-items:center; gap:7px;
+  font-family:var(--ff-body); font-weight:700;
+  font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+  color:rgba(243,245,247,.5);
+  padding:7px 12px;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:999px;
+  background:rgba(255,255,255,.04);
+  white-space:nowrap;
+  user-select:none;
+  pointer-events:none;
+}
+.sp-hdr-repco::before{
+  content:""; width:7px; height:7px; border-radius:50%;
+  background:#CC0000; flex:none; opacity:.85;
+}
+@media(max-width:1100px){ .sp-hdr-repco{ display:none; } }

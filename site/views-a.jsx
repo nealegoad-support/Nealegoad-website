@@ -141,8 +141,8 @@ function RepcoAuthority(){
         </div>
         <div className="ra-stats">
           <div className="ra-stat"><span className="ra-n">30+</span><span className="ra-l">Years local</span></div>
-          <div className="ra-stat"><span className="ra-n">4.9★</span><span className="ra-l">Google rating</span></div>
-          <div className="ra-stat"><span className="ra-n">300+</span><span className="ra-l">Reviews</span></div>
+          <div className="ra-stat"><span className="ra-n">2</span><span className="ra-l">Licensed VT inspectors</span></div>
+          <div className="ra-stat"><span className="ra-n">10km</span><span className="ra-l">Free pickup zone</span></div>
           <div className="ra-stat"><span className="ra-n">Repco</span><span className="ra-l">Nationwide warranty</span></div>
         </div>
       </div>
@@ -163,7 +163,7 @@ function HeritageStrip(){
           <h2 className="h2 hs-head">30+ years.<br/>One workshop.</h2>
           <div className="hs-numbers">
             <div className="hs-num"><span className="hs-n">30+</span><span className="hs-l">Years serving Ballarat</span></div>
-            <div className="hs-num"><span className="hs-n">4.9★</span><span className="hs-l">Google · 300+ reviews</span></div>
+            <div className="hs-num"><span className="hs-n">2</span><span className="hs-l">Accredited VT inspectors</span></div>
             <div className="hs-num"><span className="hs-n">Repco</span><span className="hs-l">Nationwide warranty</span></div>
           </div>
         </div>
@@ -203,7 +203,7 @@ function HomeView(){
               <span>Repco Authorised Service Centre</span>
             </div>
             <div className="hero-chips" style={{marginTop:"18px"}}>
-              <span className="chip"><Icons.star/> 4.9★ Google · 300+ reviews</span>
+              <span className="chip"><Icons.shield/> Trusted by Local Motorists</span>
               <span className="chip"><Icons.shield/> Repco Nationwide Warranty</span>
               <span className="chip"><Icons.check/> Same-week availability</span>
             </div>
