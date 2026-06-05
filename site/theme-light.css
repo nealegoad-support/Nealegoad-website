@@ -321,9 +321,9 @@ body::before{
 .repco-hero-badge{
   display:inline-flex;
   align-items:center;
-  gap:14px;
+  gap:16px;
   margin-top:26px;
-  padding:10px 18px 10px 14px;
+  padding:14px 22px 14px 18px;
   border-radius:12px;
   background:rgba(255,255,255,.92);
   border:1px solid rgba(204,0,0,.18);
@@ -333,7 +333,7 @@ body::before{
   max-width:max-content;
 }
 .repco-hero-badge img{
-  height:38px;
+  height:52px;
   width:auto;
   object-fit:contain;
   display:block;
@@ -342,7 +342,7 @@ body::before{
 .repco-hero-badge span{
   font-family:var(--ff-semi);
   font-weight:700;
-  font-size:12px;
+  font-size:13px;
   letter-spacing:.06em;
   text-transform:uppercase;
   color:var(--red);
@@ -359,11 +359,11 @@ body::before{
   border-left:1px solid var(--line);
 }
 .hdr-repco img{
-  height:26px;
+  height:32px;
   width:auto;
   object-fit:contain;
   display:block;
-  opacity:.82;
+  opacity:1;
   transition:opacity .22s;
 }
 .hdr-repco:hover img{ opacity:1; }

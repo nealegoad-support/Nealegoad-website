@@ -605,7 +605,7 @@
   background:linear-gradient(135deg,#12151a 0%,#1a1117 55%,#111419 100%);
   border-top:1px solid rgba(255,255,255,.05);
   border-bottom:3px solid var(--red,#CC0000);
-  padding:36px 0;
+  padding:48px 0;
 }
 .ra-inner{
   display:flex; align-items:center; justify-content:space-between;
@@ -616,10 +616,10 @@
   flex:1; min-width:0;
 }
 .ra-logo{
-  height:72px; width:auto; object-fit:contain; flex:none;
+  height:100px; width:auto; object-fit:contain; flex:none;
   filter:drop-shadow(0 4px 16px rgba(0,0,0,.45));
 }
-.ra-vline{ width:1px; height:48px; background:rgba(255,255,255,.16); flex:none; }
+.ra-vline{ width:1px; height:68px; background:rgba(255,255,255,.16); flex:none; }
 .ra-headline{
   font-family:var(--ff-disp); font-weight:800;
   font-size:clamp(18px,2vw,26px); text-transform:uppercase;
@@ -648,7 +648,7 @@
 @media(max-width:680px){
   .ra-brand{ gap:16px; }
   .ra-vline{ display:none; }
-  .ra-logo{ height:56px; }
+  .ra-logo{ height:72px; }
 }
 
 /* ═══════════════════════════════════════════════════════════════

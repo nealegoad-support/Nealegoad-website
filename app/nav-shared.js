@@ -509,9 +509,9 @@
   /* REPCO AUTHORITY BADGE                                                 */
   /* ------------------------------------------------------------------ */
 
-  /* Inject a small "Repco Authorised" pill into .sp-hdr-cta, between
-     the hours indicator and the phone button. CSS hides it below 1100px.
-     Skipped if the badge is already present (e.g. hand-coded in HTML). */
+  /* Inject the Repco Authorised Service Centre logo into .sp-hdr-cta,
+     between the hours indicator and the phone button. CSS hides it below
+     1100px. Skipped if already present (e.g. hand-coded in HTML). */
   function injectRepcoBadge() {
     if (document.querySelector('.sp-hdr-repco')) return;
     var hdrCta = document.querySelector('.sp-hdr-cta');
@@ -520,8 +520,11 @@
     if (!phoneBtn) return;
     var badge = document.createElement('span');
     badge.className = 'sp-hdr-repco';
-    badge.setAttribute('aria-hidden', 'true'); /* decorative supporting mark */
-    badge.textContent = 'Repco Authorised';
+    var img = document.createElement('img');
+    img.src = 'assets/photos/Repco authorised service logo.png';
+    img.alt = 'Repco Authorised Service Centre';
+    img.className = 'sp-hdr-repco-img';
+    badge.appendChild(img);
     hdrCta.insertBefore(badge, phoneBtn);
   }
 

@@ -436,10 +436,8 @@
 }
 
 /* ============================================================
-   REPCO AUTHORITY BADGE — light theme
+   REPCO LOGO — standalone page header, light theme
    ============================================================ */
 .sp-hdr-repco{
-  color:var(--txt-2);
-  border-color:var(--line-2);
-  background:rgba(20,24,30,.04);
+  border-right-color:var(--line-2);
 }

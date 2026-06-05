@@ -317,6 +317,11 @@ function Footer(){
             <span itemProp="name">Neale Goad Automotive – Authorised Repco Service Centre</span><br/>
             206 Burnbank St, Wendouree VIC 3355
           </p>
+          <img
+            src="assets/photos/Repco authorised service logo.png"
+            alt="Repco Authorised Service Centre"
+            className="ft-repco-logo"
+          />
           <link itemProp="image" href="#"/>
         </div>
         <div className="ft-contact">
