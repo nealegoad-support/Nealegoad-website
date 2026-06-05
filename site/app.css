@@ -19,6 +19,10 @@
   --ff-semi:'Barlow Semi Condensed',system-ui,sans-serif;
   --ff-body:'Barlow',system-ui,sans-serif;
   --ff-mono:'JetBrains Mono','SF Mono',ui-monospace,Menlo,monospace;
+  /* Repco brand red */
+  --red:#CC0000; --red-soft:#e62020; --red-dark:#a50000;
+  --red-glow:rgba(204,0,0,.15);
+  --glow-red:0 16px 42px -14px rgba(204,0,0,.5);
 }
 *{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; }

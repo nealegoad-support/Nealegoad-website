@@ -127,6 +127,51 @@ function AccredCarousel(){
   );
 }
 
+function RepcoAuthority(){
+  return (
+    <section className="repco-authority" aria-label="Repco Authorised Service Centre">
+      <div className="wrap ra-inner">
+        <div className="ra-brand">
+          <img src="assets/photos/Repco authorised service logo.png" alt="Repco Authorised Service Centre" className="ra-logo"/>
+          <div className="ra-vline"/>
+          <div>
+            <p className="ra-headline">Repco Authorised Service Centre</p>
+            <p className="ra-tagline">Ballarat's accredited Repco workshop — backed by Australia's largest automotive service network</p>
+          </div>
+        </div>
+        <div className="ra-stats">
+          <div className="ra-stat"><span className="ra-n">30+</span><span className="ra-l">Years local</span></div>
+          <div className="ra-stat"><span className="ra-n">4.9★</span><span className="ra-l">Google rating</span></div>
+          <div className="ra-stat"><span className="ra-n">300+</span><span className="ra-l">Reviews</span></div>
+          <div className="ra-stat"><span className="ra-n">Repco</span><span className="ra-l">Nationwide warranty</span></div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HeritageStrip(){
+  return (
+    <section className="hs" aria-label="Workshop history">
+      <div className="hs-img-pane" aria-hidden="true">
+        <img src="assets/photos/facade.jpg" alt="" className="hs-img"/>
+        <div className="hs-img-overlay"/>
+      </div>
+      <div className="wrap hs-inner">
+        <div className="hs-body">
+          <Eyebrow>Local since the early '90s</Eyebrow>
+          <h2 className="h2 hs-head">30+ years.<br/>One workshop.</h2>
+          <div className="hs-numbers">
+            <div className="hs-num"><span className="hs-n">30+</span><span className="hs-l">Years serving Ballarat</span></div>
+            <div className="hs-num"><span className="hs-n">4.9★</span><span className="hs-l">Google · 300+ reviews</span></div>
+            <div className="hs-num"><span className="hs-n">Repco</span><span className="hs-l">Nationwide warranty</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function HomeView(){
   const { go } = useNav();
   return (
@@ -153,7 +198,11 @@ function HomeView(){
               <CallBtn lg/>
               <BookBtn lg/>
             </div>
-            <div className="hero-chips" style={{marginTop:"22px"}}>
+            <div className="repco-hero-badge">
+              <img src="assets/photos/Repco authorised service logo.png" alt="Repco Authorised Service Centre"/>
+              <span>Repco Authorised Service Centre</span>
+            </div>
+            <div className="hero-chips" style={{marginTop:"18px"}}>
               <span className="chip"><Icons.star/> 4.9★ Google · 300+ reviews</span>
               <span className="chip"><Icons.shield/> Repco Nationwide Warranty</span>
               <span className="chip"><Icons.check/> Same-week availability</span>
@@ -162,6 +211,7 @@ function HomeView(){
         </div>
       </section>
 
+      <RepcoAuthority/>
       <ActionBar/>
       <TrustBar/>
 
@@ -190,12 +240,14 @@ function HomeView(){
         </div>
       </div></section>
 
+      <HeritageStrip/>
+
       <section className="section" style={{paddingTop:0}}><div className="wrap">
         <div className="shead" data-reveal>
           <Eyebrow>Why Neale Goad</Eyebrow>
           <h2 className="h2">Three pillars of authority</h2>
         </div>
-        <div className="pillars">
+        <div className="pillars pillars--editorial">
           {PILLARS.map((p,i)=>{ const Ico = Icons[p.icon]; return (
             <article key={i} className="pillar" data-reveal style={{"--i":i}}>
               <span className="pillar-ico"><Ico/></span>
@@ -228,7 +280,7 @@ function HomeView(){
           <Eyebrow>Verified institutional contracts</Eyebrow>
           <h2 className="h2">Trusted to keep critical fleets moving</h2>
         </div>
-        <div className="partners">
+        <div className="partners-strip">
           {PARTNERS.map((p,i)=>{ const Ico = Icons[p.icon]; return (
             <div key={i} className="partner" data-reveal style={{"--i":i}}>
               <span className="pmark"><Ico/></span>
@@ -240,7 +292,7 @@ function HomeView(){
       </div></section>
 
       <HomeBlog/>
-      <Testimonials/>
+      <div className="section--dark"><Testimonials/></div>
       <HomeFaq/>
 
       <CtaBand title="One call sorts it" sub="Whatever your vehicle needs, our two accredited inspectors and Repco-backed workshop can handle it — usually within the week."/>
@@ -364,4 +416,4 @@ function Crumb({ trail }){
   );
 }
 
-Object.assign(window, { HomeView, RwcView, Accordion, Crumb });
+Object.assign(window, { HomeView, RwcView, Accordion, Crumb, RepcoAuthority, HeritageStrip });
