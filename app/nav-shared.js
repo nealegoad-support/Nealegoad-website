@@ -506,6 +506,26 @@
   }
 
   /* ------------------------------------------------------------------ */
+  /* REPCO AUTHORITY BADGE                                                 */
+  /* ------------------------------------------------------------------ */
+
+  /* Inject a small "Repco Authorised" pill into .sp-hdr-cta, between
+     the hours indicator and the phone button. CSS hides it below 1100px.
+     Skipped if the badge is already present (e.g. hand-coded in HTML). */
+  function injectRepcoBadge() {
+    if (document.querySelector('.sp-hdr-repco')) return;
+    var hdrCta = document.querySelector('.sp-hdr-cta');
+    if (!hdrCta) return;
+    var phoneBtn = hdrCta.querySelector('a.btn');
+    if (!phoneBtn) return;
+    var badge = document.createElement('span');
+    badge.className = 'sp-hdr-repco';
+    badge.setAttribute('aria-hidden', 'true'); /* decorative supporting mark */
+    badge.textContent = 'Repco Authorised';
+    hdrCta.insertBefore(badge, phoneBtn);
+  }
+
+  /* ------------------------------------------------------------------ */
   /* INIT                                                                  */
   /* ------------------------------------------------------------------ */
   function init() {
@@ -515,6 +535,7 @@
     initScrollReveal();
     initButtonGlow();
     loadLightbox();
+    injectRepcoBadge();
   }
 
   if (document.readyState === 'loading') {

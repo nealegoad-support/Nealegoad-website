@@ -364,3 +364,82 @@
 .fl select + label{ color:#7a6000; }
 .fl label{ color:var(--txt-3); }
 .form-note{ color:var(--txt-3); }
+
+/* ============================================================
+   SECTION RHYTHM — light theme overrides
+   ============================================================ */
+
+/* Alternate sections: cool neutral grey, no warmth */
+.sp-section-alt{
+  background:#f0f2f4;
+  border-top-color:rgba(20,24,30,.07);
+  border-bottom-color:rgba(20,24,30,.07);
+}
+
+/* Dark contrast section retains charcoal bg (set in service-pages.css).
+   Re-apply dark context styles to counter light-theme global overrides. */
+.sp-section-testimonials .sp-tcard{
+  background:rgba(255,255,255,.07);
+  border-color:rgba(255,255,255,.12);
+  box-shadow:none;
+}
+.sp-section-testimonials .sp-tcard:hover{
+  border-color:rgba(255,205,0,.35);
+  box-shadow:0 10px 30px -14px rgba(0,0,0,.5);
+}
+.sp-section-testimonials .sp-tquote{ color:rgba(243,245,247,.88); }
+.sp-section-testimonials .sp-tname{ color:#f3f5f7; }
+.sp-section-testimonials .sp-tloc{ color:rgba(243,245,247,.45); }
+.sp-section-testimonials .sp-tmark{ background:var(--accent); color:var(--accent-ink); }
+.sp-section-testimonials .sp-stars svg{ fill:var(--accent); }
+.sp-section-testimonials .sp-h2{ color:#f3f5f7; }
+.sp-section-testimonials .sp-h3{ color:#f3f5f7; }
+.sp-section-testimonials .sp-lead{ color:rgba(243,245,247,.6); }
+.sp-section-testimonials .sp-shead .sp-eyebrow,
+.sp-section-testimonials .sp-shead-center .sp-eyebrow{ color:var(--accent); }
+.sp-section-testimonials .sp-shead .sp-eyebrow::before,
+.sp-section-testimonials .sp-shead-center .sp-eyebrow::before{ background:var(--accent); }
+
+/* ============================================================
+   PROCESS STEPS — grey dashes on white bg (accent fades on white)
+   ============================================================ */
+.sp-steps::before{
+  background:repeating-linear-gradient(
+    90deg,
+    rgba(20,24,30,.22) 0,
+    rgba(20,24,30,.22) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+}
+
+/* ============================================================
+   SERVICE TIERS — bolder featured card on light theme
+   ============================================================ */
+.sp-tier.feat{
+  border-color:rgba(255,205,0,.65);
+  border-top:3px solid var(--accent);
+  box-shadow:0 22px 56px -28px rgba(20,24,30,.22),
+             0 0 0 1px rgba(255,205,0,.3);
+}
+
+/* ============================================================
+   CTA BAND — full yellow top accent on light theme
+   ============================================================ */
+.sp-ctaband{
+  border-color:rgba(255,205,0,.4);
+  border-top:3px solid var(--accent);
+}
+.sp-ctaband::before{
+  background:radial-gradient(56% 56% at 50% 0%,
+    rgba(255,205,0,.14), transparent 68%);
+}
+
+/* ============================================================
+   REPCO AUTHORITY BADGE — light theme
+   ============================================================ */
+.sp-hdr-repco{
+  color:var(--txt-2);
+  border-color:var(--line-2);
+  background:rgba(20,24,30,.04);
+}

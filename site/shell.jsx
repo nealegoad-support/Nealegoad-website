@@ -216,6 +216,9 @@ function Header(){
             wordColor={isHeroTop ? "#f3f5f7" : "#15181d"}
           />
         </div>
+        <div className="hdr-repco" aria-label="Repco Authorised Service Centre">
+          <img src="assets/photos/Repco authorised service logo.png" alt="Repco Authorised Service Centre"/>
+        </div>
         <nav className="hdr-nav" aria-label="Main navigation">
           <button
             className={"hdr-svc-btn " + (megaOpen?"open":"")}

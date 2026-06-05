@@ -183,3 +183,219 @@ body::before{
 .ft-p a{ color:var(--txt); }
 .crumb a:hover{ color:#7a6000; }
 .hdr-nav a.on{ color:var(--txt); }
+
+/* ═══════════════════════════════════════════════════════════════
+   REPCO BRANDING — red / black / white palette
+   Red replaces yellow as the primary brand accent throughout.
+   Yellow is retained only for CTA buttons and star ratings.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Eyebrow: red accent line + red text ── */
+.eyebrow{ color:var(--red); }
+.eyebrow::before{ background:var(--red); }
+
+/* ── H1 highlight → red underline marker ── */
+.h1 .hi{
+  color:var(--txt);
+  background:linear-gradient(transparent 60%, rgba(204,0,0,.22) 0);
+  padding:0 .06em;
+}
+
+/* ── Header nav underline → red ── */
+.hdr-nav a::after{ background:linear-gradient(90deg,var(--red),var(--red-soft)); }
+.hdr-svc-btn::after{ background:linear-gradient(90deg,var(--red),var(--red-soft)); }
+
+/* ── Trust bar: red icon tiles ── */
+.trustbar .ti{ background:rgba(204,0,0,.09); color:var(--red); }
+
+/* ── Service cards: red hover accent ── */
+.svc-ico{ background:rgba(204,0,0,.07); color:var(--red); }
+.svc-card:hover .svc-ico{ background:var(--red); color:#fff; }
+.svc-card:hover{ border-color:rgba(204,0,0,.4); box-shadow:0 34px 70px -36px rgba(0,0,0,.14), 0 0 42px -22px rgba(204,0,0,.12); }
+.svc-go{ color:var(--red); }
+
+/* ── Pillar cards: red icon tiles + hover ── */
+.pillar-ico{ background:rgba(204,0,0,.08); color:var(--red); }
+.pillar:hover{ border-color:rgba(204,0,0,.36); }
+
+/* ── Partner strip: red hover ── */
+.partner .pmark{ background:rgba(204,0,0,.08); color:var(--red); }
+.partner:hover{ border-color:rgba(204,0,0,.28); }
+
+/* ── Badge pills: red left border + icon ── */
+.badge-pill{ border-left-color:var(--red); }
+.badge-pill .bp-ico{ background:rgba(204,0,0,.09); color:var(--red); }
+
+/* ── Action bar: Repco red gradient (overrides yellow) ── */
+.actionbar{
+  background:var(--red) !important;
+  background-image:linear-gradient(100deg,var(--red-dark),var(--red-soft)) !important;
+}
+.ab-ico{ background:rgba(255,255,255,.14) !important; color:#fff !important; }
+.ab-l{ color:rgba(255,255,255,.68) !important; }
+.ab-v{ color:#fff !important; }
+.ab-div{ background:rgba(255,255,255,.2) !important; }
+.ab-cta{ background:#111 !important; color:#fff !important; }
+.ab-cta svg{ color:rgba(255,255,255,.8) !important; }
+
+/* ── CTA band: red accent glow ── */
+.ctaband{ border-color:rgba(204,0,0,.26); }
+.ctaband::before{ background:radial-gradient(60% 60% at 50% 0%,rgba(204,0,0,.09),transparent 70%); }
+
+/* ── Footer: red section headings ── */
+.ft-h{ color:var(--red); }
+.ft-svc-link:hover{ color:var(--red); }
+.ft-p a::after{ background:var(--red); }
+.ft-phone:hover{ color:var(--red); }
+
+/* ── FAQ: red accents ── */
+.faq-q:hover{ color:var(--red); }
+.faq-q .pm{ color:var(--red); }
+
+/* ── Tactical block: red ── */
+.tactical{ background:linear-gradient(180deg,rgba(204,0,0,.06),rgba(204,0,0,.01)),#fff; border-color:rgba(204,0,0,.28); }
+.tactical-ico{ background:var(--red); color:#fff; box-shadow:0 12px 30px -10px rgba(204,0,0,.38); }
+.tactical-kicker{ color:var(--red); }
+
+/* ── Form focus: red ── */
+.fl input:focus,.fl textarea:focus,.fl select:focus{ border-color:var(--red); box-shadow:0 0 0 3px rgba(204,0,0,.10); }
+.fl input:focus + label,.fl textarea:focus + label,
+.fl input.filled + label,.fl textarea.filled + label,
+.fl select + label{ color:var(--red); }
+.quote-kick{ color:var(--red); }
+
+/* ── Table / pill accents ── */
+.std-pill{ color:var(--red); background:rgba(204,0,0,.07); }
+.spec-row .val{ color:var(--red); background:rgba(204,0,0,.07); }
+.drive-tag{ color:var(--red); background:rgba(204,0,0,.07); border-color:rgba(204,0,0,.26); }
+.prox-stat .n{ color:var(--red); }
+.prox-pin .dot{ background:var(--red); box-shadow:0 0 0 6px rgba(204,0,0,.12),0 0 0 14px rgba(204,0,0,.05); }
+.prox-pin .ping{ background:rgba(204,0,0,.44); }
+.dtable tbody tr:hover .area .bullet{ background:var(--red); box-shadow:0 0 0 4px rgba(204,0,0,.09); }
+
+/* ── Service tiers: red featured border ── */
+.tier.feat{ border-color:rgba(204,0,0,.52); box-shadow:inset 0 0 0 1px rgba(204,0,0,.22),0 24px 60px -30px rgba(204,0,0,.18); }
+.tier-flag{ background:var(--red); color:#fff; }
+
+/* ── Blog: red accents ── */
+.bp-cat{ color:var(--red); background:rgba(204,0,0,.07); border-color:rgba(204,0,0,.18); }
+.bp-read{ color:var(--red); }
+.bp-flag{ color:var(--red); }
+.bp-chip.on{ background:var(--red); color:#fff; border-color:var(--red); }
+.hblog-arrow:hover:not(:disabled){ background:var(--red); border-color:var(--red); color:#fff; }
+.hblog-dot.on{ background:var(--red); }
+
+/* ── Mega menu: red hover ── */
+.mega-link:hover{ background:rgba(204,0,0,.055) !important; }
+.mega-link:hover .mega-link-ico{ background:rgba(204,0,0,.09) !important; color:var(--red) !important; }
+.mega-link-arr{ color:rgba(204,0,0,.42) !important; }
+
+/* ── Article: red accents ── */
+.article-quote{ border-left-color:var(--red); }
+.article-ul li svg{ background:var(--red); }
+.article-cta{ border-color:rgba(204,0,0,.26); background:linear-gradient(180deg,rgba(204,0,0,.06),rgba(204,0,0,.01)),var(--surface); }
+
+/* ── Share buttons / nearby / mobile menu ── */
+.share-b:hover{ color:var(--red); border-color:var(--red); }
+.nearby a:hover .chip{ border-color:var(--red); background:rgba(204,0,0,.07); color:var(--txt); }
+.msheet .panel a:hover,.msheet .panel a.on{ background:rgba(204,0,0,.07); color:var(--txt); }
+.msheet-svc-btn.open{ background:rgba(204,0,0,.07); }
+.msheet-svc-link:hover{ background:rgba(204,0,0,.07); color:var(--txt); }
+.crumb a:hover{ color:var(--red); }
+
+/* ── Testimonials: red author marks ── */
+.ta-mark{ background:var(--red); color:#fff; }
+.tcard:hover{ border-color:rgba(204,0,0,.38); }
+
+/* ── Accreditation carousel: red hover ── */
+.ac-logo:hover .ac-name{ color:var(--red); }
+.ac-logo:hover .ac-img{ box-shadow:0 10px 40px -10px rgba(204,0,0,.2); }
+
+/* ── Fullscreen hero: override yellow eyebrow → red ── */
+.hero--fullscreen .eyebrow{ color:var(--red); }
+.hero--fullscreen .eyebrow::before{ background:var(--red); }
+.hero--img .eyebrow{ color:var(--red); }
+.hero--img .eyebrow::before{ background:var(--red); }
+
+/* ── Repco hero badge (large logo in hero section) ── */
+.repco-hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  margin-top:26px;
+  padding:10px 18px 10px 14px;
+  border-radius:12px;
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(204,0,0,.18);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  box-shadow:0 4px 20px -6px rgba(0,0,0,.18);
+  max-width:max-content;
+}
+.repco-hero-badge img{
+  height:38px;
+  width:auto;
+  object-fit:contain;
+  display:block;
+  flex:none;
+}
+.repco-hero-badge span{
+  font-family:var(--ff-semi);
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--red);
+  white-space:nowrap;
+}
+
+/* ── Repco badge in header ── */
+.hdr-repco{
+  flex:none;
+  display:flex;
+  align-items:center;
+  padding-left:16px;
+  margin-left:4px;
+  border-left:1px solid var(--line);
+}
+.hdr-repco img{
+  height:26px;
+  width:auto;
+  object-fit:contain;
+  display:block;
+  opacity:.82;
+  transition:opacity .22s;
+}
+.hdr-repco:hover img{ opacity:1; }
+.hdr--top .hdr-repco{ border-left-color:rgba(255,255,255,.18); }
+.hdr--top .hdr-repco img{ opacity:.88; }
+@media(max-width:1100px){ .hdr-repco{ display:none; } }
+
+/* ── Pillar Repco logo badge: larger, red-tinted ── */
+.pillar-logo-badge{
+  background:linear-gradient(145deg,rgba(204,0,0,.07),rgba(204,0,0,.01));
+  border-color:rgba(204,0,0,.18);
+}
+.pillar-logo-badge::before{ background:radial-gradient(ellipse at 50% 0%,rgba(204,0,0,.10) 0%,transparent 70%); }
+.pillar-logo-badge img{ height:62px; max-width:180px; }
+
+/* ── Partners strip: light-theme background ── */
+.partners-strip .partner{ background:#f3f4f1; }
+.partners-strip .partner:hover{ background:rgba(204,0,0,.05); }
+
+/* ── Pillars editorial: light-theme bordered panel ── */
+.pillars--editorial{ background:#fff; }
+.pillars--editorial .pillar{ background:#fff; }
+.pillars--editorial .pillar:nth-child(2){ background:rgba(204,0,0,.025); }
+.pillars--editorial .pillar:nth-child(2):hover{ background:rgba(204,0,0,.045); }
+
+/* ── Service card number watermark: visible on white ── */
+.svc-no{ color:rgba(20,24,30,.05); }
+
+/* ── Repco hero badge: white pill on dark hero ── */
+.hero--fullscreen .repco-hero-badge{
+  background:rgba(255,255,255,.90);
+  border-color:rgba(204,0,0,.25);
+  backdrop-filter:blur(12px);
+}
+.hero--fullscreen .repco-hero-badge span{ color:var(--red); }

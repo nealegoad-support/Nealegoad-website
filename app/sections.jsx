@@ -71,7 +71,7 @@ function Hero({ onBook, variant="showcase" }){
           </div>
 
           <div className="hero-chips" data-reveal style={{"--i":4}}>
-            <span className="chip"><Star/> 4.9★ Google · 300+ local reviews</span>
+            <span className="chip"><ShieldCheck/> Trusted by Local Motorists</span>
             <span className="chip"><Check/> Same-week availability</span>
           </div>
         </div>
@@ -213,7 +213,7 @@ function Heritage(){
           <div className="heritage-stats">
             <div className="hstat"><div className="hstat-n">30+</div><div className="hstat-l">Years certifying locally</div></div>
             <div className="hstat"><div className="hstat-n">2</div><div className="hstat-l">Accredited LVT inspectors</div></div>
-            <div className="hstat"><div className="hstat-n">4.9★</div><div className="hstat-l">Google rating</div></div>
+            <div className="hstat"><div className="hstat-n">Repco</div><div className="hstat-l">Authorised Service</div></div>
           </div>
         </div>
       </div>

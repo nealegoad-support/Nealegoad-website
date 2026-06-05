@@ -595,3 +595,213 @@
   font-size:16px; color:var(--txt-2); } .treview-strip strong{ color:var(--txt); }
 @media (max-width:920px){ .tgrid{ grid-template-columns:repeat(2,1fr); } }
 @media (max-width:600px){ .tgrid{ grid-template-columns:1fr; } }
+
+/* ═══════════════════════════════════════════════════════════════
+   REPCO AUTHORITY BAND
+   Full-width dark strip immediately below hero. Carries the
+   Repco logo, brand headline, and key authority stats.
+   ═══════════════════════════════════════════════════════════════ */
+.repco-authority{
+  background:linear-gradient(135deg,#12151a 0%,#1a1117 55%,#111419 100%);
+  border-top:1px solid rgba(255,255,255,.05);
+  border-bottom:3px solid var(--red,#CC0000);
+  padding:36px 0;
+}
+.ra-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:28px; flex-wrap:wrap;
+}
+.ra-brand{
+  display:flex; align-items:center; gap:22px;
+  flex:1; min-width:0;
+}
+.ra-logo{
+  height:72px; width:auto; object-fit:contain; flex:none;
+  filter:drop-shadow(0 4px 16px rgba(0,0,0,.45));
+}
+.ra-vline{ width:1px; height:48px; background:rgba(255,255,255,.16); flex:none; }
+.ra-headline{
+  font-family:var(--ff-disp); font-weight:800;
+  font-size:clamp(18px,2vw,26px); text-transform:uppercase;
+  color:#f3f5f7; line-height:1; margin:0 0 7px; letter-spacing:-.01em;
+}
+.ra-tagline{ font-size:13.5px; color:rgba(243,245,247,.52); margin:0; max-width:44ch; line-height:1.5; }
+.ra-stats{ display:flex; flex:none; }
+.ra-stat{
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  padding:0 24px; border-left:1px solid rgba(255,255,255,.1);
+}
+.ra-stat:first-child{ border-left:none; }
+.ra-n{
+  font-family:var(--ff-disp); font-weight:800; font-size:36px;
+  color:var(--red,#CC0000); line-height:1; white-space:nowrap;
+}
+.ra-l{
+  font-size:11px; color:rgba(255,255,255,.48); font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-top:5px; white-space:nowrap;
+}
+@media(max-width:1020px){
+  .ra-stats{ flex-wrap:wrap; flex-basis:100%; order:2; border-top:1px solid rgba(255,255,255,.08); padding-top:24px; }
+  .ra-stat{ flex:0 0 50%; border-left:none; border-top:1px solid rgba(255,255,255,.07); padding:12px 0; }
+  .ra-stat:first-child,.ra-stat:nth-child(2){ border-top:none; }
+}
+@media(max-width:680px){
+  .ra-brand{ gap:16px; }
+  .ra-vline{ display:none; }
+  .ra-logo{ height:56px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HERITAGE STRIP
+   Dark split section — large stats left, facade image right.
+   Establishes the 30+ year authority of the workshop.
+   ═══════════════════════════════════════════════════════════════ */
+.hs{
+  position:relative; overflow:hidden;
+  background:#111419;
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.hs-img-pane{
+  position:absolute; right:0; top:0; bottom:0; width:46%;
+  pointer-events:none;
+}
+.hs-img{ width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+.hs-img-overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(
+    to right,
+    #111419 0%,
+    rgba(17,20,25,.92) 28%,
+    rgba(17,20,25,.55) 58%,
+    transparent 100%
+  );
+}
+.hs-inner{ position:relative; z-index:2; padding-top:84px; padding-bottom:84px; }
+.hs-body{ max-width:520px; }
+.hs-head{
+  color:#f3f5f7; margin-top:14px;
+  font-size:clamp(40px,4.8vw,70px);
+  line-height:.94;
+}
+.hs-numbers{
+  display:flex; gap:0;
+  margin-top:44px;
+  border-top:1px solid rgba(255,255,255,.1);
+  padding-top:32px;
+}
+.hs-num{
+  display:flex; flex-direction:column;
+  padding-right:36px; margin-right:36px;
+  border-right:1px solid rgba(255,255,255,.1);
+}
+.hs-num:last-child{ border-right:none; padding-right:0; margin-right:0; }
+.hs-n{
+  font-family:var(--ff-disp); font-weight:800;
+  font-size:56px; color:var(--red,#CC0000); line-height:1;
+}
+.hs-l{
+  font-size:12px; color:rgba(255,255,255,.46); font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; margin-top:5px;
+}
+@media(max-width:900px){
+  .hs-img-pane{ display:none; }
+  .hs-inner{ padding:60px 0; }
+  .hs-body{ max-width:100%; }
+}
+@media(max-width:580px){
+  .hs-numbers{ flex-wrap:wrap; gap:20px 0; }
+  .hs-num{ flex:0 0 50%; border-right:none; padding-right:0; margin-right:0; }
+  .hs-n{ font-size:46px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PILLARS — editorial horizontal grid (no floating cards)
+   Replaces the card grid with a unified bordered panel layout.
+   ═══════════════════════════════════════════════════════════════ */
+.pillars--editorial{
+  display:grid; grid-template-columns:1fr 1fr 1fr;
+  gap:0; margin-top:44px;
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg); overflow:hidden;
+}
+.pillars--editorial .pillar{
+  border-radius:0; border:none;
+  border-left:1px solid var(--line);
+  transition:background .28s var(--ease);
+}
+.pillars--editorial .pillar:first-child{ border-left:none; }
+/* Featured Repco pillar (second child) — red left accent */
+.pillars--editorial .pillar:nth-child(2){
+  border-left:3px solid var(--red,#CC0000);
+  background:rgba(204,0,0,.025);
+}
+.pillars--editorial .pillar:hover{ transform:none; }
+.pillars--editorial .pillar:nth-child(2):hover{ background:rgba(204,0,0,.045); }
+@media(max-width:880px){
+  .pillars--editorial{ grid-template-columns:1fr; }
+  .pillars--editorial .pillar{ border-left:none; border-top:1px solid var(--line); }
+  .pillars--editorial .pillar:first-child{ border-top:none; }
+  .pillars--editorial .pillar:nth-child(2){ border-left:none; border-top:3px solid var(--red,#CC0000); }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PARTNERS STRIP — unified horizontal strip (no individual cards)
+   ═══════════════════════════════════════════════════════════════ */
+.partners-strip{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:0; margin-top:30px;
+  border:1px solid var(--line);
+  border-radius:var(--radius); overflow:hidden;
+}
+.partners-strip .partner{
+  border-radius:0; background:var(--surface-2);
+  border:none; border-left:1px solid var(--line);
+  transition:background .24s, color .24s;
+}
+.partners-strip .partner:first-child{ border-left:none; }
+.partners-strip .partner:hover{
+  transform:none;
+  background:rgba(204,0,0,.055);
+  border-left-color:transparent;
+}
+@media(max-width:780px){
+  .partners-strip{ grid-template-columns:repeat(2,1fr); }
+  .partners-strip .partner:nth-child(odd){ border-left:none; }
+  .partners-strip .partner:nth-child(n+3){ border-top:1px solid var(--line); }
+}
+@media(max-width:440px){
+  .partners-strip{ grid-template-columns:1fr; }
+  .partners-strip .partner{ border-left:none; border-top:1px solid var(--line); }
+  .partners-strip .partner:first-child{ border-top:none; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   DARK SECTION WRAPPER
+   Wraps a light-theme component (e.g. Testimonials) to give it
+   a charcoal background for visual section contrast.
+   ═══════════════════════════════════════════════════════════════ */
+.section--dark{
+  background:#111419;
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.section--dark .eyebrow{ color:#e62020; }
+.section--dark .eyebrow::before{ background:#e62020; }
+.section--dark .h2{ color:#f3f5f7; }
+.section--dark .lead{ color:rgba(243,245,247,.62); }
+.section--dark .tcard{
+  background:rgba(255,255,255,.05);
+  border-color:rgba(255,255,255,.09);
+}
+.section--dark .tcard:hover{ border-color:rgba(204,0,0,.45); transform:translateY(-5px); }
+.section--dark .tquote{ color:#f3f5f7; }
+.section--dark .ta-n{ color:#f3f5f7; }
+.section--dark .ta-l{ color:rgba(255,255,255,.46); }
+.section--dark .ta-mark{ background:var(--red,#CC0000); color:#fff; }
+.section--dark .treview-strip{
+  background:rgba(255,255,255,.05);
+  border-color:rgba(255,255,255,.1);
+  color:rgba(255,255,255,.62);
+}
+.section--dark .treview-strip strong{ color:#f3f5f7; }
