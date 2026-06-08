@@ -212,7 +212,7 @@ function Header(){
              onKeyDown={(e)=>{ if(e.key==="Enter") go("/"); }}>
           {/* Logo wordmark switches to white when header is transparent over dark hero */}
           <NGLogo
-            style={{height:"36px"}}
+            style={{height:"50px"}}
             wordColor={isHeroTop ? "#f3f5f7" : "#15181d"}
           />
         </div>
@@ -369,7 +369,7 @@ function Footer(){
           <span className="ft-h">Contact</span>
           <p className="ft-p">
             <a href={PHONE_TEL} style={{color:"var(--txt)"}}>{PHONE_DISPLAY}</a><br/>
-            <a href="mailto:service@nealegoad.com.au" style={{color:"var(--txt-2)",fontSize:"13.5px"}}>service@nealegoad.com.au</a>
+            <a href="mailto:sales@goadgroup.com.au" style={{color:"var(--txt-2)",fontSize:"13.5px"}}>sales@goadgroup.com.au</a>
           </p>
         </div>
         <div>

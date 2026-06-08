@@ -91,9 +91,9 @@
 .pillar-logo-badge img{
   position:relative;
   display:block;
-  height:54px;
+  height:70px;
   width:auto;
-  max-width:150px;
+  max-width:195px;
   object-fit:contain;
   z-index:1;
 }
@@ -616,7 +616,7 @@
   flex:1; min-width:0;
 }
 .ra-logo{
-  height:100px; width:auto; object-fit:contain; flex:none;
+  height:130px; width:auto; object-fit:contain; flex:none;
   filter:drop-shadow(0 4px 16px rgba(0,0,0,.45));
 }
 .ra-vline{ width:1px; height:68px; background:rgba(255,255,255,.16); flex:none; }
@@ -648,7 +648,7 @@
 @media(max-width:680px){
   .ra-brand{ gap:16px; }
   .ra-vline{ display:none; }
-  .ra-logo{ height:72px; }
+  .ra-logo{ height:94px; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
