@@ -125,7 +125,7 @@ function ClassicView(){
             <Eyebrow nb>VicRoads Club Permit Scheme</Eyebrow>
             <h1 className="h1" style={{marginTop:"16px"}}>Care your <span className="hi">classic</span> deserves</h1>
             <p className="lead" style={{marginTop:"20px"}}>Club Permit (CPS) safety inspections and roadworthy certificates for classic, vintage and enthusiast vehicles — handled by an experienced Licensed Vehicle Tester who treats your car like their own.</p>
-            <div className="hero-actions"><CallBtn lg/><BookBtn lg label="Book an inspection"/></div>
+            <div className="hero-actions"><CallBtn lg/><BookBtn lg label="Book an inspection" service="classic"/></div>
           </div>
           <div className="hero-right" data-reveal style={{"--i":1}}>
             <Media slow style={{aspectRatio:"4 / 3.4"}} src="site/img/classic-tourer.jpg" tag="Heritage" caption="Enthusiast-grade care" capIcon="steering" alt="Restored vintage tourer outside Neale Goad Automotive"/>
@@ -161,7 +161,7 @@ function ClassicView(){
         </div>
       </div></section>
 
-      <CtaBand title="Trust your classic to a specialist" sub="Club Permit inspections and roadworthy certificates, handled with enthusiast-grade care in Wendouree."/>
+      <CtaBand service="classic" title="Trust your classic to a specialist" sub="Club Permit inspections and roadworthy certificates, handled with enthusiast-grade care in Wendouree."/>
     </div>
   );
 }

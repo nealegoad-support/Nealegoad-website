@@ -805,3 +805,208 @@
   color:rgba(255,255,255,.62);
 }
 .section--dark .treview-strip strong{ color:#f3f5f7; }
+
+/* ============ CONTACT PAGE — Google Maps embed frame ============ */
+.contact-map-frame{ position:relative; margin-top:42px; border:1px solid var(--line);
+  border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--card-shadow); background:var(--surface-2); }
+.contact-map-frame iframe{ display:block; width:100%; height:440px; border:0;
+  filter:grayscale(.3) contrast(1.05); }
+@media (max-width:600px){ .contact-map-frame iframe{ height:340px; } }
+
+/* ============================================================
+   RESPONSIVE AUDIT — overflow & full-bleed safety nets
+   ============================================================ */
+/* Wide data tables (RWC checklist) scroll horizontally instead of clipping
+   on very small screens — prevents the page itself from overflowing-x. */
+@media (max-width:600px){
+  .dtable-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+}
+/* Contact map goes edge-to-edge on mobile (breaks out of the 20px .wrap
+   padding) so it reads as genuinely full-width. */
+@media (max-width:600px){
+  .contact-map-frame{ margin-left:-20px; margin-right:-20px; border-radius:0; border-left:0; border-right:0; }
+}
+
+/* ============================================================
+   BOOK SERVICE — premium, Amelia-inspired booking funnel
+   ============================================================ */
+/* slim hero banner */
+.bf-banner{ padding:36px 0 0; text-align:center; }
+.bf-banner-in{ max-width:780px; margin:0 auto; }
+.bf-trustrow{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px 22px; margin-top:24px; }
+.bf-trustrow > span{ display:inline-flex; align-items:center; gap:8px; font-size:13.5px; font-weight:600; color:var(--txt-2); }
+.bf-trustrow svg{ width:17px; height:17px; color:var(--red); }
+.bf-trustrow .bf-rate{ color:var(--txt); font-weight:700; }
+.bf-trustrow .bf-rate .stars{ display:inline-flex; gap:2px; }
+.bf-trustrow .bf-rate .stars svg{ width:15px; height:15px; color:var(--yellow); }
+
+/* stage holding the wizard */
+.bf-stage{ padding:36px 0 8px; }
+@media (max-width:600px){ .bf-stage{ padding:24px 0 4px; } }
+.bf-orcall{ text-align:center; margin-top:22px; font-size:14.5px; color:var(--txt-3); }
+.bf-orcall a{ color:var(--txt); font-weight:700; display:inline-flex; align-items:center; gap:6px; }
+.bf-orcall a svg{ width:16px; height:16px; color:var(--red); }
+.bf-orcall a:hover{ color:var(--red); }
+
+/* wizard card — premium focal point */
+.bf-wizard{ position:relative; max-width:880px; margin:0 auto; scroll-margin-top:104px;
+  background:var(--surface); border:1px solid var(--line); border-radius:24px;
+  box-shadow:0 44px 90px -54px rgba(20,24,30,.5), 0 10px 30px -20px rgba(20,24,30,.18);
+  padding:34px 38px 26px; }
+@media (max-width:600px){ .bf-wizard{ border-radius:18px; padding:22px 18px 20px; } }
+
+/* progress: step rail + bar */
+.bf-prog{ margin-bottom:26px; }
+.bf-steps{ list-style:none; display:flex; padding:0; margin:0 0 16px; }
+.bf-stepi{ flex:1; display:flex; flex-direction:column; align-items:center; gap:8px; position:relative; }
+.bf-stepi::before{ content:""; position:absolute; top:16px; left:-50%; width:100%; height:2px; background:var(--line); z-index:0; transition:background .4s var(--ease); }
+.bf-stepi:first-child::before{ display:none; }
+.bf-stepi.on::before, .bf-stepi.done::before{ background:var(--red); }
+.bf-stepn{ position:relative; z-index:1; width:34px; height:34px; border-radius:50%; display:grid; place-items:center;
+  background:var(--surface); color:var(--txt-3); border:2px solid var(--line);
+  font-family:var(--ff-semi); font-weight:700; font-size:15px; transition:.3s var(--ease); }
+.bf-stepn svg{ width:17px; height:17px; }
+.bf-stepi.on .bf-stepn{ background:var(--red); color:#fff; border-color:var(--red); box-shadow:0 0 0 5px rgba(204,0,0,.12); }
+.bf-stepi.done .bf-stepn{ background:var(--red); color:#fff; border-color:var(--red); }
+.bf-stepl{ font-size:12px; font-weight:700; letter-spacing:.03em; color:var(--txt-3); text-align:center; transition:color .3s; }
+.bf-stepi.on .bf-stepl, .bf-stepi.done .bf-stepl{ color:var(--txt); }
+.bf-stepmob{ display:none; }
+.bf-bar{ height:6px; border-radius:999px; background:var(--surface-2); overflow:hidden; }
+.bf-bar span{ display:block; height:100%; border-radius:999px; background:linear-gradient(90deg,var(--red),var(--red-soft)); transition:width .45s var(--ease); }
+@media (max-width:620px){
+  .bf-steps{ display:none; }
+  .bf-stepmob{ display:block; font-size:13px; font-weight:600; color:var(--txt-2); margin:0 0 10px; }
+  .bf-stepmob strong{ color:var(--txt); }
+}
+
+/* animated pane */
+@keyframes bf-in{ from{ opacity:0; transform:translateY(12px); } to{ opacity:1; transform:none; } }
+.bf-pane{ animation:bf-in .42s var(--ease) both; min-height:236px; }
+.bf-steptitle{ font-family:var(--ff-disp); font-weight:800; text-transform:uppercase; font-size:clamp(24px,3vw,32px); line-height:1; }
+.bf-stepsub{ color:var(--txt-2); font-size:15px; margin:10px 0 22px; }
+.bf-q{ font-family:var(--ff-semi); font-weight:700; font-size:15px; margin:24px 0 12px; }
+
+/* STEP 1 — large service cards */
+.bf-cards{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; align-items:stretch; }
+.bf-svc{ position:relative; display:flex; flex-direction:column; align-items:flex-start; text-align:left; cursor:pointer; font:inherit; color:inherit;
+  padding:22px 18px 20px; border-radius:16px; border:1.5px solid var(--line); background:var(--surface);
+  transition:transform .32s var(--ease), box-shadow .32s var(--ease), border-color .25s, background .25s; }
+.bf-svc:hover{ transform:translateY(-7px); box-shadow:0 30px 52px -30px rgba(20,24,30,.42); border-color:rgba(204,0,0,.45); }
+.bf-svc:active{ transform:translateY(-3px) scale(.99); }
+.bf-svc.on{ border-color:var(--red); background:rgba(204,0,0,.03); box-shadow:inset 0 0 0 1px var(--red); }
+.bf-svc-ico{ width:52px; height:52px; border-radius:14px; display:grid; place-items:center; margin-bottom:16px;
+  background:rgba(204,0,0,.08); color:var(--red); transition:transform .32s var(--ease), background .25s, color .25s; }
+.bf-svc-ico svg{ width:27px; height:27px; }
+.bf-svc:hover .bf-svc-ico{ transform:scale(1.1) rotate(-3deg); }
+.bf-svc.on .bf-svc-ico{ background:var(--red); color:#fff; }
+.bf-svc-t{ font-family:var(--ff-semi); font-weight:700; font-size:16px; line-height:1.15; }
+.bf-svc-d{ font-size:12.5px; color:var(--txt-3); margin-top:6px; line-height:1.4; }
+.bf-svc-chk{ position:absolute; top:12px; right:12px; width:22px; height:22px; border-radius:50%; background:var(--red); color:#fff;
+  display:grid; place-items:center; opacity:0; transform:scale(.6); transition:.25s var(--ease); }
+.bf-svc-chk svg{ width:13px; height:13px; }
+.bf-svc.on .bf-svc-chk, .bf-time.on .bf-svc-chk{ opacity:1; transform:none; }
+@media (max-width:860px){ .bf-cards{ grid-template-columns:repeat(2,1fr); } }
+/* Single column on phones (≤480) so the service cards' descriptions have room
+   and the tap targets are full-width — the 2-col layout was cramped at ~390px. */
+@media (max-width:480px){ .bf-cards{ grid-template-columns:1fr; } }
+
+/* context chip (selected service on later steps) */
+.bf-ctx{ display:inline-flex; align-items:center; gap:9px; font-size:13.5px; font-weight:600; color:var(--txt-2);
+  background:rgba(204,0,0,.06); border:1px solid rgba(204,0,0,.18); border-radius:999px; padding:6px 8px 6px 10px; margin-bottom:20px; }
+.bf-ctx-ico{ width:20px; height:20px; flex:none; border-radius:50%; background:var(--red); color:#fff; display:grid; place-items:center; }
+.bf-ctx-ico svg{ width:12px; height:12px; }
+.bf-change{ border:none; background:rgba(204,0,0,.1); color:var(--red); font:inherit; font-size:12px; font-weight:700; cursor:pointer; padding:3px 11px; border-radius:999px; }
+.bf-change:hover{ background:rgba(204,0,0,.18); }
+
+/* field grids (vehicle / contact) */
+.bf-fields{ display:grid; grid-template-columns:1fr 1fr; gap:18px 16px; }
+.bf-fields .full{ grid-column:1 / -1; }
+@media (max-width:560px){ .bf-fields{ grid-template-columns:1fr; } }
+
+/* STEP 3 — date picker + time preference cards */
+.bf-pickdate{ display:flex; align-items:stretch; border:1.5px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface); }
+.bf-pickdate-ico{ flex:none; width:54px; display:grid; place-items:center; background:rgba(204,0,0,.06); color:var(--red); border-right:1px solid var(--line); }
+.bf-pickdate-ico svg{ width:22px; height:22px; }
+.bf-pickdate .fl{ flex:1; }
+.bf-pickdate .fl input{ border:none; border-radius:0; background:transparent; }
+.bf-pickdate .fl input:focus{ box-shadow:none; }
+.bf-date input[type="date"] + label{ top:8px; font-size:11px; letter-spacing:.05em; text-transform:uppercase; }
+.bf-times{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.bf-time{ position:relative; display:flex; flex-direction:column; align-items:center; text-align:center; gap:4px; cursor:pointer; font:inherit; color:inherit;
+  padding:20px 14px; border-radius:16px; border:1.5px solid var(--line); background:var(--surface);
+  transition:transform .25s var(--ease), box-shadow .25s, border-color .2s; }
+.bf-time:hover{ transform:translateY(-4px); box-shadow:0 22px 40px -28px rgba(20,24,30,.42); border-color:rgba(204,0,0,.45); }
+.bf-time.on{ border-color:var(--red); box-shadow:inset 0 0 0 1px var(--red); }
+.bf-time-ico{ width:46px; height:46px; border-radius:12px; display:grid; place-items:center; margin-bottom:6px; background:rgba(204,0,0,.08); color:var(--red); transition:.25s; }
+.bf-time-ico svg{ width:24px; height:24px; }
+.bf-time.on .bf-time-ico{ background:var(--red); color:#fff; }
+.bf-time-t{ font-family:var(--ff-semi); font-weight:700; font-size:15.5px; }
+.bf-time-s{ font-size:12px; color:var(--txt-3); }
+@media (max-width:480px){ .bf-times{ grid-template-columns:1fr; } .bf-time{ flex-direction:row; justify-content:flex-start; text-align:left; gap:14px; padding:14px 16px; } .bf-time-ico{ margin-bottom:0; } }
+
+/* STEP 5 — review */
+.bf-review{ border:1px solid var(--line); border-radius:16px; overflow:hidden; }
+.bf-rev-row{ display:grid; grid-template-columns:160px 1fr auto; align-items:center; gap:14px; padding:16px 20px; border-top:1px solid var(--line); }
+.bf-rev-row:first-child{ border-top:none; }
+.bf-rev-k{ display:inline-flex; align-items:center; gap:9px; font-family:var(--ff-semi); font-weight:700; font-size:13px; color:var(--txt-3); text-transform:uppercase; letter-spacing:.04em; }
+.bf-rev-k svg{ width:17px; height:17px; color:var(--red); }
+.bf-rev-v{ font-size:15.5px; color:var(--txt); font-weight:600; }
+.bf-edit{ border:none; background:none; color:var(--red); font:inherit; font-size:13px; font-weight:700; cursor:pointer; padding:4px 6px; }
+.bf-edit:hover{ text-decoration:underline; }
+.bf-submit{ margin-top:22px; } .bf-submit svg{ width:20px; height:20px; }
+.bf-fineprint{ font-size:12.5px; color:var(--txt-3); text-align:center; margin:14px 0 0; }
+@media (max-width:520px){
+  .bf-rev-row{ grid-template-columns:1fr auto; }
+  .bf-rev-k{ grid-column:1; grid-row:1; } .bf-rev-v{ grid-column:1; grid-row:2; } .bf-edit{ grid-column:2; grid-row:1 / span 2; align-self:center; }
+}
+
+/* footer: persistent trust + nav */
+.bf-foot{ margin-top:26px; padding-top:20px; border-top:1px solid var(--line); }
+.bf-assure{ display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px 18px; }
+.bf-assure > span{ display:inline-flex; align-items:center; gap:7px; font-size:12.5px; font-weight:600; color:var(--txt-3); }
+.bf-assure svg{ width:15px; height:15px; color:var(--red); }
+.bf-assure .bf-assure-rate{ color:var(--txt-2); } .bf-assure .bf-assure-rate svg{ color:var(--yellow); }
+.bf-nav{ display:flex; gap:12px; align-items:center; margin-top:18px; }
+.bf-nav .bf-next{ flex:1; justify-content:center; }
+.bf-nav .bf-back{ flex:none; }
+.bf-err{ color:#d92020; font-size:13px; font-weight:600; margin-top:8px; }
+
+/* success */
+.bf-wizard--done{ text-align:center; }
+.bf-done{ max-width:470px; margin:0 auto; padding:16px 0 10px; }
+.bf-done-tick{ width:80px; height:80px; border-radius:50%; background:rgba(204,0,0,.08); display:grid; place-items:center; margin:0 auto 18px; }
+.bf-done-tick svg{ width:42px; height:42px; color:var(--red); }
+.bf-done-h{ font-family:var(--ff-disp); font-weight:800; text-transform:uppercase; font-size:32px; }
+.bf-done-p{ color:var(--txt-2); font-size:15.5px; margin:12px 0 0; line-height:1.6; } .bf-done-p strong{ color:var(--txt); }
+.bf-done-card{ text-align:left; border:1px solid var(--line); border-radius:14px; margin:22px 0; overflow:hidden; }
+.bf-done-card div{ display:flex; justify-content:space-between; gap:16px; padding:12px 18px; border-top:1px solid var(--line); font-size:14px; }
+.bf-done-card div:first-child{ border-top:none; }
+.bf-done-card span{ color:var(--txt-3); flex:none; } .bf-done-card strong{ color:var(--txt); text-align:right; }
+.bf-done-note{ font-size:13px; color:var(--txt-3); margin-top:14px; }
+
+/* trust badges row (below wizard) */
+.bf-badges{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:34px; }
+@media (max-width:920px){ .bf-badges{ grid-template-columns:1fr 1fr; } }
+@media (max-width:520px){ .bf-badges{ grid-template-columns:1fr; } }
+
+/* ============================================================
+   MOBILE POLISH (responsive audit pass)
+   ============================================================ */
+/* Book-hero trust row: the 5 long trust items stack vertically on phones so
+   nothing clips at the viewport edge. */
+@media (max-width:600px){
+  .bf-trustrow{ flex-direction:column; align-items:center; gap:9px; }
+  .bf-trustrow > span{ font-size:13px; }
+}
+/* Hero & CTA-band primary actions go full-width on small phones — larger,
+   thumb-friendly tap targets and a tidier stacked layout. */
+@media (max-width:520px){
+  .hero-actions, .ctaband-actions{ flex-direction:column; align-items:stretch; width:100%; }
+  .hero-actions .btn, .ctaband-actions .btn{ width:100%; justify-content:center; }
+}
+/* Wizard step nav: let the long "Request my booking" / "Continue" label keep
+   the primary button comfortably wide while Back stays compact. */
+@media (max-width:380px){
+  .bf-nav{ gap:8px; }
+  .bf-nav .bf-back{ padding-left:12px; padding-right:12px; }
+}

@@ -13,6 +13,42 @@
   var PHONE_TEL     = 'tel:+61353392056';
   var HOME          = 'index.html';
 
+  /* Single source of truth for the NGA logo — the exact inline SVG used by the
+     master SPA header (site/icons.jsx → NGLogo, wordColor #15181d / mono #FFCC00).
+     Used by both the header bar AND the mobile drawer; no image assets anywhere. */
+  var LOGO_SVG =
+    '<svg viewBox="0 0 356.14 178.98" role="img" aria-label="Neale Goad Automotive">' +
+      '<g fill="none" stroke="#FFCC00" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">' +
+        '<path d="M79.22,57V4.5c29,0,52.5,23.5,52.5,52.5V.5"/>' +
+        '<path d="M197.72,6c-29,0-52.5,23.5-52.5,52.5s23.5,52.5,52.5,52.5V41.5h-21"/>' +
+        '<path d="M264.18,57c0-29-23.5-52.5-52.5-52.5v52.5"/>' +
+        '<line x1="210.68" y1="40.5" x2="261.68" y2="40.5"/>' +
+      '</g>' +
+      '<g fill="#15181d">' +
+        '<path d="M4.85,62.51h7.08l14.17,24.84v-24.84h6.3v33.99h-6.99l-14.26-24.75v24.75h-6.3v-33.99Z"/>' +
+        '<path d="M38.89,62.51h18.26v6.12h-11.96v7.82h11.45v6.12h-11.45v7.82h11.96v6.12h-18.26v-33.99Z"/>' +
+        '<path d="M73.02,81.6l3.63-10.3,3.63,10.3h-7.27ZM60,96.5h6.95l3.77-8.79h12.05l3.68,8.79h6.95l-14.31-33.99h-4.92l-14.17,33.99Z"/>' +
+        '<path d="M96.85,62.51h6.3v27.88h10.4v6.12h-16.7v-33.99Z"/>' +
+        '<path d="M117.09,62.51h18.26v6.12h-11.96v7.82h11.45v6.12h-11.45v7.82h11.96v6.12h-18.26v-33.99Z"/>' +
+        '<path d="M236.82,72.49c-2.02-2.81-5.52-4.51-8.92-4.51-2.9,0-5.7,1.06-7.87,2.94-2.35,2.07-3.91,5.43-3.91,8.56,0,2.85,1.29,5.89,3.27,7.91,2.3,2.44,5.52,3.82,8.79,3.82,4,0,8.1-2.48,9.94-6.12h-14.21v-5.93h22.17v.74c0,9.94-8.37,17.43-18.08,17.43s-18.17-7.64-18.17-17.62,8.33-17.85,18.08-17.85c6.9,0,13.89,4.09,16.47,10.63h-7.54Z"/>' +
+        '<path d="M277.62,79.66c0,6.35-5.2,11.55-11.45,11.55s-11.41-5.24-11.41-11.5,5.06-11.73,11.41-11.59l-.05-.14c6.35,0,11.5,5.2,11.5,11.68ZM266.17,61.86c-9.8,0-17.71,7.91-17.71,17.85s8.05,17.62,17.76,17.62,17.71-7.87,17.71-17.66-7.96-17.8-17.76-17.8Z"/>' +
+        '<path d="M299.06,81.6l3.63-10.3,3.63,10.3h-7.27ZM286.04,96.5h6.95l3.77-8.79h12.05l3.68,8.79h6.95l-14.31-33.99h-4.92l-14.17,33.99Z"/>' +
+        '<path d="M329.19,90.38v-21.76h.46c3.31,0,6.81.09,9.66,2.02,2.94,2.02,4.51,5.47,4.51,9.02,0,3.31-1.47,6.39-4.09,8.42-2.94,2.16-6.21,2.3-9.75,2.3h-.78ZM322.88,96.5h7.27c5.2,0,10.03-.41,14.12-3.91,3.68-3.13,5.84-8.19,5.84-12.93s-2.12-10.07-5.84-13.2c-4-3.4-9.2-3.91-14.26-3.96h-7.13v33.99Z"/>' +
+      '</g>' +
+      '<g fill="#FFCC00">' +
+        '<path d="M62.84,132.43l2.21-6.27,2.21,6.27h-4.42ZM54.92,141.5h4.23l2.3-5.35h7.34l2.24,5.35h4.23l-8.71-20.69h-3l-8.62,20.69Z"/>' +
+        '<path d="M87.9,120.81v12.91c0,.95-.06,1.93.39,2.8.56,1.06,1.54,1.76,2.74,1.76,1.01,0,2.04-.56,2.6-1.46.59-.95.56-2.02.56-3.11v-12.91h3.84v12.91c0,2.04-.17,3.98-1.51,5.6-1.34,1.6-3.39,2.69-5.49,2.69-1.96,0-4-1.06-5.29-2.52-1.51-1.71-1.68-3.61-1.68-5.77v-12.91h3.84Z"/>' +
+        '<path d="M110.8,124.53h-3.81v-3.72h11.51v3.72h-3.86v16.97h-3.84v-16.97Z"/>' +
+        '<path d="M143.87,131.25c0,3.86-3.16,7.03-6.97,7.03s-6.94-3.19-6.94-7,3.08-7.14,6.94-7.06l-.03-.08c3.86,0,7,3.16,7,7.11ZM136.9,120.42c-5.96,0-10.78,4.82-10.78,10.86s4.9,10.72,10.81,10.72,10.78-4.79,10.78-10.75-4.84-10.84-10.81-10.84Z"/>' +
+        '<path d="M157.42,120.81h5.24l5.54,15.82,5.63-15.82h5.21v20.69h-3.84v-15.51l-5.35,15.51h-3.25l-5.35-15.51v15.51h-3.84v-20.69Z"/>' +
+        '<path d="M206.03,131.25c0,3.86-3.16,7.03-6.97,7.03s-6.94-3.19-6.94-7,3.08-7.14,6.94-7.06l-.03-.08c3.86,0,7,3.16,7,7.11ZM199.06,120.42c-5.96,0-10.78,4.82-10.78,10.86s4.9,10.72,10.81,10.72,10.78-4.79,10.78-10.75-4.84-10.84-10.81-10.84Z"/>' +
+        '<path d="M221.68,124.53h-3.81v-3.72h11.51v3.72h-3.86v16.97h-3.84v-16.97Z"/>' +
+        '<path d="M238.06,120.81h3.84v20.69h-3.84v-20.69Z"/>' +
+        '<path d="M250.94,120.81h4.03l5.57,15.74,5.57-15.74h4.03l-8.01,20.69h-3.16l-8.04-20.69Z"/>' +
+        '<path d="M278.94,120.81h11.12v3.72h-7.28v4.76h6.97v3.72h-6.97v4.76h7.28v3.72h-11.12v-20.69Z"/>' +
+      '</g>' +
+    '</svg>';
+
   var GROUPS = [
     {
       label: 'General Automotive',
@@ -46,6 +82,29 @@
       ]
     }
   ];
+
+  /* Top-level nav — mirrors the SPA master header; links into the SPA routes */
+  var NAV_ITEMS = [
+    { label:'Roadworthy',     href:'index.html#/roadworthy-certificate-ballarat' },
+    { label:'Car Service',    href:'index.html#/car-service-ballarat' },
+    { label:'Fleet',          href:'index.html#/fleet-servicing-ballarat' },
+    { label:'Diesel & Truck', href:'index.html#/diesel-mechanic-ballarat' },
+    { label:'Classic',        href:'index.html#/classic-car-roadworthy-ballarat' },
+    { label:'Blog',           href:'index.html#/blog' },
+    { label:'Contact',        href:'index.html#/contact' }
+  ];
+  /* Which top-nav item to highlight on each standalone page */
+  var ACTIVE_MAP = {
+    'roadworthy-certificates.html':'Roadworthy',
+    'roadworthy-certificate-ballarat.html':'Roadworthy',
+    'car-servicing-ballarat.html':'Car Service',
+    'logbook-servicing-ballarat.html':'Car Service',
+    'fleet-servicing-ballarat.html':'Fleet',
+    'diesel-repairs-ballarat.html':'Diesel & Truck',
+    'truck-repairs-ballarat.html':'Diesel & Truck',
+    'plant-equipment-repairs-ballarat.html':'Diesel & Truck',
+    'classic-car-roadworthy-ballarat.html':'Classic'
+  };
 
   /* ------------------------------------------------------------------ */
   /* SVG ICONS                                                            */
@@ -131,13 +190,7 @@
       return '<div class="drawer-svc-group"><div class="drawer-svc-group-label">' + g.label + '</div>' + links + '</div>';
     }).join('');
 
-    var logoSvg = '<svg viewBox="0 0 356.14 178.98" role="img" aria-label="Neale Goad Automotive" style="height:30px;width:auto;display:block;">' +
-      '<g fill="none" stroke="#FFCC00" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">' +
-      '<path d="M79.22,57V4.5c29,0,52.5,23.5,52.5,52.5V.5"/>' +
-      '<path d="M197.72,6c-29,0-52.5,23.5-52.5,52.5s23.5,52.5,52.5,52.5V41.5h-21"/>' +
-      '<path d="M264.18,57c0-29-23.5-52.5-52.5-52.5v52.5"/>' +
-      '<line x1="210.68" y1="40.5" x2="261.68" y2="40.5"/>' +
-      '</g></svg>';
+    var logoSvg = LOGO_SVG;  /* single source of truth — same inline SVG as the header bar */
 
     return '<div class="sp-drawer sp-drawer--nav" id="sp-mega-drawer" aria-hidden="true" role="dialog" aria-label="Services navigation">' +
            '<div class="sp-drawer-scrim" id="sp-mega-scrim"></div>' +
@@ -165,13 +218,32 @@
   }
 
   /* ------------------------------------------------------------------ */
-  /* BUILD: HEADER NAV (replaces .sp-nav content)                        */
+  /* BUILD: MASTER HEADER BAR (the single global header — matches the SPA) */
   /* ------------------------------------------------------------------ */
-  function buildNavLinksHTML() {
-    return '<a href="' + HOME + '" class="sp-nav-home">Home</a>' +
-           '<button class="sp-nav-svc-btn" id="sp-mega-trigger" aria-haspopup="true" aria-expanded="false">' +
-             'Services ' + ICONS.chev +
-           '</button>';
+  function buildHeaderHTML() {
+    var links = NAV_ITEMS.map(function (n) {
+      var on = ACTIVE_MAP[currentFile] === n.label ? ' class="on"' : '';
+      return '<a href="' + n.href + '"' + on + '>' + n.label + '</a>';
+    }).join('');
+    return '<header class="hdr">' +
+           '<div class="hdr-in">' +
+             '<a class="hdr-logo" href="' + HOME + '" aria-label="Neale Goad Automotive home">' +
+               LOGO_SVG +
+             '</a>' +
+             '<div class="hdr-repco" aria-label="Repco Authorised Service Centre">' +
+               '<img src="assets/photos/Repco authorised service logo.png" alt="Repco Authorised Service Centre">' +
+             '</div>' +
+             '<nav class="hdr-nav" aria-label="Main navigation">' +
+               '<button class="hdr-svc-btn" id="sp-mega-trigger" aria-haspopup="true" aria-expanded="false">Services ' + ICONS.chev + '</button>' +
+               links +
+             '</nav>' +
+             '<div class="hdr-cta">' +
+               '<span class="hdr-hours"><span class="dot"></span> Open today · 8–5</span>' +
+               '<a class="hdr-call" href="' + PHONE_TEL + '"><span aria-hidden="true">📞</span> ' + PHONE_DISPLAY + '</a>' +
+               '<button class="hdr-menu" id="sp-drawer-open" aria-label="Open menu">' + ICONS.menu + '</button>' +
+             '</div>' +
+           '</div>' +
+           '</header>';
   }
 
   /* ------------------------------------------------------------------ */
@@ -251,26 +323,28 @@
   /* INJECT INTO DOM                                                       */
   /* ------------------------------------------------------------------ */
   function inject() {
-    /* 1. Replace .sp-nav content with Services mega trigger */
-    var nav = document.querySelector('.sp-nav');
-    if (nav) {
-      nav.innerHTML = buildNavLinksHTML();
-    }
+    /* 0. Remove any legacy inline header / drawer so there is exactly ONE
+          global header (safety net for any page whose markup wasn't stripped). */
+    var legacyHdr = document.querySelector('header.sp-hdr');
+    if (legacyHdr) legacyHdr.parentNode.removeChild(legacyHdr);
+    var legacyDrawer = document.querySelector('.sp-drawer');
+    if (legacyDrawer) legacyDrawer.parentNode.removeChild(legacyDrawer);
 
-    /* 2. Inject mega panel into header */
-    var hdr = document.querySelector('.sp-hdr');
-    if (hdr) {
-      var megaEl = document.createElement('div');
-      megaEl.innerHTML = buildMegaHTML();
-      hdr.appendChild(megaEl.firstElementChild);
-    }
+    /* 1. Inject the master header bar at the very top of <body> */
+    var hWrap = document.createElement('div');
+    hWrap.innerHTML = buildHeaderHTML();
+    document.body.insertBefore(hWrap.firstElementChild, document.body.firstChild);
 
-    /* 3. Remove old drawer and inject new one */
-    var oldDrawer = document.querySelector('.sp-drawer');
-    if (oldDrawer) oldDrawer.parentNode.removeChild(oldDrawer);
-    var newDrawerEl = document.createElement('div');
-    newDrawerEl.innerHTML = buildDrawerHTML();
-    document.body.insertBefore(newDrawerEl.firstElementChild, document.body.firstChild);
+    /* 2. Inject the mega panel as a BODY child (NOT inside .hdr) so its
+          position:fixed isn't trapped by the header's backdrop-filter. */
+    var megaEl = document.createElement('div');
+    megaEl.innerHTML = buildMegaHTML();
+    document.body.appendChild(megaEl.firstElementChild);
+
+    /* 3. Inject the mobile drawer */
+    var drawerEl = document.createElement('div');
+    drawerEl.innerHTML = buildDrawerHTML();
+    document.body.insertBefore(drawerEl.firstElementChild, document.body.firstChild);
 
     /* 4. Add Services column to footer (grid-column:1/-1 via CSS → full-width row) */
     var footerCols = document.querySelector('.sp-footer-cols');
@@ -280,20 +354,9 @@
       footerCols.appendChild(colEl.firstElementChild);
     }
 
-    /* 5. Fix breadcrumbs */
+    /* 5. Fix breadcrumbs + standardise footer */
     fixBreadcrumbs();
-
-    /* 6. Update hamburger button to open new drawer */
-    var openBtn = document.getElementById('sp-drawer-open');
-    if (openBtn) {
-      openBtn.id = 'sp-drawer-open-v2';
-      openBtn.addEventListener('click', openDrawer);
-    }
-
-    /* 7. Inject "Book a Service" CTA into footer contact column */
     injectFooterBookBtn();
-
-    /* 8. Standardise footer bottom quick links */
     updateFooterBottomLinks();
   }
 
@@ -379,7 +442,7 @@
     });
 
     /* Close on other nav links hover */
-    document.querySelectorAll('.sp-nav a:not(.sp-nav-svc-btn)').forEach(function (a) {
+    document.querySelectorAll('.hdr-nav a').forEach(function (a) {
       a.addEventListener('mouseenter', scheduleMegaClose);
     });
 
@@ -538,7 +601,6 @@
     initScrollReveal();
     initButtonGlow();
     loadLightbox();
-    injectRepcoBadge();
   }
 
   if (document.readyState === 'loading') {

@@ -346,7 +346,7 @@ function RwcView(){
             <Eyebrow>Licensed Vehicle Tester · Wendouree</Eyebrow>
             <h1 className="h1" style={{marginTop:"18px"}}>Roadworthy Certificates <span className="hi">Wendouree &amp; Ballarat</span></h1>
             <p className="lead" style={{marginTop:"20px"}}>A fast, properly-documented RWC from a Repco Authorised workshop with two accredited inspectors — and the ability to fix what fails on the spot.</p>
-            <div className="hero-actions"><CallBtn lg/><BookBtn lg label="Book inspection"/></div>
+            <div className="hero-actions"><CallBtn lg/><BookBtn lg label="Book inspection" service="roadworthy"/></div>
           </div>
           <div className="hero-right" data-reveal style={{"--i":1}}>
             <div className="hero-badges">
@@ -362,7 +362,7 @@ function RwcView(){
             <span className="tactical-kicker">The on-site advantage</span>
             <p className="tactical-text"><strong>Failed inspection? Rectification repairs can be completed right here on-site</strong> — saving you a second trip and additional vehicle downtime.</p>
           </div>
-          <BookBtn label="Book &amp; beat the re-test" className="tactical-btn"/>
+          <BookBtn label="Book &amp; beat the re-test" className="tactical-btn" service="roadworthy"/>
         </div>
       </div></section>
 
@@ -397,7 +397,7 @@ function RwcView(){
 
       <Testimonials/>
 
-      <CtaBand title="Book your roadworthy this week"/>
+      <CtaBand title="Book your roadworthy this week" service="roadworthy"/>
     </div>
   );
 }

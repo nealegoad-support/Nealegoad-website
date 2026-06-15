@@ -72,7 +72,7 @@ function ActionBar(){
         <span className="ab-ico"><Icons.clock/></span>
         <span className="ab-text"><span className="ab-l">Open hours</span><span className="ab-v">Mon–Fri · 8am–5pm</span></span>
       </div>
-      <button className="btn btn-primary btn-lg ab-cta" onClick={()=>go("/roadworthy-certificate-ballarat")}>
+      <button className="btn btn-primary btn-lg ab-cta" onClick={()=>go("/book-service?service=roadworthy")}>
         <Icons.fileCheck/> Get a Roadworthy Inspection
       </button>
     </div></section>

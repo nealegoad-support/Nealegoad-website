@@ -75,7 +75,7 @@ function FleetView(){
             <Eyebrow>Corporate &amp; government fleet</Eyebrow>
             <h1 className="h1" style={{marginTop:"18px"}}>Fleet servicing that keeps <span className="hi">critical fleets</span> moving</h1>
             <p className="lead" style={{marginTop:"20px"}}>Selected to service and certify vehicles for the organisations our community depends on — with onsite roller brake testing, diesel specialists and single-invoice reporting.</p>
-            <div className="hero-actions"><a href="#fleet-form" className="btn btn-primary btn-lg"><Icons.building/> Request a proposal</a><CallBtn lg emoji={false} label={"Call " + PHONE_DISPLAY}/></div>
+            <div className="hero-actions"><a href="#/book-service?service=fleet" className="btn btn-primary btn-lg"><Icons.building/> Request a proposal</a><CallBtn lg emoji={false} label={"Call " + PHONE_DISPLAY}/></div>
           </div>
           <div className="hero-right" data-reveal style={{"--i":1}}>
             <Media style={{aspectRatio:"4 / 3.2"}} src="site/img/fleet-bus.jpg" tag="Fleet" caption="Trusted by local institutions" capIcon="building" alt="Bupa Aged Care minibus in for fleet servicing"/>
@@ -126,7 +126,7 @@ function FleetView(){
         </div>
       </div></section>
 
-      <CtaBand title="Partner with a workshop that shows up" sub="Join VIC SES, Grampians Health and Federation University. Let's build a fleet plan around your uptime."/>
+      <CtaBand service="fleet" title="Partner with a workshop that shows up" sub="Join VIC SES, Grampians Health and Federation University. Let's build a fleet plan around your uptime."/>
     </div>
   );
 }
@@ -148,7 +148,7 @@ function CarServiceView(){
             <Eyebrow>Factory-trained technicians</Eyebrow>
             <h1 className="h1" style={{marginTop:"18px"}}>Logbook servicing that <span className="hi">won't void</span> your warranty</h1>
             <p className="lead" style={{marginTop:"20px"}}>Warranty-safe logbook servicing for all makes and models at Wendouree's Repco Authorised Service Centre — with free pickup &amp; delivery within 10 km of the CBD.</p>
-            <div className="hero-actions"><CallBtn lg/><BookBtn lg label="Book a service"/></div>
+            <div className="hero-actions"><CallBtn lg/><BookBtn lg label="Book a service" service="vehicle-service"/></div>
             <div className="hero-chips"><span className="chip"><Icons.check/> ACCC-compliant logbook stamps</span><span className="chip"><Icons.truck/> Free pickup &amp; delivery</span></div>
           </div>
           <div className="hero-right" data-reveal style={{"--i":1}}>
@@ -173,14 +173,14 @@ function CarServiceView(){
               <span className="tier-n">{t.name}</span>
               <span className="tier-p">{t.price}<span>/from</span></span>
               <ul>{t.inc.map((x,j)=><li key={j}><Icons.check/>{x}</li>)}</ul>
-              <BookBtn label="Book this service" className={t.feat?"btn-primary":""}/>
+              <BookBtn label="Book this service" className={t.feat?"btn-primary":""} service="vehicle-service"/>
             </div>
           ))}
         </div>
         <p className="muted center" style={{marginTop:"18px",fontSize:"13.5px"}}>Indicative from-prices for common light vehicles. Final quote confirmed on booking.</p>
       </div></section>
 
-      <CtaBand title="Book your next service" sub="Genuine parts, warranty-safe stamps, and free pickup & delivery within 10 km of Ballarat CBD."/>
+      <CtaBand service="vehicle-service" title="Book your next service" sub="Genuine parts, warranty-safe stamps, and free pickup & delivery within 10 km of Ballarat CBD."/>
     </div>
   );
 }
@@ -219,7 +219,7 @@ function DieselView(){
             <Eyebrow>Trucks · Plant · Equipment</Eyebrow>
             <h1 className="h1" style={{marginTop:"18px"}}>Diesel &amp; heavy vehicle <span className="hi">specialists</span></h1>
             <p className="lead" style={{marginTop:"20px"}}>Hydraulic diagnosis, engine rebuilds and compliance inspections for trucks, excavators and loaders — with dealer-level diagnostics in Wendouree.</p>
-            <div className="hero-actions"><CallBtn lg/><BookBtn lg label="Book an inspection"/></div>
+            <div className="hero-actions"><CallBtn lg/><BookBtn lg label="Book an inspection" service="diesel-truck"/></div>
           </div>
           <div className="hero-right" data-reveal style={{"--i":1}}>
             <Media style={{aspectRatio:"4 / 3.2"}} src="site/img/diesel-patrol.jpg" tag="Heavy vehicle" caption="Dealer-level diagnostics" capIcon="gauge" alt="Nissan Patrol 4x4 raised on the hoist for heavy-vehicle work"/>
@@ -252,7 +252,7 @@ function DieselView(){
         </div>
       </div></section>
 
-      <CtaBand title="Keep your gear earning" sub="Dealer-level diagnostics, hydraulic specialists and compliance testing — book your truck, plant or equipment in."/>
+      <CtaBand service="diesel-truck" title="Keep your gear earning" sub="Dealer-level diagnostics, hydraulic specialists and compliance testing — book your truck, plant or equipment in."/>
     </div>
   );
 }

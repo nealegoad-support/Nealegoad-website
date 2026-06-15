@@ -369,7 +369,12 @@ body::before{
 .hdr-repco:hover img{ opacity:1; }
 .hdr--top .hdr-repco{ border-left-color:rgba(255,255,255,.18); }
 .hdr--top .hdr-repco img{ opacity:.88; }
-@media(max-width:1180px){ .hdr-repco{ display:none; } }
+/* Repco badge is a key accreditation/trust element and stays visible in the
+   header. The header content column is widened past the 1200px page width
+   (see .hdr-in in app.css) so it fits alongside the full nav, hours and phone.
+   It only hides at ≤1150px, where the nav is already near collapsing and the
+   row genuinely runs out of room. */
+@media (max-width:1150px){ .hdr-repco{ display:none; } }
 
 /* ── Pillar Repco logo badge: larger, red-tinted ── */
 .pillar-logo-badge{

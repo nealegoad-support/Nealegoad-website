@@ -16,11 +16,16 @@ const ROUTES = {
   "/mechanic-delacombe":             (r) => <LocationView route={r}/>,
   "/blog":                           () => <BlogView/>,
   "/blog-post":                      () => <ArticleView/>,
+  "/contact":                        () => <ContactView/>,
+  "/book-service":                   () => <BookServiceView/>,
 };
 
 function routeFromHash(){
+  /* strip any ?query (e.g. /book-service?service=diesel) before matching the
+     route; views read their own params straight from location.hash */
   const h = (location.hash || "").replace(/^#/, "");
-  return ROUTES[h] ? h : "/";
+  const path = h.split("?")[0];
+  return ROUTES[path] ? path : "/";
 }
 
 function App(){
@@ -31,8 +36,9 @@ function App(){
 
   /* navigate with leave→swap→enter */
   const go = useCallback((to)=>{
-    if(!ROUTES[to]) to = "/";
-    if(to === route){
+    to = to || "/";
+    if(!ROUTES[to.split("?")[0]]) to = "/";   // validate by path, keep any ?query
+    if(to === route){                          // already on this exact route (no query) → scroll up
       (scrollRef.current || window).scrollTo({ top:0, behavior:"smooth" });
       return;
     }
@@ -44,7 +50,7 @@ function App(){
   uEf(()=>{
     if(phase !== "out") return;
     const t = setTimeout(()=>{
-      setRoute(pending);
+      setRoute(pending.split("?")[0]);   // route state holds the path; ?query stays in the hash
       if(location.hash.replace(/^#/,"") !== pending) location.hash = pending;
       const sc = scrollRef.current; if(sc) sc.scrollTop = 0;
       setPhase("in");

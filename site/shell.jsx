@@ -12,6 +12,7 @@ const NAV_ITEMS = [
   { label:"Diesel & Truck", route:"/diesel-mechanic-ballarat" },
   { label:"Classic",        route:"/classic-car-roadworthy-ballarat" },
   { label:"Blog",           route:"/blog" },
+  { label:"Contact",        route:"/contact" },
 ];
 
 /* Services mega menu groups — link to standalone SEO pages */
@@ -75,16 +76,18 @@ function CallBtn({ lg, label="Call " + PHONE_DISPLAY + " to Book", emoji=true, c
   );
 }
 
-function BookBtn({ lg, label="Book an inspection", className="" }){
+function BookBtn({ lg, label="Book a Service", className="", service="" }){
   const { go } = useNav();
+  /* All booking CTAs funnel to /book-service; an optional service preselects it */
+  const to = "/book-service" + (service ? "?service=" + service : "");
   return (
-    <button className={"btn btn-ghost " + (lg?"btn-lg ":"") + className} onClick={()=>go("/roadworthy-certificate-ballarat")}>
+    <button className={"btn btn-ghost " + (lg?"btn-lg ":"") + className} onClick={()=>go(to)}>
       <Icons.calendar/>{label}
     </button>
   );
 }
 
-function CtaBand({ title="Get your vehicle sorted this week", sub="Two accredited inspectors, same-week slots, and on-site rectification if anything fails. One visit, one call." }){
+function CtaBand({ title="Get your vehicle sorted this week", sub="Two accredited inspectors, same-week slots, and on-site rectification if anything fails. One visit, one call.", service="" }){
   return (
     <section className="section"><div className="wrap">
       <div className="ctaband" data-reveal>
@@ -93,7 +96,7 @@ function CtaBand({ title="Get your vehicle sorted this week", sub="Two accredite
         <p className="lead center" style={{margin:"16px auto 0"}}>{sub}</p>
         <div className="ctaband-actions">
           <CallBtn lg/>
-          <BookBtn lg/>
+          <BookBtn lg service={service}/>
         </div>
       </div>
     </div></section>
@@ -330,7 +333,7 @@ function Footer(){
             <time itemProp="openingHours" dateTime="Mo-Fr 08:00-17:00">Mon–Fri · 8am–5pm</time>
             <br/>Sat · By appointment
           </p>
-          <a href="roadworthy-certificates.html" className="ft-book-btn">
+          <a href="#/book-service" className="ft-book-btn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{width:"15px",height:"15px",flex:"none"}}><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>
             Book a Service
           </a>
@@ -386,7 +389,7 @@ function Footer(){
           <a href="services-ballarat.html">Services</a>
           <a href="roadworthy-certificates.html">Roadworthy</a>
           <a href="car-servicing-ballarat.html">Car Servicing</a>
-          <a href="mechanic-wendouree-ballarat.html">Contact</a>
+          <a href="#/contact">Contact</a>
           <a href="privacy-policy.html">Privacy Policy</a>
           <a href="terms-of-service.html">Terms</a>
         </span>

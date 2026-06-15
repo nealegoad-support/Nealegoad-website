@@ -145,7 +145,7 @@ function BlogStickyCTA(){
       <div className="wrap blog-cta-in">
         <div className="bcb-text"><strong>Due for a roadworthy?</strong> Licensed Vehicle Tester in Wendouree · same-week bookings.</div>
         <div className="bcb-actions">
-          <button className="btn btn-primary" onClick={()=>go("/roadworthy-certificate-ballarat")}><Icons.fileCheck/> Book a Roadworthy Certificate Inspection</button>
+          <button className="btn btn-primary" onClick={()=>go("/book-service?service=roadworthy")}><Icons.fileCheck/> Book a Roadworthy Certificate Inspection</button>
           <a className="btn btn-ghost bcb-call" href={PHONE_TEL}><Icons.phone/> Call now</a>
         </div>
         <button className="bcb-close" onClick={()=>setHidden(true)} aria-label="Dismiss"><Icons.x/></button>
@@ -291,7 +291,7 @@ function ArticleView(){
                 <p>{b[1]}</p>
                 <div className="article-cta-actions">
                   <CallBtn/>
-                  <BookBtn label="Book online"/>
+                  <BookBtn label="Book online" service="roadworthy"/>
                 </div>
               </div>
             );
